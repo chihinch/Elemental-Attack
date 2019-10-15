@@ -7,8 +7,8 @@ body {
 
 #app {
     margin: 0 auto;
-    width: 1024px;
-    height: 768px;
+    width: 800px;
+    height: 600px;
     border: 1px solid;
     display: flex;
     flex-direction: column;
@@ -62,8 +62,8 @@ body {
 }
 
 #game-header {
-    width: 800px;
-    height: 60px;
+    width: 640px;
+    height: 40px;
     border: 1px solid;
     display: flex;
     justify-content: space-between;
@@ -85,17 +85,25 @@ body {
 }
 
 #help {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 
+#help button {
+    
 }
 
 #canvas {
-    width: 800px;
-    height: 600px;
+    width: 640px;
+    height: 480px;
     border: 1px solid;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    background-image: url("../assets/images/atom_background.png");
 }
 
-canvas {
+#myCanvas {
     width: 100%;
     height: 100%;
+    background: transparent;
 }

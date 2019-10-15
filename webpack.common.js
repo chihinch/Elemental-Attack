@@ -53,8 +53,20 @@ module.exports = {
         "sass-loader",
         "postcss-loader"
       ]
-    }
+    },
+    {
+      test: /\.(png|jpg|gif)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            limit: 8192,
+          },
+        },
+      ],
+    },
     ]
+
   },
   plugins: [new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output
