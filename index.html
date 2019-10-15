@@ -44,15 +44,21 @@
       </div>
       <div id="help" class="game-header-side">
         <!-- Buttons to activate modals for help button and periodic table -->
-        <button id="help-button">Help</button>
-        <button id="periodic-button">Periodic Table</button>
+        <button id="instruction-button" class="help-button">Help</button>
+        <button id="periodic-button" class="help-button">Periodic Table</button>
       </div>
     </div>
 
     <div id="game">
-      <div id="help-screen" class="hide">
+      <!-- Replace gameplay with game instructions -->
+      <div id="instruction-screen" class="hide">
         <h1>This is the help interface?</h1>
       </div>
+      <!-- Replace gameplay with periodic table -->
+      <div id="periodic-table" class="hide">
+        <h1>This would be the periodic table</h1>
+      </div>
+      <!-- Canvas that holds the game -->
       <canvas id="canvas" class="show"></canvas>
     </div>
   </div>
