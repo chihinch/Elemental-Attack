@@ -67,7 +67,7 @@ function draw() {
   player.drawPlayer();
 }
 
-setInterval(draw, 10);
+setInterval(draw, 5);
 
 // Figuring out how to use event listeners on DOM elements
 // helpButton.addEventListener('click', function() { alert("I clicked the help button"); });

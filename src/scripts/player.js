@@ -5,8 +5,9 @@ export default class Player {
     this.health = 100;
     this.width = 10;
     this.height = 70;
-    this.positionX = (canvas.width - this.width) / 2; // player starts at the canvas' centre
+    this.positionX = (canvas.width - this.width) / 2; // Player starts at the canvas' centre
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
+    this.dx = 10; // Player moves 10 pixels at a time?
     this.drawPlayer = this.drawPlayer.bind(this);
   }
 
@@ -31,6 +32,7 @@ export default class Player {
       default:
         this.direction = 0;
     }
+    this.positionX = this.positionX + (this.direction * this.dx);
   }
 
   handleKeyRelease(e) {
