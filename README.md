@@ -4,7 +4,7 @@
 
 Elemental Attack is an in-browser arcade shooter game with a chemical twist. 
 
-In retaliation for the player not paying enough attention in chemistry class, they face an onslaught of attacks from rogue atoms of different elements. The player must use their two prized possessions: an ioniser and an electron gun, to pacify these atoms and render them harmless.
+In retaliation for the player not paying enough attention in chemistry class, they face an onslaught of attacks from rogue atoms of different elements. The player must use their two prized possessions: an ioniser and an electron gun, to neutralize these atoms and render them harmless.
 
 ## Rules
 
@@ -23,7 +23,7 @@ While the ioniser has unlimited energy (because magic), the electron gun has lim
 
 To keep the game simple, elements can only be attacked with one of the two weapons, depending on their most common [oxidation state](https://en.wikipedia.org/wiki/Oxidation_state). Those with positive oxidation states are immune to the electron gun, and those with negative oxidation states are immune to the ioniser.
 
-The player gains points for each pacified atom.
+The player gains points for each neutralized atom.
 
 The player loses health if they are hit by a neutron attack, or if an atom reaches the bottom of the screen. They can restore health by capturing noble gas atoms that occasionally fall down.
 
@@ -42,7 +42,7 @@ In Elemental Attack, players will be able to:
 - [ ] Gain health when a noble gas is captured
 - [ ] Track their electron gun's ammunition, disabling the gun if it's empty
 - [ ] Regain usage of the electron gun when their ioniser successfully hits an atom
-- [ ] Gain points for each atom that was pacified
+- [ ] Gain points for each atom that was neutralized
 - [ ] Lose the game when their health reaches zero
 
 Additionally, the project will include:
