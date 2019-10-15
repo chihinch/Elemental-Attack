@@ -4,6 +4,8 @@
   "description": "Pacify the attacking rogue atoms using your ioniser and electron gun!",
   "main": "index.js",
   "dependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
     "autoprefixer": "^9.6.5",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
@@ -31,5 +33,9 @@
     "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
   },
   "author": "Danny Chan <chihinch@outlook.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url:": "https://github.com/chihinch/Elemental-Attack.git"
+  }
 }

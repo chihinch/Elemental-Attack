@@ -6,11 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./dist/main.css">
-  <title>Document</title>
+  <script src="https://kit.fontawesome.com/84e7412565.js" crossorigin="anonymous"></script>
+  <title>Elemental Attack</title>
 </head>
 
-<body>
-  <div id="app"></div>
+<body id="webpage">
+  <div id="app">
+      <div id="navbar">
+        <div id="nav-logo">
+          <!-- Elemental Attack logo -->
+          <h1>Elemental Attack</h1>
+          <span>by Danny Chan</span>
+        </div>
+        <div id="nav-links">
+        <!-- Links to GitHub, LinkedIn, personal site, contact info -->
+        <a href="https://github.com/chihinch/Elemental-Attack" target="_blank" class="navlink">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="navlink">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="#" target="_blank" class="navlink">
+          <i class="fas fa-user-circle"></i>
+        </a>
+        <a href="mailto:chihinch@outlook.com" target="_blank" class="navlink">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div> 
+
+    <div id="game-header">
+      <div id="player-status" class="game-header-side">
+        <!-- Player's health and ammo displayed here -->
+      </div>
+      <div id="title">
+        <!-- Elemental Attack logo -->
+      </div>
+      <div id="help" class="game-header-side">
+        <!-- Modals for help button and periodic table -->
+      </div>
+    </div>
+
+    <div id="canvas">
+      <canvas id="myCanvas"></canvas>
+    </div>
+  </div>
+
   <script src="./dist/main.js"></script>
 </body>
 
