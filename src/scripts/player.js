@@ -19,6 +19,18 @@ export default class Player {
     this.ctx.closePath();
   }
 
+  getPosition() {
+    return this.positionX;
+  }
+
+  getHealth() {
+    return this.health();
+  }
+
+  isPlayerDefeated() {
+    return this.heath === 0;
+  }
+
   // Eventually add cases for using the weapons
   handleKeyPress(e) {
     e.preventDefault();
@@ -40,7 +52,13 @@ export default class Player {
     this.direction = 0;
   }
 
-  getPosition() {
-    return this.positionX;
+  // Consider refactoring this into a single changeHealth function
+  // and change the health according to the healthAmt (positive or negative)
+  damage(healthAmt) {
+    this.health = this.health + healthAmt;
+  }
+
+  heal(healthAmt) {
+    this.health = this.health + healthAmt;
   }
 }
