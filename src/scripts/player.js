@@ -45,6 +45,12 @@ export default class Player {
         this.direction = 0;
     }
     this.positionX = this.positionX + (this.direction * this.dx);
+    if (this.positionX < 0) {
+      this.positionX = 0;
+    }
+    else if (this.positionX + this.width > this.canvas.width) {
+      this.positionX = this.canvas.width - this.width;
+    }
   }
 
   handleKeyRelease(e) {
