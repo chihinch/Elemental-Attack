@@ -3,7 +3,7 @@
   For now, I will likely use only elements 1-100 since their properties are more-or-less established (especially the transuranic elements)
 
   Relevant data I will extract from each element:
-  atomicNumber, symbol, name, atomicRadius, atomicMass, cpkHexColor (to color the atom), electronegativity, oxidation states
+  atomicNumber, symbol, name, atomicRadius, atomicMass, cpkHexColor (to color the atom), electronegativity, oxidation states, standardState?
 
   (Maybe not the electronegativity since I need it to pick an oxidation state)
 */
@@ -14,9 +14,6 @@ const periodicTable = require('periodic-table');
 // const helium = periodicTable.elements.Helium;
 // console.log(helium);
 
-// Single out the nobleGases (heals the player on contact)
-const nobleGases = ['Helium', 'Neon', 'Argon', 'Krypton', 'Xenon', 'Radon'];
-
 export default class Atom {
   constructor(cpkHexColor, atomicNumber, symbol, atomicRadius, atomicMass, electronegativity, oxidationState) {
     this.cpkHexColor = cpkHexColor;
@@ -26,6 +23,7 @@ export default class Atom {
     this.atomicMass = atomicMass;
     this.oxidationState = oxidationState;
     this.currentOxidationState = 0;
+    this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(this.symbol)
   }
 
   damageAtom(weapon) {
@@ -48,4 +46,5 @@ export default class Atom {
   isAtomDefeated() {
     return this.oxidationState === this.currentOxidationState;
   }
+
 }
