@@ -2,6 +2,8 @@
 
   For now, I will likely use only elements 1-100 since their properties are more-or-less established (especially the transuranic elements)
 
+  (16-Oct yeah.. maybe scratch that. The package doesn't have much info past bismuth (83), not even uranium >:( )
+
   Relevant data I will extract from each element:
   atomicNumber, symbol, name, atomicRadius, atomicMass, cpkHexColor (to color the atom), electronegativity, oxidation states, standardState?
 
@@ -29,16 +31,19 @@ export default class Atom {
     this.oxidationState = oxidationState;
     this.currentOxidationState = 0;
     this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(this.symbol)
+    // Atoms are represented by circles whose radii are (for now) set equal to
+    // sqrt(this.atomicRadius) * 3
+    this.radius = Math.sqrt(this.atomicRadius) * 3;
   }
 
   drawAtom() {
-    const radius = this.atomicRadius 
-
     this.ctx.strokeStyle = this.cpkHexColor;
     this.fillStyle = this.cpkHexColor;
     // Will have to change the centre of the circle as atoms fly around the canvas
-    // this.ctx.beginPath(100, 100, );
-
+    this.ctx.beginPath(100, 100, this.radius, 0, 2 * Math.PI, true);
+    this.closePath();
+    this.ctx.stroke();
+    this.ctx.fill();
   }
 
   damageAtom(weapon) {
