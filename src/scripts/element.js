@@ -4,6 +4,8 @@
 
   Relevant data I will extract from each element:
   atomicNumber, symbol, name, atomicRadius, atomicMass, cpkHexColor (to color the atom), electronegativity, oxidation states
+
+  (Maybe not the electronegativity since I need it to pick an oxidation state)
 */
 
 const periodicTable = require('periodic-table');
@@ -22,7 +24,28 @@ export default class Atom {
     this.symbol = symbol;
     this.atomicRadius = atomicRadius;
     this.atomicMass = atomicMass;
-    this.electronegativity = electronegativity;
     this.oxidationState = oxidationState;
+    this.currentOxidationState = 0;
+  }
+
+  damageAtom(weapon) {
+    // The goal is to make currentOxidationState = oxidationState
+
+    // Ionisers can only hit elements with positive oxidation states
+    if (weapon === 'ioniser' && this.oxidationState > 0) {
+      this.currentOxidationState = this.currentOxidationState - 1;
+    } 
+    // Electron guns can only hit elements with negative oxidation states
+    else if (weapon === 'electronGun' && this.oxidationState < 0) {
+      this.currentOxidationState = this.currentOxidationState + 1;
+    }
+    // Ensure that currentOxidationState isn't changed otherwise
+    else {
+      this.currentOxidationState = this.currentOxidationState + 0;
+    }
+  }
+
+  isAtomDefeated() {
+    return this.oxidationState === this.currentOxidationState;
   }
 }
