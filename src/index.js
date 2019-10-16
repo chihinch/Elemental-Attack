@@ -1,17 +1,21 @@
-import './styles/index.scss';
+import './styles/index.css';
 import Player from './scripts/player';
+import Atom from './scripts/atom';
+// import PeriodicTableData from 'periodic-table';
+import * as PeriodicTableData from 'periodic-table';
 
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('webpage');
 });
 
+// const periodicTableData = require('periodic-table');
+
 // Get the divs holding instructions and the periodic table
 const instructionsScreen = document.getElementById('instructions-screen');
 const controlsScreen = document.getElementById('controls-screen');
-const periodicTable = document.getElementById('periodic-table');
+const periodicTableScreen = document.getElementById('periodic-table');
 
 const gameDivs = document.getElementById('game').children;
-console.log(gameDivs);
 
 // Get the canvas
 const canvas = document.getElementById('canvas');
@@ -59,7 +63,7 @@ function handleHelpButton(e) {
 function returnToCanvas() {
     instructionsScreen.className = 'hide';
     controlsScreen.className = 'hide';
-    periodicTable.className = 'hide';
+    periodicTableScreen.className = 'hide';
     canvas.className = 'show';
 };
 
@@ -78,6 +82,11 @@ function handleKeyRelease(e) {
 
 window.addEventListener('keydown', handleKeyPress, false);
 window.addEventListener('keyup', handleKeyRelease, false);
+
+// const elementId = Math.floor(Math.random() * 83);
+// const element = periodicTableData.numbers[elementId];
+
+// const testAtom = new Atom(canvas, ctx, element.cpkHexColor, element.atomicNumber, element.symbol, element.atomicRadius, element.atomicMass, oxidationState);
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);

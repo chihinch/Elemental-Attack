@@ -1,5 +1,5 @@
 import Player from './player';
-import Element from './element';
+import Element from './atom';
 
 export default class Game {
   constructor(canvas, ctx) {

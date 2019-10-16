@@ -12,14 +12,14 @@
   (Maybe not the electronegativity since I need it to pick an oxidation state)
 */
 
-const periodicTable = require('periodic-table');
+// const periodicTable = require('periodic-table');
 
 // Test how the package works
 // const helium = periodicTable.elements.Helium;
 // console.log(helium);
 
 export default class Atom {
-  constructor(canvas, ctx, cpkHexColor, atomicNumber, symbol, atomicRadius, atomicMass, electronegativity, oxidationState) {
+  constructor(canvas, ctx, cpkHexColor, atomicNumber, symbol, atomicRadius, atomicMass, oxidationState) {
     this.canvas = canvas;
     this.ctx = ctx;
 
@@ -30,20 +30,29 @@ export default class Atom {
     this.atomicMass = atomicMass;
     this.oxidationState = oxidationState;
     this.currentOxidationState = 0;
-    this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(this.symbol)
+    this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol)
     // Atoms are represented by circles whose radii are (for now) set equal to
     // sqrt(this.atomicRadius) * 3
     this.radius = Math.sqrt(this.atomicRadius) * 3;
+
+    // Atom is generated at a random position on the x-axis on the top of the screen
+    this.positionX = Math.floor(Math.random() * canvas.width);
+    this.positionY = 0;
+
+    // Speed of the atom
+    this.dX = 2;
+    this.dY = -2;
   }
 
   drawAtom() {
     this.ctx.strokeStyle = this.cpkHexColor;
     this.fillStyle = this.cpkHexColor;
     // Will have to change the centre of the circle as atoms fly around the canvas
-    this.ctx.beginPath(100, 100, this.radius, 0, 2 * Math.PI, true);
-    this.closePath();
+    this.ctx.beginPath();
+    this.ctx.arc(100, 100, this.radius, 0, 2 * Math.PI, true);
     this.ctx.stroke();
     this.ctx.fill();
+    this.closePath();
   }
 
   damageAtom(weapon) {
