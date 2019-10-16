@@ -53,24 +53,6 @@ function handleHelpButton(e) {
       gameDivs[i].className = 'hide';
     }
   }
-  // if (e.target.id === 'instruction-button') {
-  //   instructionScreen.className = 'show';
-  //   periodicTable.className = 'hide';
-  //   canvas.className = 'hide';
-  // } 
-  // else if (e.target.id ===)
-  // else if (e.target.id === 'periodic-button') {
-  //   instructionScreen.className = 'hide';
-  //   periodicTable.className = 'show';
-  //   canvas.className = 'hide';
-  // } 
-  // else {
-  //   returnToCanvas();
-  // }
-
-  // switch (e.target.id) {
-  //   case 'instruction-button'
-  // }
 };
 
 // Return to the game
@@ -115,7 +97,4 @@ function updateStats() {
 
 setInterval(draw, 10);
 setInterval(updateStats, 1500);
-
-// Figuring out how to use event listeners on DOM elements
-// helpButton.addEventListener('click', function() { alert("I clicked the help button"); });
 

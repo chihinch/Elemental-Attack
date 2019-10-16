@@ -5,6 +5,8 @@
   Relevant data I will extract from each element:
   atomicNumber, symbol, name, atomicRadius, atomicMass, cpkHexColor (to color the atom), electronegativity, oxidation states, standardState?
 
+  (Maybe standardState won't be needed since I'll have the atoms bounce around like balls)
+
   (Maybe not the electronegativity since I need it to pick an oxidation state)
 */
 
@@ -15,7 +17,10 @@ const periodicTable = require('periodic-table');
 // console.log(helium);
 
 export default class Atom {
-  constructor(cpkHexColor, atomicNumber, symbol, atomicRadius, atomicMass, electronegativity, oxidationState) {
+  constructor(canvas, ctx, cpkHexColor, atomicNumber, symbol, atomicRadius, atomicMass, electronegativity, oxidationState) {
+    this.canvas = canvas;
+    this.ctx = ctx;
+
     this.cpkHexColor = cpkHexColor;
     this.atomicNumber = atomicNumber;
     this.symbol = symbol;
@@ -24,6 +29,16 @@ export default class Atom {
     this.oxidationState = oxidationState;
     this.currentOxidationState = 0;
     this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(this.symbol)
+  }
+
+  drawAtom() {
+    const radius = this.atomicRadius 
+
+    this.ctx.strokeStyle = this.cpkHexColor;
+    this.fillStyle = this.cpkHexColor;
+    // Will have to change the centre of the circle as atoms fly around the canvas
+    // this.ctx.beginPath(100, 100, );
+
   }
 
   damageAtom(weapon) {
