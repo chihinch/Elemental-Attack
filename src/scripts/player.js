@@ -3,6 +3,8 @@ export default class Player {
     this.canvas = canvas;
     this.ctx = ctx;
     this.health = 100;
+    this.points = 0;
+    this.electrons = 25;
     this.width = 10;
     this.height = 70;
     this.positionX = (canvas.width - this.width) / 2; // Player starts at the canvas' centre
@@ -29,6 +31,18 @@ export default class Player {
 
   isPlayerDefeated() {
     return this.heath === 0;
+  }
+
+  getPoints() {
+    return this.points;
+  }
+
+  getAmmo() {
+    return this.electrons;
+  }
+
+  isAmmoEmpty() {
+    return this.electrons === 0;
   }
 
   // Eventually add cases for using the weapons
@@ -60,11 +74,25 @@ export default class Player {
 
   // Consider refactoring this into a single changeHealth function
   // and change the health according to the healthAmt (positive or negative)
+  
+  // Scratch that. I wonder if I can refactor the following few methods into some sort of changeStat(stat, amt) function
   damage(healthAmt) {
     this.health = this.health + healthAmt;
   }
 
   heal(healthAmt) {
     this.health = this.health + healthAmt;
+  }
+
+  addPoints(pointAmt) {
+    this.points = this.points + pointAmt;
+  }
+
+  subtractAmmo() {
+    this.electrons = this.electrons - 1;
+  }
+
+  addAmmo() {
+    this.electrons = this.electrons + 1;
   }
 }
