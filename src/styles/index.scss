@@ -66,7 +66,7 @@ body {
 }
 
 #game-header {
-    width: 640px;
+    width: 800px;
     height: 40px;
     border: 1px solid;
     display: flex;
@@ -74,18 +74,12 @@ body {
 }
 
 .game-header-side {
-    width: 25%;
+    width: 35%;
     height: 100%;
     border: 1px solid;
 }
 
 #player-status {
-}
-
-#title {
-    width: 35%;
-    height: 100%;
-    border: 1px solid;
 }
 
 #help {
@@ -99,7 +93,7 @@ body {
 }
 
 #game {
-    width: 640px;
+    width: 800px;
     height: 480px;
     border: 1px solid;
     margin-bottom: 10px;

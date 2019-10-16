@@ -44,26 +44,27 @@
       </div>
       <div id="help" class="game-header-side">
         <!-- Buttons to activate modals for help button and periodic table -->
-        <button id="instruction-button" class="help-button">Help</button>
+        <button id="about-button" class="help-button">About</button>
+        <button id="controls-button" class="help-button">Controls</button>
         <button id="periodic-button" class="help-button">Periodic Table</button>
       </div>
     </div>
 
     <div id="game">
       <!-- Replace gameplay with game instructions -->
-      <div id="instruction-screen" class="hide">
+      <div id="instructions-screen" class="hide">
         <h1>Atoms Demand Revenge!</h1>
         <p>
           A bunch of atoms are displeased that you didn't pay attention in chemistry class, so a rogue faction has set out to teach you a (chemistry) lesson.
         </p>
         <p>
-          Atoms have a valence shell containing a certain amount of electrons. To defeat each atom, you must restore its valence shell to satisfy the octet rule (i.e. have 8 electrons occupy the valence shell).
+          Atoms have a valence shell containing a certain amount of electrons. Defeat each atom by fulfilling the octet rule (i.e. give it 8 valence electrons).
         </p>
         <p>
           Defend yourself with two weapons: an ioniser and an electron gun.
         </p>
         <p>
-          The ioniser uses the perfect amount of ionisation energy to remove one electron from an electron's valence shell.
+          The ioniser uses the perfect amount of ionisation energy to remove one valence electron.
         </p>
         <p>
           Shoot atoms with the electron gun to fill their valence shell. Careful: you have a limited amount of electrons, but each successful hit from the ioniser will refill the electron gun.
@@ -74,9 +75,12 @@
         <p>
           (Hint: the oxidation state tells you how many electrons you must add or remove to defeat an atom.)
         </p>
+      </div>
+      <div id="controls-screen" class="hide">
         <h1>Controls</h1>
         <p>
-          Use the LEFT or RIGHT arrow keys to move. Press Z to use the ioniser. Press X to use the electron gun. Click the periodic table button to pause the game and look at the elements' weaknesses.
+          Use the LEFT or RIGHT arrow keys to move. Press Z to use the ioniser. Press X to use the electron gun. Click the
+          periodic table button to pause the game and look at the elements' weaknesses.
         </p>
       </div>
       <!-- Replace gameplay with periodic table -->
