@@ -19,11 +19,11 @@
 // console.log(helium);
 
 export default class Atom {
-  constructor(canvas, ctx, cpkHexColor, atomicNumber, symbol, atomicRadius, atomicMass, oxidationState) {
+  constructor(canvas, ctx, cssHexColor, atomicNumber, symbol, atomicRadius, atomicMass, oxidationState) {
     this.canvas = canvas;
     this.ctx = ctx;
 
-    this.cpkHexColor = cpkHexColor;
+    this.cpkHexColor = cssHexColor;
     this.atomicNumber = atomicNumber;
     this.symbol = symbol;
     this.atomicRadius = atomicRadius;
@@ -45,14 +45,14 @@ export default class Atom {
   }
 
   drawAtom() {
-    this.ctx.strokeStyle = this.cpkHexColor;
-    this.fillStyle = this.cpkHexColor;
     // Will have to change the centre of the circle as atoms fly around the canvas
     this.ctx.beginPath();
+    this.ctx.strokeStyle = this.cssHexColor;
+    this.fillStyle = this.cssHexColor;
     this.ctx.arc(100, 100, this.radius, 0, 2 * Math.PI, true);
     this.ctx.stroke();
     this.ctx.fill();
-    this.closePath();
+    this.ctx.closePath();
   }
 
   damageAtom(weapon) {

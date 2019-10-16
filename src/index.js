@@ -1,14 +1,12 @@
 import './styles/index.css';
 import Player from './scripts/player';
 import Atom from './scripts/atom';
-// import PeriodicTableData from 'periodic-table';
-import * as PeriodicTableData from 'periodic-table';
 
 window.addEventListener('DOMContentLoaded', () => {
   document.getElementById('webpage');
 });
 
-// const periodicTableData = require('periodic-table');
+const periodicTableData = require('./assets/data/periodicTable');
 
 // Get the divs holding instructions and the periodic table
 const instructionsScreen = document.getElementById('instructions-screen');
@@ -83,14 +81,27 @@ function handleKeyRelease(e) {
 window.addEventListener('keydown', handleKeyPress, false);
 window.addEventListener('keyup', handleKeyRelease, false);
 
-// const elementId = Math.floor(Math.random() * 83);
-// const element = periodicTableData.numbers[elementId];
+const elementId = Math.floor(Math.random() * 83);
+const element = periodicTableData.numbers[elementId];
+debugger
+const elementOxStates = element.oxidationStates.split(", ");
+debugger
+let oxidationState;
+if (element.electronegativity >= 2.50) {
+  oxidationState = parseInt(elementOxStates[elementOxStates.length - 1]);
+} else {
+  oxidationState = parseInt(elementOxStates[0]);
+}
 
-// const testAtom = new Atom(canvas, ctx, element.cpkHexColor, element.atomicNumber, element.symbol, element.atomicRadius, element.atomicMass, oxidationState);
+const testAtom = new Atom(canvas, ctx, element.cssHexColor, element.atomicNumber, element.symbol, element.atomicRadius, element.atomicMass, oxidationState);
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   player.drawPlayer();
+  testAtom.drawAtom();
+
+  testAtom.positionX = testAtom.positionX + testAtom.dX;
+  testAtom.positionY = testAtom.positionY + testAtom.dY;
 }
 
 // Update player stats

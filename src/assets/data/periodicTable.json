@@ -1,9 +1,11 @@
-{
-  "1": {
+[
+  {
+    "atomicNumber": 1,
     "symbol": "H",
     "name": "Hydrogen",
     "atomicMass": 1.008,
     "cpkHexColor": "FFFFFF",
+    "cssHexColor": "#FFFFFF",
     "electronicConfiguration": "1s1",
     "electronegativity": 2.2,
     "atomicRadius": 37,
@@ -20,11 +22,13 @@
     "groupBlock": "nonmetal",
     "yearDiscovered": 1766
   },
-  "2": {
+  {
+    "atomicNumber": 2,
     "symbol": "He",
     "name": "Helium",
     "atomicMass": 4.003,
     "cpkHexColor": "D9FFFF",
+    "cssHexColor": "#D9FFFF",
     "electronicConfiguration": "1s2",
     "electronegativity": 0,
     "atomicRadius": 32,
@@ -41,11 +45,13 @@
     "groupBlock": "noble gas",
     "yearDiscovered": 1868
   },
-  "3": {
+  {
+    "atomicNumber": 3,
     "symbol": "Li",
     "name": "Lithium",
     "atomicMass": 6.941,
     "cpkHexColor": "CC80FF",
+    "cssHexColor": "#CC80FF",
     "electronicConfiguration": "[He] 2s1",
     "electronegativity": 0.98,
     "atomicRadius": 134,
@@ -62,11 +68,13 @@
     "groupBlock": "alkali metal",
     "yearDiscovered": 1817
   },
-  "4": {
+  {
+    "atomicNumber": 4,
     "symbol": "Be",
     "name": "Beryllium",
     "atomicMass": 9.012,
     "cpkHexColor": "C2FF00",
+    "cssHexColor": "#C2FF00",
     "electronicConfiguration": "[He] 2s2",
     "electronegativity": 1.57,
     "atomicRadius": 90,
@@ -83,11 +91,13 @@
     "groupBlock": "alkaline earth metal",
     "yearDiscovered": 1798
   },
-  "5": {
+  {
+    "atomicNumber": 5,
     "symbol": "B",
     "name": "Boron",
     "atomicMass": 10.811,
     "cpkHexColor": "FFB5B5",
+    "cssHexColor": "#FFB5B5",
     "electronicConfiguration": "[He] 2s2 2p1",
     "electronegativity": 2.04,
     "atomicRadius": 82,
@@ -104,11 +114,13 @@
     "groupBlock": "metalloid",
     "yearDiscovered": 1807
   },
-  "6": {
+  {
+    "atomicNumber": 6,
     "symbol": "C",
     "name": "Carbon",
     "atomicMass": 12.011,
     "cpkHexColor": 909090,
+    "cssHexColor": "#909090",
     "electronicConfiguration": "[He] 2s2 2p2",
     "electronegativity": 2.55,
     "atomicRadius": 77,
@@ -125,11 +137,13 @@
     "groupBlock": "nonmetal",
     "yearDiscovered": "Ancient"
   },
-  "7": {
+  {
+    "atomicNumber": 7,
     "symbol": "N",
     "name": "Nitrogen",
     "atomicMass": 14.007,
     "cpkHexColor": "3050F8",
+    "cssHexColor": "#3050F8",
     "electronicConfiguration": "[He] 2s2 2p3",
     "electronegativity": 3.04,
     "atomicRadius": 75,
@@ -146,11 +160,13 @@
     "groupBlock": "nonmetal",
     "yearDiscovered": 1772
   },
-  "8": {
+  {
+    "atomicNumber": 8,
     "symbol": "O",
     "name": "Oxygen",
     "atomicMass": 15.999,
     "cpkHexColor": "FF0D0D",
+    "cssHexColor": "#FF0D0D",
     "electronicConfiguration": "[He] 2s2 2p4",
     "electronegativity": 3.44,
     "atomicRadius": 73,
@@ -167,11 +183,13 @@
     "groupBlock": "nonmetal",
     "yearDiscovered": 1774
   },
-  "9": {
+  {
+    "atomicNumber": 9,
     "symbol": "F",
     "name": "Fluorine",
     "atomicMass": 18.998,
     "cpkHexColor": 9e+51,
+    "cssHexColor": "#90E050",
     "electronicConfiguration": "[He] 2s2 2p5",
     "electronegativity": 3.98,
     "atomicRadius": 71,
@@ -188,11 +206,13 @@
     "groupBlock": "halogen",
     "yearDiscovered": 1670
   },
-  "10": {
+  {
+    "atomicNumber": 10,
     "symbol": "Ne",
     "name": "Neon",
     "atomicMass": 20.18,
     "cpkHexColor": "B3E3F5",
+    "cssHexColor": "#B3E3F5",
     "electronicConfiguration": "[He] 2s2 2p6",
     "electronegativity": 0,
     "atomicRadius": 69,
@@ -209,11 +229,13 @@
     "groupBlock": "noble gas",
     "yearDiscovered": 1898
   },
-  "11": {
+  {
+    "atomicNumber": 11,
     "symbol": "Na",
     "name": "Sodium",
     "atomicMass": 22.99,
     "cpkHexColor": "AB5CF2",
+    "cssHexColor": "#AB5CF2",
     "electronicConfiguration": "[Ne] 3s1",
     "electronegativity": 0.93,
     "atomicRadius": 154,
@@ -230,11 +252,13 @@
     "groupBlock": "alkali metal",
     "yearDiscovered": 1807
   },
-  "12": {
+  {
+    "atomicNumber": 12,
     "symbol": "Mg",
     "name": "Magnesium",
     "atomicMass": 24.305,
     "cpkHexColor": "8AFF00",
+    "cssHexColor": "#8AFF00",
     "electronicConfiguration": "[Ne] 3s2",
     "electronegativity": 1.31,
     "atomicRadius": 130,
@@ -251,11 +275,13 @@
     "groupBlock": "alkaline earth metal",
     "yearDiscovered": 1808
   },
-  "13": {
+  {
+    "atomicNumber": 13,
     "symbol": "Al",
     "name": "Aluminum",
     "atomicMass": 26.982,
     "cpkHexColor": "BFA6A6",
+    "cssHexColor": "#BFA6A6",
     "electronicConfiguration": "[Ne] 3s2 3p1",
     "electronegativity": 1.61,
     "atomicRadius": 118,
@@ -272,11 +298,13 @@
     "groupBlock": "metal",
     "yearDiscovered": "Ancient"
   },
-  "14": {
+  {
+    "atomicNumber": 14,
     "symbol": "Si",
     "name": "Silicon",
     "atomicMass": 28.086,
     "cpkHexColor": "F0C8A0",
+    "cssHexColor": "#F0C8A0",
     "electronicConfiguration": "[Ne] 3s2 3p2",
     "electronegativity": 1.9,
     "atomicRadius": 111,
@@ -293,11 +321,13 @@
     "groupBlock": "metalloid",
     "yearDiscovered": 1854
   },
-  "15": {
+  {
+    "atomicNumber": 15,
     "symbol": "P",
     "name": "Phosphorus",
     "atomicMass": 30.974,
     "cpkHexColor": "FF8000",
+    "cssHexColor": "#FF8000",
     "electronicConfiguration": "[Ne] 3s2 3p3",
     "electronegativity": 2.19,
     "atomicRadius": 106,
@@ -314,11 +344,13 @@
     "groupBlock": "nonmetal",
     "yearDiscovered": 1669
   },
-  "16": {
+  {
+    "atomicNumber": 16,
     "symbol": "S",
     "name": "Sulfur",
     "atomicMass": 32.065,
     "cpkHexColor": "FFFF30",
+    "cssHexColor": "#FFFF30",
     "electronicConfiguration": "[Ne] 3s2 3p4",
     "electronegativity": 2.58,
     "atomicRadius": 102,
@@ -335,11 +367,13 @@
     "groupBlock": "nonmetal",
     "yearDiscovered": "Ancient"
   },
-  "17": {
+  {
+    "atomicNumber": 17,
     "symbol": "Cl",
     "name": "Chlorine",
     "atomicMass": 35.453,
     "cpkHexColor": "1FF01F",
+    "cssHexColor": "#1FF01F",
     "electronicConfiguration": "[Ne] 3s2 3p5",
     "electronegativity": 3.16,
     "atomicRadius": 99,
@@ -356,11 +390,13 @@
     "groupBlock": "halogen",
     "yearDiscovered": 1774
   },
-  "18": {
+  {
+    "atomicNumber": 18,
     "symbol": "Ar",
     "name": "Argon",
     "atomicMass": 39.948,
     "cpkHexColor": "80D1E3",
+    "cssHexColor": "#80D1E3",
     "electronicConfiguration": "[Ne] 3s2 3p6",
     "electronegativity": 0,
     "atomicRadius": 97,
@@ -377,11 +413,13 @@
     "groupBlock": "noble gas",
     "yearDiscovered": 1894
   },
-  "19": {
+  {
+    "atomicNumber": 19,
     "symbol": "K",
     "name": "Potassium",
     "atomicMass": 39.098,
     "cpkHexColor": "8F40D4",
+    "cssHexColor": "#8F40D4",
     "electronicConfiguration": "[Ar] 4s1",
     "electronegativity": 0.82,
     "atomicRadius": 196,
@@ -398,11 +436,13 @@
     "groupBlock": "alkali metal",
     "yearDiscovered": 1807
   },
-  "20": {
+  {
+    "atomicNumber": 20,
     "symbol": "Ca",
     "name": "Calcium",
     "atomicMass": 40.078,
     "cpkHexColor": "3DFF00",
+    "cssHexColor": "#3DFF00",
     "electronicConfiguration": "[Ar] 4s2",
     "electronegativity": 1,
     "atomicRadius": 174,
@@ -419,11 +459,13 @@
     "groupBlock": "alkaline earth metal",
     "yearDiscovered": "Ancient"
   },
-  "21": {
+  {
+    "atomicNumber": 21,
     "symbol": "Sc",
     "name": "Scandium",
     "atomicMass": 44.956,
     "cpkHexColor": "E6E6E6",
+    "cssHexColor": "#E6E6E6",
     "electronicConfiguration": "[Ar] 3d1 4s2",
     "electronegativity": 1.36,
     "atomicRadius": 144,
@@ -440,11 +482,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1876
   },
-  "22": {
+  {
+    "atomicNumber": 22,
     "symbol": "Ti",
     "name": "Titanium",
     "atomicMass": 47.867,
     "cpkHexColor": "BFC2C7",
+    "cssHexColor": "#BFC2C7",
     "electronicConfiguration": "[Ar] 3d2 4s2",
     "electronegativity": 1.54,
     "atomicRadius": 136,
@@ -461,11 +505,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1791
   },
-  "23": {
+  {
+    "atomicNumber": 23,
     "symbol": "V",
     "name": "Vanadium",
     "atomicMass": 50.942,
     "cpkHexColor": "A6A6AB",
+    "cssHexColor": "#A6A6AB",
     "electronicConfiguration": "[Ar] 3d3 4s2",
     "electronegativity": 1.63,
     "atomicRadius": 125,
@@ -482,11 +528,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1803
   },
-  "24": {
+  {
+    "atomicNumber": 24,
     "symbol": "Cr",
     "name": "Chromium",
     "atomicMass": 51.996,
     "cpkHexColor": "8A99C7",
+    "cssHexColor": "#8A99C7",
     "electronicConfiguration": "[Ar] 3d5 4s1",
     "electronegativity": 1.66,
     "atomicRadius": 127,
@@ -503,11 +551,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": "Ancient"
   },
-  "25": {
+  {
+    "atomicNumber": 25,
     "symbol": "Mn",
     "name": "Manganese",
     "atomicMass": 54.938,
     "cpkHexColor": "9C7AC7",
+    "cssHexColor": "#9C7AC7",
     "electronicConfiguration": "[Ar] 3d5 4s2",
     "electronegativity": 1.55,
     "atomicRadius": 139,
@@ -524,11 +574,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1774
   },
-  "26": {
+  {
+    "atomicNumber": 26,
     "symbol": "Fe",
     "name": "Iron",
     "atomicMass": 55.845,
     "cpkHexColor": "E06633",
+    "cssHexColor": "#E06633",
     "electronicConfiguration": "[Ar] 3d6 4s2",
     "electronegativity": 1.83,
     "atomicRadius": 125,
@@ -545,11 +597,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": "Ancient"
   },
-  "27": {
+  {
+    "atomicNumber": 27,
     "symbol": "Co",
     "name": "Cobalt",
     "atomicMass": 58.933,
     "cpkHexColor": "F090A0",
+    "cssHexColor": "#F090A0",
     "electronicConfiguration": "[Ar] 3d7 4s2",
     "electronegativity": 1.88,
     "atomicRadius": 126,
@@ -566,11 +620,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": "Ancient"
   },
-  "28": {
+  {
+    "atomicNumber": 28,
     "symbol": "Ni",
     "name": "Nickel",
     "atomicMass": 58.693,
     "cpkHexColor": "50D050",
+    "cssHexColor": "#50D050",
     "electronicConfiguration": "[Ar] 3d8 4s2",
     "electronegativity": 1.91,
     "atomicRadius": 121,
@@ -587,11 +643,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1751
   },
-  "29": {
+  {
+    "atomicNumber": 29,
     "symbol": "Cu",
     "name": "Copper",
     "atomicMass": 63.546,
     "cpkHexColor": "C88033",
+    "cssHexColor": "#C88033",
     "electronicConfiguration": "[Ar] 3d10 4s1",
     "electronegativity": 1.9,
     "atomicRadius": 138,
@@ -608,11 +666,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": "Ancient"
   },
-  "30": {
+  {
+    "atomicNumber": 30,
     "symbol": "Zn",
     "name": "Zinc",
     "atomicMass": 65.38,
     "cpkHexColor": "7D80B0",
+    "cssHexColor": "#7D80B0",
     "electronicConfiguration": "[Ar] 3d10 4s2",
     "electronegativity": 1.65,
     "atomicRadius": 131,
@@ -629,11 +689,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1746
   },
-  "31": {
+  {
+    "atomicNumber": 31,
     "symbol": "Ga",
     "name": "Gallium",
     "atomicMass": 69.723,
     "cpkHexColor": "C28F8F",
+    "cssHexColor": "#C28F8F",
     "electronicConfiguration": "[Ar] 3d10 4s2 4p1",
     "electronegativity": 1.81,
     "atomicRadius": 126,
@@ -650,11 +712,13 @@
     "groupBlock": "metal",
     "yearDiscovered": 1875
   },
-  "32": {
+  {
+    "atomicNumber": 32,
     "symbol": "Ge",
     "name": "Germanium",
     "atomicMass": 72.64,
     "cpkHexColor": "668F8F",
+    "cssHexColor": "#668F8F",
     "electronicConfiguration": "[Ar] 3d10 4s2 4p2",
     "electronegativity": 2.01,
     "atomicRadius": 122,
@@ -671,11 +735,13 @@
     "groupBlock": "metalloid",
     "yearDiscovered": 1886
   },
-  "33": {
+  {
+    "atomicNumber": 33,
     "symbol": "As",
     "name": "Arsenic",
     "atomicMass": 74.922,
     "cpkHexColor": "BD80E3",
+    "cssHexColor": "#BD80E3",
     "electronicConfiguration": "[Ar] 3d10 4s2 4p3",
     "electronegativity": 2.18,
     "atomicRadius": 119,
@@ -692,11 +758,13 @@
     "groupBlock": "metalloid",
     "yearDiscovered": "Ancient"
   },
-  "34": {
+  {
+    "atomicNumber": 34,
     "symbol": "Se",
     "name": "Selenium",
     "atomicMass": 78.96,
     "cpkHexColor": "FFA100",
+    "cssHexColor": "#FFA100",
     "electronicConfiguration": "[Ar] 3d10 4s2 4p4",
     "electronegativity": 2.55,
     "atomicRadius": 116,
@@ -713,11 +781,13 @@
     "groupBlock": "nonmetal",
     "yearDiscovered": 1817
   },
-  "35": {
+  {
+    "atomicNumber": 35,
     "symbol": "Br",
     "name": "Bromine",
     "atomicMass": 79.904,
     "cpkHexColor": "A62929",
+    "cssHexColor": "#A62929",
     "electronicConfiguration": "[Ar] 3d10 4s2 4p5",
     "electronegativity": 2.96,
     "atomicRadius": 114,
@@ -734,11 +804,13 @@
     "groupBlock": "halogen",
     "yearDiscovered": 1826
   },
-  "36": {
+  {
+    "atomicNumber": 36,
     "symbol": "Kr",
     "name": "Krypton",
     "atomicMass": 83.798,
     "cpkHexColor": "5CB8D1",
+    "cssHexColor": "#5CB8D1",
     "electronicConfiguration": "[Ar] 3d10 4s2 4p6",
     "electronegativity": 0,
     "atomicRadius": 110,
@@ -755,11 +827,13 @@
     "groupBlock": "noble gas",
     "yearDiscovered": 1898
   },
-  "37": {
+  {
+    "atomicNumber": 37,
     "symbol": "Rb",
     "name": "Rubidium",
     "atomicMass": 85.468,
     "cpkHexColor": "702EB0",
+    "cssHexColor": "#702EB0",
     "electronicConfiguration": "[Kr] 5s1",
     "electronegativity": 0.82,
     "atomicRadius": 211,
@@ -776,11 +850,13 @@
     "groupBlock": "alkali metal",
     "yearDiscovered": 1861
   },
-  "38": {
+  {
+    "atomicNumber": 38,
     "symbol": "Sr",
     "name": "Strontium",
     "atomicMass": 87.62,
     "cpkHexColor": "00FF00",
+    "cssHexColor": "#00FF00",
     "electronicConfiguration": "[Kr] 5s2",
     "electronegativity": 0.95,
     "atomicRadius": 192,
@@ -797,11 +873,13 @@
     "groupBlock": "alkaline earth metal",
     "yearDiscovered": 1790
   },
-  "39": {
+  {
+    "atomicNumber": 39,
     "symbol": "Y",
     "name": "Yttrium",
     "atomicMass": 88.906,
     "cpkHexColor": "94FFFF",
+    "cssHexColor": "#94FFFF",
     "electronicConfiguration": "[Kr] 4d1 5s2",
     "electronegativity": 1.22,
     "atomicRadius": 162,
@@ -818,11 +896,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1794
   },
-  "40": {
+  {
+    "atomicNumber": 40,
     "symbol": "Zr",
     "name": "Zirconium",
     "atomicMass": 91.224,
     "cpkHexColor": "94E0E0",
+    "cssHexColor": "#94E0E0",
     "electronicConfiguration": "[Kr] 4d2 5s2",
     "electronegativity": 1.33,
     "atomicRadius": 148,
@@ -839,11 +919,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1789
   },
-  "41": {
+  {
+    "atomicNumber": 41,
     "symbol": "Nb",
     "name": "Niobium",
     "atomicMass": 92.906,
     "cpkHexColor": "73C2C9",
+    "cssHexColor": "#73C2C9",
     "electronicConfiguration": "[Kr] 4d4 5s1",
     "electronegativity": 1.6,
     "atomicRadius": 137,
@@ -860,11 +942,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1801
   },
-  "42": {
+  {
+    "atomicNumber": 42,
     "symbol": "Mo",
     "name": "Molybdenum",
     "atomicMass": 95.96,
     "cpkHexColor": "54B5B5",
+    "cssHexColor": "#54B5B5",
     "electronicConfiguration": "[Kr] 4d5 5s1",
     "electronegativity": 2.16,
     "atomicRadius": 145,
@@ -881,11 +965,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1778
   },
-  "43": {
+  {
+    "atomicNumber": 43,
     "symbol": "Tc",
     "name": "Technetium",
     "atomicMass": 98,
     "cpkHexColor": "3B9E9E",
+    "cssHexColor": "#3B9E9E",
     "electronicConfiguration": "[Kr] 4d5 5s2",
     "electronegativity": 1.9,
     "atomicRadius": 156,
@@ -902,11 +988,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1937
   },
-  "44": {
+  {
+    "atomicNumber": 44,
     "symbol": "Ru",
     "name": "Ruthenium",
     "atomicMass": 101.07,
     "cpkHexColor": "248F8F",
+    "cssHexColor": "#248F8F",
     "electronicConfiguration": "[Kr] 4d7 5s1",
     "electronegativity": 2.2,
     "atomicRadius": 126,
@@ -923,11 +1011,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1827
   },
-  "45": {
+  {
+    "atomicNumber": 45,
     "symbol": "Rh",
     "name": "Rhodium",
     "atomicMass": 102.906,
     "cpkHexColor": "0A7D8C",
+    "cssHexColor": "#0A7D8C",
     "electronicConfiguration": "[Kr] 4d8 5s1",
     "electronegativity": 2.28,
     "atomicRadius": 135,
@@ -944,11 +1034,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1803
   },
-  "46": {
+  {
+    "atomicNumber": 46,
     "symbol": "Pd",
     "name": "Palladium",
     "atomicMass": 106.42,
     "cpkHexColor": "006985",
+    "cssHexColor": "#006985",
     "electronicConfiguration": "[Kr] 4d10",
     "electronegativity": 2.2,
     "atomicRadius": 131,
@@ -965,11 +1057,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1803
   },
-  "47": {
+  {
+    "atomicNumber": 47,
     "symbol": "Ag",
     "name": "Silver",
     "atomicMass": 107.868,
     "cpkHexColor": "C0C0C0",
+    "cssHexColor": "#C0C0C0",
     "electronicConfiguration": "[Kr] 4d10 5s1",
     "electronegativity": 1.93,
     "atomicRadius": 153,
@@ -986,11 +1080,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": "Ancient"
   },
-  "48": {
+  {
+    "atomicNumber": 48,
     "symbol": "Cd",
     "name": "Cadmium",
     "atomicMass": 112.411,
     "cpkHexColor": "FFD98F",
+    "cssHexColor": "#FFD98F",
     "electronicConfiguration": "[Kr] 4d10 5s2",
     "electronegativity": 1.69,
     "atomicRadius": 148,
@@ -1007,11 +1103,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1817
   },
-  "49": {
+  {
+    "atomicNumber": 49,
     "symbol": "In",
     "name": "Indium",
     "atomicMass": 114.818,
     "cpkHexColor": "A67573",
+    "cssHexColor": "#A67573",
     "electronicConfiguration": "[Kr] 4d10 5s2 5p1",
     "electronegativity": 1.78,
     "atomicRadius": 144,
@@ -1028,11 +1126,13 @@
     "groupBlock": "metal",
     "yearDiscovered": 1863
   },
-  "50": {
+  {
+    "atomicNumber": 50,
     "symbol": "Sn",
     "name": "Tin",
     "atomicMass": 118.71,
     "cpkHexColor": 668080,
+    "cssHexColor": "#668080",
     "electronicConfiguration": "[Kr] 4d10 5s2 5p2",
     "electronegativity": 1.96,
     "atomicRadius": 141,
@@ -1049,11 +1149,13 @@
     "groupBlock": "metal",
     "yearDiscovered": "Ancient"
   },
-  "51": {
+  {
+    "atomicNumber": 51,
     "symbol": "Sb",
     "name": "Antimony",
     "atomicMass": 121.76,
     "cpkHexColor": "9E63B5",
+    "cssHexColor": "#9E63B5",
     "electronicConfiguration": "[Kr] 4d10 5s2 5p3",
     "electronegativity": 2.05,
     "atomicRadius": 138,
@@ -1070,11 +1172,13 @@
     "groupBlock": "metalloid",
     "yearDiscovered": "Ancient"
   },
-  "52": {
+  {
+    "atomicNumber": 52,
     "symbol": "Te",
     "name": "Tellurium",
     "atomicMass": 127.6,
     "cpkHexColor": "D47A00",
+    "cssHexColor": "#D47A00",
     "electronicConfiguration": "[Kr] 4d10 5s2 5p4",
     "electronegativity": 2.1,
     "atomicRadius": 135,
@@ -1091,11 +1195,13 @@
     "groupBlock": "metalloid",
     "yearDiscovered": 1782
   },
-  "53": {
+  {
+    "atomicNumber": 53,
     "symbol": "I",
     "name": "Iodine",
     "atomicMass": 126.904,
     "cpkHexColor": 940094,
+    "cssHexColor": "#940094",
     "electronicConfiguration": "[Kr] 4d10 5s2 5p5",
     "electronegativity": 2.66,
     "atomicRadius": 133,
@@ -1112,11 +1218,13 @@
     "groupBlock": "halogen",
     "yearDiscovered": 1811
   },
-  "54": {
+  {
+    "atomicNumber": 54,
     "symbol": "Xe",
     "name": "Xenon",
     "atomicMass": 131.293,
     "cpkHexColor": "429EB0",
+    "cssHexColor": "#429EB0",
     "electronicConfiguration": "[Kr] 4d10 5s2 5p6",
     "electronegativity": 0,
     "atomicRadius": 130,
@@ -1133,11 +1241,13 @@
     "groupBlock": "noble gas",
     "yearDiscovered": 1898
   },
-  "55": {
+  {
+    "atomicNumber": 55,
     "symbol": "Cs",
     "name": "Cesium",
     "atomicMass": 132.905,
     "cpkHexColor": "57178F",
+    "cssHexColor": "#57178F",
     "electronicConfiguration": "[Xe] 6s1",
     "electronegativity": 0.79,
     "atomicRadius": 225,
@@ -1154,11 +1264,13 @@
     "groupBlock": "alkali metal",
     "yearDiscovered": 1860
   },
-  "56": {
+  {
+    "atomicNumber": 56,
     "symbol": "Ba",
     "name": "Barium",
     "atomicMass": 137.327,
     "cpkHexColor": "00C900",
+    "cssHexColor": "#00C900",
     "electronicConfiguration": "[Xe] 6s2",
     "electronegativity": 0.89,
     "atomicRadius": 198,
@@ -1175,11 +1287,13 @@
     "groupBlock": "alkaline earth metal",
     "yearDiscovered": 1808
   },
-  "57": {
+  {
+    "atomicNumber": 57,
     "symbol": "La",
     "name": "Lanthanum",
     "atomicMass": 138.905,
     "cpkHexColor": "70D4FF",
+    "cssHexColor": "#70D4FF",
     "electronicConfiguration": "[Xe] 5d1 6s2",
     "electronegativity": 1.1,
     "atomicRadius": 169,
@@ -1196,11 +1310,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1839
   },
-  "58": {
+  {
+    "atomicNumber": 58,
     "symbol": "Ce",
     "name": "Cerium",
     "atomicMass": 140.116,
     "cpkHexColor": "FFFFC7",
+    "cssHexColor": "#FFFFC7",
     "electronicConfiguration": "[Xe] 4f1 5d1 6s2",
     "electronegativity": 1.12,
     "atomicRadius": 182,
@@ -1217,11 +1333,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1803
   },
-  "59": {
+  {
+    "atomicNumber": 59,
     "symbol": "Pr",
     "name": "Praseodymium",
     "atomicMass": 140.908,
     "cpkHexColor": "D9FFC7",
+    "cssHexColor": "#D9FFC7",
     "electronicConfiguration": "[Xe] 4f3 6s2",
     "electronegativity": 1.13,
     "atomicRadius": 182,
@@ -1238,11 +1356,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1885
   },
-  "60": {
+  {
+    "atomicNumber": 60,
     "symbol": "Nd",
     "name": "Neodymium",
     "atomicMass": 144.242,
     "cpkHexColor": "C7FFC7",
+    "cssHexColor": "#C7FFC7",
     "electronicConfiguration": "[Xe] 4f4 6s2",
     "electronegativity": 1.14,
     "atomicRadius": 181,
@@ -1259,11 +1379,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1885
   },
-  "61": {
+  {
+    "atomicNumber": 61,
     "symbol": "Pm",
     "name": "Promethium",
     "atomicMass": 145,
     "cpkHexColor": "A3FFC7",
+    "cssHexColor": "#A3FFC7",
     "electronicConfiguration": "[Xe] 4f5 6s2",
     "electronegativity": 1.13,
     "atomicRadius": 183,
@@ -1280,11 +1402,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1947
   },
-  "62": {
+  {
+    "atomicNumber": 62,
     "symbol": "Sm",
     "name": "Samarium",
     "atomicMass": 150.36,
     "cpkHexColor": "8FFFC7",
+    "cssHexColor": "#8FFFC7",
     "electronicConfiguration": "[Xe] 4f6 6s2",
     "electronegativity": 1.17,
     "atomicRadius": 180,
@@ -1301,11 +1425,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1853
   },
-  "63": {
+  {
+    "atomicNumber": 63,
     "symbol": "Eu",
     "name": "Europium",
     "atomicMass": 151.964,
     "cpkHexColor": "61FFC7",
+    "cssHexColor": "#61FFC7",
     "electronicConfiguration": "[Xe] 4f7 6s2",
     "electronegativity": 1.2,
     "atomicRadius": 180,
@@ -1322,11 +1448,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1901
   },
-  "64": {
+  {
+    "atomicNumber": 64,
     "symbol": "Gd",
     "name": "Gadolinium",
     "atomicMass": 157.25,
     "cpkHexColor": "45FFC7",
+    "cssHexColor": "#45FFC7",
     "electronicConfiguration": "[Xe] 4f7 5d1 6s2",
     "electronegativity": 1.2,
     "atomicRadius": 180,
@@ -1343,11 +1471,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1880
   },
-  "65": {
+  {
+    "atomicNumber": 65,
     "symbol": "Tb",
     "name": "Terbium",
     "atomicMass": 158.925,
     "cpkHexColor": "30FFC7",
+    "cssHexColor": "#30FFC7",
     "electronicConfiguration": "[Xe] 4f9 6s2",
     "electronegativity": 1.2,
     "atomicRadius": 177,
@@ -1364,11 +1494,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1843
   },
-  "66": {
+  {
+    "atomicNumber": 66,
     "symbol": "Dy",
     "name": "Dysprosium",
     "atomicMass": 162.5,
     "cpkHexColor": "1FFFC7",
+    "cssHexColor": "#1FFFC7",
     "electronicConfiguration": "[Xe] 4f10 6s2",
     "electronegativity": 1.22,
     "atomicRadius": 178,
@@ -1385,11 +1517,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1886
   },
-  "67": {
+  {
+    "atomicNumber": 67,
     "symbol": "Ho",
     "name": "Holmium",
     "atomicMass": 164.93,
     "cpkHexColor": "00FF9C",
+    "cssHexColor": "#00FF9C",
     "electronicConfiguration": "[Xe] 4f11 6s2",
     "electronegativity": 1.23,
     "atomicRadius": 176,
@@ -1406,11 +1540,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1878
   },
-  "68": {
+  {
+    "atomicNumber": 68,
     "symbol": "Er",
     "name": "Erbium",
     "atomicMass": 167.259,
     "cpkHexColor": "00E675",
+    "cssHexColor": "#00E675",
     "electronicConfiguration": "[Xe] 4f12 6s2",
     "electronegativity": 1.24,
     "atomicRadius": 176,
@@ -1427,11 +1563,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1842
   },
-  "69": {
+  {
+    "atomicNumber": 69,
     "symbol": "Tm",
     "name": "Thulium",
     "atomicMass": 168.934,
     "cpkHexColor": "00D452",
+    "cssHexColor": "#00D452",
     "electronicConfiguration": "[Xe] 4f13 6s2",
     "electronegativity": 1.25,
     "atomicRadius": 176,
@@ -1448,11 +1586,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1879
   },
-  "70": {
+  {
+    "atomicNumber": 70,
     "symbol": "Yb",
     "name": "Ytterbium",
     "atomicMass": 173.054,
     "cpkHexColor": "00BF38",
+    "cssHexColor": "#00BF38",
     "electronicConfiguration": "[Xe] 4f14 6s2",
     "electronegativity": 1.1,
     "atomicRadius": 176,
@@ -1469,11 +1609,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1878
   },
-  "71": {
+  {
+    "atomicNumber": 71,
     "symbol": "Lu",
     "name": "Lutetium",
     "atomicMass": 174.967,
     "cpkHexColor": "00AB24",
+    "cssHexColor": "#00AB24",
     "electronicConfiguration": "[Xe] 4f14 5d1 6s2",
     "electronegativity": 1.27,
     "atomicRadius": 160,
@@ -1490,11 +1632,13 @@
     "groupBlock": "lanthanoid",
     "yearDiscovered": 1907
   },
-  "72": {
+  {
+    "atomicNumber": 72,
     "symbol": "Hf",
     "name": "Hafnium",
     "atomicMass": 178.49,
     "cpkHexColor": "4DC2FF",
+    "cssHexColor": "#4DC2FF",
     "electronicConfiguration": "[Xe] 4f14 5d2 6s2",
     "electronegativity": 1.3,
     "atomicRadius": 150,
@@ -1511,11 +1655,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1923
   },
-  "73": {
+  {
+    "atomicNumber": 73,
     "symbol": "Ta",
     "name": "Tantalum",
     "atomicMass": 180.948,
     "cpkHexColor": "4DA6FF",
+    "cssHexColor": "#4DA6FF",
     "electronicConfiguration": "[Xe] 4f14 5d3 6s2",
     "electronegativity": 1.5,
     "atomicRadius": 138,
@@ -1532,11 +1678,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1802
   },
-  "74": {
+  {
+    "atomicNumber": 74,
     "symbol": "W",
     "name": "Tungsten",
     "atomicMass": 183.84,
     "cpkHexColor": "2194D6",
+    "cssHexColor": "#2194D6",
     "electronicConfiguration": "[Xe] 4f14 5d4 6s2",
     "electronegativity": 2.36,
     "atomicRadius": 146,
@@ -1553,11 +1701,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1783
   },
-  "75": {
+  {
+    "atomicNumber": 75,
     "symbol": "Re",
     "name": "Rhenium",
     "atomicMass": 186.207,
     "cpkHexColor": "267DAB",
+    "cssHexColor": "#267DAB",
     "electronicConfiguration": "[Xe] 4f14 5d5 6s2",
     "electronegativity": 1.9,
     "atomicRadius": 159,
@@ -1574,11 +1724,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1925
   },
-  "76": {
+  {
+    "atomicNumber": 76,
     "symbol": "Os",
     "name": "Osmium",
     "atomicMass": 190.23,
     "cpkHexColor": 266696,
+    "cssHexColor": "#266696",
     "electronicConfiguration": "[Xe] 4f14 5d6 6s2",
     "electronegativity": 2.2,
     "atomicRadius": 128,
@@ -1595,11 +1747,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1803
   },
-  "77": {
+  {
+    "atomicNumber": 77,
     "symbol": "Ir",
     "name": "Iridium",
     "atomicMass": 192.217,
     "cpkHexColor": 175487,
+    "cssHexColor": "#175487",
     "electronicConfiguration": "[Xe] 4f14 5d7 6s2",
     "electronegativity": 2.2,
     "atomicRadius": 137,
@@ -1616,11 +1770,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1803
   },
-  "78": {
+  {
+    "atomicNumber": 78,
     "symbol": "Pt",
     "name": "Platinum",
     "atomicMass": 195.084,
     "cpkHexColor": "D0D0E0",
+    "cssHexColor": "#D0D0E0",
     "electronicConfiguration": "[Xe] 4f14 5d9 6s1",
     "electronegativity": 2.28,
     "atomicRadius": 128,
@@ -1637,11 +1793,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": "Ancient"
   },
-  "79": {
+  {
+    "atomicNumber": 79,
     "symbol": "Au",
     "name": "Gold",
     "atomicMass": 196.967,
     "cpkHexColor": "FFD123",
+    "cssHexColor": "#FFD123",
     "electronicConfiguration": "[Xe] 4f14 5d10 6s1",
     "electronegativity": 2.54,
     "atomicRadius": 144,
@@ -1658,11 +1816,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": "Ancient"
   },
-  "80": {
+  {
+    "atomicNumber": 80,
     "symbol": "Hg",
     "name": "Mercury",
     "atomicMass": 200.59,
     "cpkHexColor": "B8B8D0",
+    "cssHexColor": "#B8B8D0",
     "electronicConfiguration": "[Xe] 4f14 5d10 6s2",
     "electronegativity": 2,
     "atomicRadius": 149,
@@ -1679,11 +1839,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": "Ancient"
   },
-  "81": {
+  {
+    "atomicNumber": 81,
     "symbol": "Tl",
     "name": "Thallium",
     "atomicMass": 204.383,
     "cpkHexColor": "A6544D",
+    "cssHexColor": "#A6544D",
     "electronicConfiguration": "[Xe] 4f14 5d10 6s2 6p1",
     "electronegativity": 2.04,
     "atomicRadius": 148,
@@ -1700,11 +1862,13 @@
     "groupBlock": "metal",
     "yearDiscovered": 1861
   },
-  "82": {
+  {
+    "atomicNumber": 82,
     "symbol": "Pb",
     "name": "Lead",
     "atomicMass": 207.2,
     "cpkHexColor": 575961,
+    "cssHexColor": "#575961",
     "electronicConfiguration": "[Xe] 4f14 5d10 6s2 6p2",
     "electronegativity": 2.33,
     "atomicRadius": 147,
@@ -1721,11 +1885,13 @@
     "groupBlock": "metal",
     "yearDiscovered": "Ancient"
   },
-  "83": {
+  {
+    "atomicNumber": 83,
     "symbol": "Bi",
     "name": "Bismuth",
     "atomicMass": 208.98,
     "cpkHexColor": "9E4FB5",
+    "cssHexColor": "#9E4FB5",
     "electronicConfiguration": "[Xe] 4f14 5d10 6s2 6p3",
     "electronegativity": 2.02,
     "atomicRadius": 146,
@@ -1742,11 +1908,13 @@
     "groupBlock": "metal",
     "yearDiscovered": "Ancient"
   },
-  "84": {
+  {
+    "atomicNumber": 84,
     "symbol": "Po",
     "name": "Polonium",
     "atomicMass": 209,
     "cpkHexColor": "AB5C00",
+    "cssHexColor": "#AB5C00",
     "electronicConfiguration": "[Xe] 4f14 5d10 6s2 6p4",
     "electronegativity": 2,
     "atomicRadius": "",
@@ -1763,11 +1931,13 @@
     "groupBlock": "metalloid",
     "yearDiscovered": 1898
   },
-  "85": {
+  {
+    "atomicNumber": 85,
     "symbol": "At",
     "name": "Astatine",
     "atomicMass": 210,
     "cpkHexColor": "754F45",
+    "cssHexColor": "#754F45",
     "electronicConfiguration": "[Xe] 4f14 5d10 6s2 6p5",
     "electronegativity": 2.2,
     "atomicRadius": "",
@@ -1784,11 +1954,13 @@
     "groupBlock": "halogen",
     "yearDiscovered": 1940
   },
-  "86": {
+  {
+    "atomicNumber": 86,
     "symbol": "Rn",
     "name": "Radon",
     "atomicMass": 222,
     "cpkHexColor": 428296,
+    "cssHexColor": "#428296",
     "electronicConfiguration": "[Xe] 4f14 5d10 6s2 6p6",
     "electronegativity": 0,
     "atomicRadius": 145,
@@ -1805,11 +1977,13 @@
     "groupBlock": "noble gas",
     "yearDiscovered": 1900
   },
-  "87": {
+  {
+    "atomicNumber": 87,
     "symbol": "Fr",
     "name": "Francium",
     "atomicMass": 223,
     "cpkHexColor": 420066,
+    "cssHexColor": "#420066",
     "electronicConfiguration": "[Rn] 7s1",
     "electronegativity": 0.7,
     "atomicRadius": "",
@@ -1826,11 +2000,13 @@
     "groupBlock": "alkali metal",
     "yearDiscovered": 1939
   },
-  "88": {
+  {
+    "atomicNumber": 88,
     "symbol": "Ra",
     "name": "Radium",
     "atomicMass": 226,
     "cpkHexColor": "007D00",
+    "cssHexColor": "#007D00",
     "electronicConfiguration": "[Rn] 7s2",
     "electronegativity": 0.9,
     "atomicRadius": "",
@@ -1847,11 +2023,13 @@
     "groupBlock": "alkaline earth metal",
     "yearDiscovered": 1898
   },
-  "89": {
+  {
+    "atomicNumber": 89,
     "symbol": "Ac",
     "name": "Actinium",
     "atomicMass": 227,
     "cpkHexColor": "70ABFA",
+    "cssHexColor": "#70ABFA",
     "electronicConfiguration": "[Rn] 6d1 7s2",
     "electronegativity": 1.1,
     "atomicRadius": "",
@@ -1868,11 +2046,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1899
   },
-  "90": {
+  {
+    "atomicNumber": 90,
     "symbol": "Th",
     "name": "Thorium",
     "atomicMass": 232.038,
     "cpkHexColor": "00BAFF",
+    "cssHexColor": "#00BAFF",
     "electronicConfiguration": "[Rn] 6d2 7s2",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -1889,11 +2069,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1828
   },
-  "91": {
+  {
+    "atomicNumber": 91,
     "symbol": "Pa",
     "name": "Protactinium",
     "atomicMass": 231.036,
     "cpkHexColor": "00A1FF",
+    "cssHexColor": "#00A1FF",
     "electronicConfiguration": "[Rn] 5f2 6d1 7s2",
     "electronegativity": 1.5,
     "atomicRadius": "",
@@ -1910,11 +2092,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1913
   },
-  "92": {
+  {
+    "atomicNumber": 92,
     "symbol": "U",
     "name": "Uranium",
     "atomicMass": 238.029,
     "cpkHexColor": "008FFF",
+    "cssHexColor": "#008FFF",
     "electronicConfiguration": "[Rn] 5f3 6d1 7s2",
     "electronegativity": 1.38,
     "atomicRadius": "",
@@ -1931,11 +2115,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1789
   },
-  "93": {
+  {
+    "atomicNumber": 93,
     "symbol": "Np",
     "name": "Neptunium",
     "atomicMass": 237,
     "cpkHexColor": "0080FF",
+    "cssHexColor": "#0080FF",
     "electronicConfiguration": "[Rn] 5f4 6d1 7s2",
     "electronegativity": 1.36,
     "atomicRadius": "",
@@ -1952,11 +2138,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1940
   },
-  "94": {
+  {
+    "atomicNumber": 94,
     "symbol": "Pu",
     "name": "Plutonium",
     "atomicMass": 244,
     "cpkHexColor": "006BFF",
+    "cssHexColor": "#006BFF",
     "electronicConfiguration": "[Rn] 5f6 7s2",
     "electronegativity": 1.28,
     "atomicRadius": "",
@@ -1973,11 +2161,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1940
   },
-  "95": {
+  {
+    "atomicNumber": 95,
     "symbol": "Am",
     "name": "Americium",
     "atomicMass": 243,
     "cpkHexColor": "545CF2",
+    "cssHexColor": "#545CF2",
     "electronicConfiguration": "[Rn] 5f7 7s2",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -1994,11 +2184,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1944
   },
-  "96": {
+  {
+    "atomicNumber": 96,
     "symbol": "Cm",
     "name": "Curium",
     "atomicMass": 247,
     "cpkHexColor": "785CE3",
+    "cssHexColor": "#785CE3",
     "electronicConfiguration": "[Rn] 5f7 6d1 7s2",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -2015,11 +2207,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1944
   },
-  "97": {
+  {
+    "atomicNumber": 97,
     "symbol": "Bk",
     "name": "Berkelium",
     "atomicMass": 247,
     "cpkHexColor": "8A4FE3",
+    "cssHexColor": "#8A4FE3",
     "electronicConfiguration": "[Rn] 5f9 7s2",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -2036,11 +2230,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1949
   },
-  "98": {
+  {
+    "atomicNumber": 98,
     "symbol": "Cf",
     "name": "Californium",
     "atomicMass": 251,
     "cpkHexColor": "A136D4",
+    "cssHexColor": "#A136D4",
     "electronicConfiguration": "[Rn] 5f10 7s2",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -2057,11 +2253,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1950
   },
-  "99": {
+  {
+    "atomicNumber": 99,
     "symbol": "Es",
     "name": "Einsteinium",
     "atomicMass": 252,
     "cpkHexColor": "B31FD4",
+    "cssHexColor": "#B31FD4",
     "electronicConfiguration": "[Rn] 5f11 7s2",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -2078,11 +2276,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1952
   },
-  "100": {
+  {
+    "atomicNumber": 100,
     "symbol": "Fm",
     "name": "Fermium",
     "atomicMass": 257,
     "cpkHexColor": "B31FBA",
+    "cssHexColor": "#B31FBA",
     "electronicConfiguration": "[Rn] 5f12 7s2",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -2099,11 +2299,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1952
   },
-  "101": {
+  {
+    "atomicNumber": 101,
     "symbol": "Md",
     "name": "Mendelevium",
     "atomicMass": 258,
     "cpkHexColor": "B30DA6",
+    "cssHexColor": "#B30DA6",
     "electronicConfiguration": "[Rn] 5f13 7s2",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -2120,11 +2322,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1955
   },
-  "102": {
+  {
+    "atomicNumber": 102,
     "symbol": "No",
     "name": "Nobelium",
     "atomicMass": 259,
     "cpkHexColor": "BD0D87",
+    "cssHexColor": "#BD0D87",
     "electronicConfiguration": "[Rn] 5f14 7s2",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -2141,11 +2345,13 @@
     "groupBlock": "actinoid",
     "yearDiscovered": 1957
   },
-  "103": {
+  {
+    "atomicNumber": 103,
     "symbol": "Lr",
     "name": "Lawrencium",
     "atomicMass": 262,
     "cpkHexColor": "C70066",
+    "cssHexColor": "#C70066",
     "electronicConfiguration": "[Rn] 5f14 7s2 7p1",
     "electronegativity": 1.3,
     "atomicRadius": "",
@@ -2162,11 +2368,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1961
   },
-  "104": {
+  {
+    "atomicNumber": 104,
     "symbol": "Rf",
     "name": "Rutherfordium",
     "atomicMass": 267,
     "cpkHexColor": "CC0059",
+    "cssHexColor": "#CC0059",
     "electronicConfiguration": "[Rn] 5f14 6d2 7s2",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2183,11 +2391,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1969
   },
-  "105": {
+  {
+    "atomicNumber": 105,
     "symbol": "Db",
     "name": "Dubnium",
     "atomicMass": 268,
     "cpkHexColor": "D1004F",
+    "cssHexColor": "#D1004F",
     "electronicConfiguration": "[Rn] 5f14 6d3 7s2",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2204,11 +2414,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1967
   },
-  "106": {
+  {
+    "atomicNumber": 106,
     "symbol": "Sg",
     "name": "Seaborgium",
     "atomicMass": 271,
     "cpkHexColor": "D90045",
+    "cssHexColor": "#D90045",
     "electronicConfiguration": "[Rn] 5f14 6d4 7s2",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2225,11 +2437,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1974
   },
-  "107": {
+  {
+    "atomicNumber": 107,
     "symbol": "Bh",
     "name": "Bohrium",
     "atomicMass": 272,
     "cpkHexColor": "E00038",
+    "cssHexColor": "#E00038",
     "electronicConfiguration": "[Rn] 5f14 6d5 7s2",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2246,11 +2460,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1976
   },
-  "108": {
+  {
+    "atomicNumber": 108,
     "symbol": "Hs",
     "name": "Hassium",
     "atomicMass": 270,
     "cpkHexColor": "E6002E",
+    "cssHexColor": "#E6002E",
     "electronicConfiguration": "[Rn] 5f14 6d6 7s2",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2267,11 +2483,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1984
   },
-  "109": {
+  {
+    "atomicNumber": 109,
     "symbol": "Mt",
     "name": "Meitnerium",
     "atomicMass": 276,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d7 7s2",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2288,11 +2506,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1982
   },
-  "110": {
+  {
+    "atomicNumber": 110,
     "symbol": "Ds",
     "name": "Darmstadtium",
     "atomicMass": 281,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d9 7s1",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2309,11 +2529,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1994
   },
-  "111": {
+  {
+    "atomicNumber": 111,
     "symbol": "Rg",
     "name": "Roentgenium",
     "atomicMass": 280,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d10 7s1",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2330,11 +2552,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1994
   },
-  "112": {
+  {
+    "atomicNumber": 112,
     "symbol": "Cn",
     "name": "Copernicium",
     "atomicMass": 285,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d10 7s2",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2351,11 +2575,13 @@
     "groupBlock": "transition metal",
     "yearDiscovered": 1996
   },
-  "113": {
+  {
+    "atomicNumber": 113,
     "symbol": "Nh",
     "name": "Nihonium",
     "atomicMass": 284,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d10 7s2 7p1",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2372,11 +2598,13 @@
     "groupBlock": "post-transition metal",
     "yearDiscovered": 2003
   },
-  "114": {
+  {
+    "atomicNumber": 114,
     "symbol": "Fl",
     "name": "Flerovium",
     "atomicMass": 289,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d10 7s2 7p2",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2393,11 +2621,13 @@
     "groupBlock": "post-transition metal",
     "yearDiscovered": 1998
   },
-  "115": {
+  {
+    "atomicNumber": 115,
     "symbol": "Mc",
     "name": "Moscovium",
     "atomicMass": 288,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d10 7s2 7p3",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2414,11 +2644,13 @@
     "groupBlock": "post-transition metal",
     "yearDiscovered": 2003
   },
-  "116": {
+  {
+    "atomicNumber": 116,
     "symbol": "Lv",
     "name": "Livermorium",
     "atomicMass": 293,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d10 7s2 7p4",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2435,11 +2667,13 @@
     "groupBlock": "post-transition metal",
     "yearDiscovered": 2000
   },
-  "117": {
+  {
+    "atomicNumber": 117,
     "symbol": "Ts",
     "name": "Tennessine",
     "atomicMass": 294,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d10 7s2 7p5",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2456,11 +2690,13 @@
     "groupBlock": "post-transition metal",
     "yearDiscovered": 2010
   },
-  "118": {
+  {
+    "atomicNumber": 118,
     "symbol": "Og",
     "name": "Oganesson",
     "atomicMass": 294,
     "cpkHexColor": "EB0026",
+    "cssHexColor": "#EB0026",
     "electronicConfiguration": "[Rn] 5f14 6d10 7s2 7p6",
     "electronegativity": "",
     "atomicRadius": "",
@@ -2477,4 +2713,4 @@
     "groupBlock": "noble gas",
     "yearDiscovered": 2002
   }
-}
+]
