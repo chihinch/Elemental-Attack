@@ -26,7 +26,7 @@ export default class Player {
   }
 
   getHealth() {
-    return this.health();
+    return this.health;
   }
 
   isPlayerDefeated() {

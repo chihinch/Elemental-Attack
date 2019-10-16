@@ -102,7 +102,19 @@ function draw() {
   player.drawPlayer();
 }
 
+// Update player stats
+const healthStat = document.getElementById('health-stat');
+const ammoStat = document.getElementById('ammo-stat');
+const pointStat = document.getElementById('point-stat');
+
+function updateStats() {
+  healthStat.innerHTML = player.getHealth();
+  ammoStat.innerHTML = player.getAmmo();
+  pointStat.innerHTML = player.getPoints();
+}
+
 setInterval(draw, 10);
+setInterval(updateStats, 1500);
 
 // Figuring out how to use event listeners on DOM elements
 // helpButton.addEventListener('click', function() { alert("I clicked the help button"); });

@@ -80,16 +80,22 @@ body {
 }
 
 #player-status {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+}
+
+#status-header, #status-values {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
 }
 
 #help {
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-
-#help button {
-
 }
 
 #game {
