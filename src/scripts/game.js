@@ -15,11 +15,16 @@ export default class Game {
     // Entities (the player and the atom) being drawn
     this.entities = {};
 
-    // Render the game
-    this.renderGame = this.renderGame.bind(this);
-
-    // Start the game
     this.newGame = this.newGame.bind(this);
+    this.renderGame = this.renderGame.bind(this);
+    this.gameOver = this.gameOver.bind(this);
+    this.resetGame = this.resetGame.bind(this);
+    this.togglePause = this.togglePause.bind(this);
+    this.clearCanvas = this.clearCanvas.bind(this);
+  }
+
+  clearCanvas() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
   // Draw on the canvas
@@ -28,9 +33,7 @@ export default class Game {
     if (this.paused) {
       return;
     }
-
-    // Clear the canvas for the next frame
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.clearCanvas();
   }
 
   // Reset the game
@@ -40,14 +43,20 @@ export default class Game {
   }
 
   // Begin a new game
-  newGame() {
-    // this.canvas.removeEventListener('click', this.newGame());
-    // this.player = new Player(this.canvas, this.ctx);
+  newGame(e) {
+    if (e.type === 'click') {
+      this.canvas.removeEventListener('click', this.newGame());
+      this.player = new Player(this.canvas, this.ctx);
+    }
   }
 
   // Returns true if the player is defeated
   isGameOver() {
     return this.player.isPlayerDefeated();
+  }
+
+  gameOver() {
+
   }
 
   // Toggle pause

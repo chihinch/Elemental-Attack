@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const game = new Game(canvas, ctx);
 
   // Add event listener to start the game
-  canvas.addEventListener('click', game.newGame());
+  canvas.addEventListener('click', game.newGame);
 
   // Add event listeners for toggling betweens displays
   document.addEventListener('keydown', handleKeyDown);
