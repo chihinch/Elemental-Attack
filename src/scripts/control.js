@@ -1,4 +1,5 @@
 // Handle logic of all keypresses
+// (and maybe clicks on buttons for the help screens)
 
 import { game } from '../index';
 
