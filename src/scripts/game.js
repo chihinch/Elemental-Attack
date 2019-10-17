@@ -6,18 +6,20 @@ export default class Game {
     // Things to draw on
     this.canvas = canvas;
     this.ctx = ctx;
-    // this.player = new Player(this.canvas, this.ctx);
 
     // Game status
     this.paused = false;
     this.over = false;
     this.score = 0;
 
-    // Entities being drawn
+    // Entities (the player and the atom) being drawn
     this.entities = {};
 
     // Render the game
     this.renderGame = this.renderGame.bind(this);
+
+    // Start the game
+    this.newGame = this.newGame.bind(this);
   }
 
   renderGame() {
@@ -30,8 +32,11 @@ export default class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  // Create a new player and start doing stuff?
+  // Begin a new game
   newGame() {
+    this.canvas.removeEventListener('click', this.newGame());
+    this.canvas.removeEventListener('keydown', this.newGame());
+
     this.player = new Player(this.canvas, this.ctx);
   }
 
