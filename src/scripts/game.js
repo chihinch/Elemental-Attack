@@ -30,4 +30,16 @@ export default class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
+  // Create a new player and start doing stuff?
+  newGame() {
+    this.player = new Player(this.canvas, this.ctx);
+  }
+
+  // Returns true if the player is defeated
+  isGameOver() {
+    return this.player.isPlayerDefeated();
+  }
+
+  // Will need some method to handle gameplay
+
 }
