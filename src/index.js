@@ -84,16 +84,24 @@ window.addEventListener('keyup', handleKeyRelease, false);
 const elementId = Math.floor(Math.random() * 83);
 const element = periodicTableData.numbers[elementId];
 debugger
-const elementOxStates = element.oxidationStates.split(", ");
-debugger
 let oxidationState;
-if (element.electronegativity >= 2.50) {
-  oxidationState = parseInt(elementOxStates[elementOxStates.length - 1]);
-} else {
-  oxidationState = parseInt(elementOxStates[0]);
+if (typeof element.oxidationStates === 'number') {
+  oxidationState = element.oxidationStates;
 }
+else {
+  const oxStates = element.oxidationStates.split(", ");
+  debugger
+  if (element.electronegativity >= 2.50) {
+    oxidationState = parseInt(elementStates[oxStates.length - 1]);
+  } 
+  else {
+    oxidationState = parseInt(oxStates[0]);
+  }
+}
+debugger
 
-const testAtom = new Atom(canvas, ctx, element.cssHexColor, element.atomicNumber, element.symbol, element.atomicRadius, element.atomicMass, oxidationState);
+const testAtom = new Atom(canvas, ctx, element.cpkHexColor, element.symbol, element.atomicRadius, element.atomicMass, oxidationState);
+debugger
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
