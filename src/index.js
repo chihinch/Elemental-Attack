@@ -1,7 +1,6 @@
 import './styles/index.css';
-import Player from './scripts/player';
-import Atom from './scripts/atom';
 import Game from './scripts/game';
+import addGameControls from './scripts/control';
 
 window.addEventListener('DOMContentLoaded', () => {
   const webpage = document.getElementById('webpage');
@@ -13,6 +12,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const gameDivs = document.getElementById('game').children;
 
+  // Add event listeners to the help buttons
+  const helpButtons = document.getElementsByClassName('help-button');
+  for (let i = 0; i < helpButtons.length; i++) {
+    helpButtons[i].addEventListener('click', handleHelpButton, false);
+  }
+
   // Get the canvas
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
@@ -23,16 +28,52 @@ window.addEventListener('DOMContentLoaded', () => {
   // Instantiate a new game
   const game = new Game(canvas, ctx);
 
+  // Add event listeners to start the game
   canvas.addEventListener('click', game.newGame());
   canvas.addEventListener('keydown', game.newGame());
 
+  // Upon pressing one of the help buttons, pause the game and show the relevant screen
+  function handleHelpButton(e) {
+    game.togglePause();
+    let showDivId;
+    switch (e.target.id) {
+      case 'about-button':
+        showDivId = 'instructions-screen';
+        break;
+      case 'controls-button':
+        showDivId = 'controls-screen';
+        break;
+      case 'periodic-button':
+        showDivId = 'periodic-table';
+        break;
+      default:
+        showDivId = 'canvas';
+    }
+
+    for (let i = 0; i < gameDivs.length; i++) {
+      if (gameDivs[i].id === showDivId) {
+        gameDivs[i].className = 'show';
+      }
+      else {
+        gameDivs[i].className = 'hide';
+      }
+    }
+  };
+
+  // Return to the game and resume
+  function leaveHelpScreen() {
+    for (let i = 0; i < gameDivs.length; i++) {
+      if (gameDivs[i].id === 'canvas') {
+        gameDivs[i].className = 'show';
+      }
+      else {
+        gameDivs[i].className = 'hide';
+      }
+    }
+    game.togglePause();
+  }
+
 });
-
-
-
-
-
-
 
 // const periodicTableData = require('./assets/data/periodicTable');
 

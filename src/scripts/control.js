@@ -1,9 +1,7 @@
 // Handle logic of all keypresses
 // (and maybe clicks on buttons for the help screens)
 
-import { game } from '../index';
-
-function handleKeyDown(e) {
+function handleKeyDown(e, game) {
   e.preventDefault();
 
   // Logic to handle direction of movement of player
@@ -46,7 +44,7 @@ function handleKeyDown(e) {
   }
 };
 
-function handleKeyUp(e) {
+function handleKeyUp(e, game) {
   e.preventDefault();
 
   // Will need to add logic to handle player currently moving
@@ -64,3 +62,8 @@ function handleKeyUp(e) {
 }
 
 // Somehow give these controls to the document
+export const addGameControls = (game) => {
+  document.addEventListener('keydown', handleKeyDown);
+  document.addEventListener('keyup', handleKeyUp);
+  // document.addEventListener('keydown', handleKeyDown);
+}

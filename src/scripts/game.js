@@ -52,6 +52,11 @@ export default class Game {
     return this.player.isPlayerDefeated();
   }
 
+  // Toggle pause
+  togglePause() {
+    this.paused = !this.paused;
+  }
+
   // Will need some method to handle gameplay
 
 }
