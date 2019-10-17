@@ -57,6 +57,13 @@ export default class Atom {
     this.ctx.fillText(oxidationStateFormat, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
 
+    if (this.positionX + this.dX > this.canvas.width - this.radius || this.positionX + this.dX < this.radius) {
+      this.dX = -(this.dX);
+    }
+    if (this.positionY + this.dY > this.canvas.height - this.radius || this.positionY + this.dY < this.radius) {
+      this.dY = -(this.dY);
+    }
+
     this.positionX += this.dX;
     this.positionY += this.dY;
   }
