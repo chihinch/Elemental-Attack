@@ -74,7 +74,9 @@ export default class Game {
     this.player.draw();
     
     let newAtom = this.generateAtom();
-    newAtom.draw();
+    // newAtom.draw();
+
+    setInterval(newAtom.draw, 10)
 
     if (this.isGameOver()) {
       this.gameOver();

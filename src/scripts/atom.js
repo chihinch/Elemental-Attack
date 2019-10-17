@@ -53,10 +53,12 @@ export default class Atom {
     this.ctx.font = `${fontSize}px Arial`;
     this.ctx.fillText(this.symbol, this.positionX - (fontSize * 0.25), this.positionY, this.radius);
     this.ctx.beginPath();
-    // this.textAlign = 'right';
     this.ctx.font = `${fontSize * 0.6}px Arial`
     this.ctx.fillText(oxidationStateFormat, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
+
+    this.positionX += this.dX;
+    this.positionY += this.dY;
   }
 
   damageAtom(weapon) {
