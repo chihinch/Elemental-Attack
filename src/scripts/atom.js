@@ -1,23 +1,3 @@
-/* Element data is sourced from the periodic-table package (https://www.npmjs.com/package/periodic-table)
-
-  For now, I will likely use only elements 1-100 since their properties are more-or-less established (especially the transuranic elements)
-
-  (16-Oct yeah.. maybe scratch that. The package doesn't have much info past bismuth (83), not even uranium >:( )
-
-  Relevant data I will extract from each element:
-  atomicNumber, symbol, name, atomicRadius, atomicMass, cpkHexColor (to color the atom), electronegativity, oxidation states, standardState?
-
-  (Maybe standardState won't be needed since I'll have the atoms bounce around like balls)
-
-  (Maybe not the electronegativity since I need it to pick an oxidation state)
-*/
-
-// const periodicTable = require('periodic-table');
-
-// Test how the package works
-// const helium = periodicTable.elements.Helium;
-// console.log(helium);
-
 export default class Atom {
   constructor(canvas, ctx, cpkHexColor, symbol, atomicRadius, atomicMass, oxidationState) {
     this.canvas = canvas;
@@ -28,8 +8,8 @@ export default class Atom {
     this.atomicRadius = atomicRadius;
     this.atomicMass = atomicMass;
     this.oxidationState = oxidationState;
+    this.currentOxidationState = 3;
 
-    this.currentOxidationState = 0;
     this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol)
     // Atoms are represented by circles whose radii are (for now) set equal to
     // sqrt(this.atomicRadius) * 3
@@ -48,7 +28,17 @@ export default class Atom {
 
   draw() {
     // Will have to change the centre of the circle as atoms fly around the canvas
-    const fontSize = this.radius / 2;
+    const fontSize = this.radius * 0.6;
+    let oxidationStateFormat;
+    if (this.currentOxidationState > 0) {
+      oxidationStateFormat = '+' + this.currentOxidationState.toString();
+    } 
+    else if (this.currentOxidationState == 0) {
+      oxidationStateFormat = "";
+    } 
+    else {
+      oxidationStateFormat = this.currentOxidationState.toString();
+    }
 
     this.ctx.beginPath();
     this.ctx.strokeStyle = this.cpkHexColor;
@@ -59,8 +49,12 @@ export default class Atom {
     this.ctx.beginPath();
     this.ctx.fillStyle = 'black';
     this.ctx.textAlign = 'center';
-    this.ctx.font = `${this.radius}px Arial`;
-    this.ctx.fillText(this.symbol, this.positionX, this.positionY);
+    this.ctx.textBaseline = 'middle';
+    this.ctx.font = `${fontSize}px Arial`;
+    this.ctx.fillText(this.symbol, this.positionX, this.positionY, this.radius);
+    this.ctx.beginPath();
+    // this.textAlign = 'right';
+    this.ctx.fillText(oxidationStateFormat, this.positionX + fontSize, this.positionY - fontSize);
     this.ctx.closePath();
   }
 
