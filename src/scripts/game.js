@@ -56,7 +56,7 @@ export default class Game {
       this.canvas.removeEventListener('click', this.newGame);
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
-      debugger
+      // debugger
       this.statUpdater = window.setInterval(this.updateStats, 1000);
       requestAnimationFrame(this.renderGame);
     }
@@ -106,17 +106,17 @@ export default class Game {
   generateAtom() {
     const element = this.periodicTable.numbers[Math.floor(Math.random() * 92)];
     let oxidationState;
-    debugger
+    // debugger
     // Element has only one oxidation state
     if (typeof element.oxidationStates === 'number') {
       oxidationState = element.oxidationStates;
     }
-    // Element has multiple oxidation states: choose based on its electronegativity
+    // Element has multiple oxidation states: choose one based on its electronegativity
     else {
       const oxStates = element.oxidationStates.split(", ");
-      debugger
+      // debugger
       if (element.electronegativity >= 2.50) {
-        oxidationState = parseInt(elementStates[oxStates.length - 1]);
+        oxidationState = parseInt(oxStates[oxStates.length - 1]);
       } 
       else {
         oxidationState = parseInt(oxStates[0]);

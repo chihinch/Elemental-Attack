@@ -37,7 +37,7 @@ export default class Atom {
 
     // Atom is generated at a random position on the x-axis on the top of the screen
     this.positionX = Math.floor(Math.random() * canvas.width);
-    this.positionY = 0;
+    this.positionY = 100;
 
     // Speed of the atom
     this.dX = 2;
@@ -48,13 +48,19 @@ export default class Atom {
 
   draw() {
     // Will have to change the centre of the circle as atoms fly around the canvas
+    const fontSize = this.radius / 2;
+
     this.ctx.beginPath();
     this.ctx.strokeStyle = this.cpkHexColor;
     this.ctx.fillStyle = this.cpkHexColor;
-    // debugger
     this.ctx.arc(this.positionX, this.positionY, this.radius, 0, 2 * Math.PI, true);
-    this.ctx.stroke();
     this.ctx.fill();
+    this.ctx.stroke();
+    this.ctx.beginPath();
+    this.ctx.fillStyle = 'black';
+    this.ctx.textAlign = 'center';
+    this.ctx.font = `${this.radius}px Arial`;
+    this.ctx.fillText(this.symbol, this.positionX, this.positionY);
     this.ctx.closePath();
   }
 
