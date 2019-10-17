@@ -1,5 +1,6 @@
 import Player from './player';
 import Atom from './atom';
+// may need to import controls
 
 export default class Game {
   constructor(canvas, ctx) {
@@ -21,6 +22,12 @@ export default class Game {
     this.resetGame = this.resetGame.bind(this);
     this.togglePause = this.togglePause.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
+
+    this.healthStat = document.getElementById('health-stat');
+    this.ammoStat = document.getElementById('ammo-stat');
+    this.pointStat = document.getElementById('point-stat');
+
+    this.updateStats = this.updateStats.bind(this);
   }
 
   clearCanvas() {
@@ -33,6 +40,7 @@ export default class Game {
     if (this.paused) {
       return;
     }
+
     this.clearCanvas();
   }
 
@@ -44,9 +52,14 @@ export default class Game {
 
   // Begin a new game
   newGame(e) {
+    debugger
     if (e.type === 'click') {
-      this.canvas.removeEventListener('click', this.newGame());
+      debugger
+      // this.canvas.removeEventListener('click', this.newGame());
+      this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
+      debugger
+      window.setInterval(this.updateStats, 1000);
     }
   }
 
@@ -65,5 +78,15 @@ export default class Game {
   }
 
   // Will need some method to handle gameplay
+
+  // Update stats
+
+
+  updateStats() {
+  // debugger
+  this.healthStat.innerHTML = this.player.health;
+  this.ammoStat.innerHTML = this.player.electrons;
+  this.pointStat.innerHTML = this.score;
+  }
 
 }
