@@ -56,27 +56,27 @@ export default class Game {
       this.canvas.removeEventListener('click', this.newGame);
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
+      this.testAtom = this.generateAtom();
       // debugger
       this.statUpdater = window.setInterval(this.updateStats, 1000);
+      
       requestAnimationFrame(this.renderGame);
     }
   }
-
+  
   // Draw on the canvas
   renderGame() {
+    setInterval(this.renderGame, 1000);
     // Return nothing if the game is paused
     if (this.paused) {
       return;
     }
 
-    
     this.clearCanvas();
     this.player.draw();
-    
-    let newAtom = this.generateAtom();
-    // newAtom.draw();
+    this.testAtom.draw();
 
-    setInterval(newAtom.draw, 10)
+    // setInterval(this.renderGame, 10);
 
     if (this.isGameOver()) {
       this.gameOver();
