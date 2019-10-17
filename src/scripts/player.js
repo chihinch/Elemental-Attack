@@ -21,25 +21,25 @@ export default class Player {
     this.ctx.closePath();
   }
 
-  getPosition() {
-    return this.positionX;
-  }
+  // getPosition() {
+  //   return this.positionX;
+  // }
 
-  getHealth() {
-    return this.health;
-  }
+  // getHealth() {
+  //   return this.health;
+  // }
 
   isPlayerDefeated() {
     return this.heath === 0;
   }
 
-  getPoints() {
-    return this.points;
-  }
+  // getPoints() {
+  //   return this.points;
+  // }
 
-  getAmmo() {
-    return this.electrons;
-  }
+  // getAmmo() {
+  //   return this.electrons;
+  // }
 
   isAmmoEmpty() {
     return this.electrons === 0;
@@ -76,23 +76,35 @@ export default class Player {
   // and change the health according to the healthAmt (positive or negative)
   
   // Scratch that. I wonder if I can refactor the following few methods into some sort of changeStat(stat, amt) function
-  damage(healthAmt) {
-    this.health = this.health + healthAmt;
-  }
+  // damage(healthAmt) {
+  //   this.health = this.health + healthAmt;
+  // }
 
-  heal(healthAmt) {
-    this.health = this.health + healthAmt;
-  }
+  // heal(healthAmt) {
+  //   this.health = this.health + healthAmt;
+  // }
 
-  addPoints(pointAmt) {
-    this.points = this.points + pointAmt;
-  }
+  // addPoints(pointAmt) {
+  //   this.points = this.points + pointAmt;
+  // }
 
-  subtractAmmo() {
-    this.electrons = this.electrons - 1;
-  }
+  // subtractAmmo() {
+  //   this.electrons = this.electrons - 1;
+  // }
 
-  addAmmo() {
-    this.electrons = this.electrons + 1;
+  // addAmmo() {
+  //   this.electrons = this.electrons + 1;
+  // }
+
+  // I moved the point tracker to game.js so that this only cares about the player's stats
+  changePlayerStats(stat, amount) {
+    switch (stat) {
+      case 'health':
+        this.health = this.health + amount;
+      case 'ammo':
+        this.electrons = this.electrons + amount;
+      default:
+        break;
+    }
   }
 }

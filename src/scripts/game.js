@@ -22,6 +22,7 @@ export default class Game {
     this.newGame = this.newGame.bind(this);
   }
 
+  // Draw on the canvas
   renderGame() {
     // Return nothing if the game is paused
     if (this.paused) {
@@ -30,6 +31,12 @@ export default class Game {
 
     // Clear the canvas for the next frame
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  // Reset the game
+  resetGame() {
+    this.entities = {};
+    this.score = 0;
   }
 
   // Begin a new game
