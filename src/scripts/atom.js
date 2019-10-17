@@ -28,7 +28,7 @@ export default class Atom {
 
   draw() {
     // Will have to change the centre of the circle as atoms fly around the canvas
-    const fontSize = this.radius * 0.6;
+    const fontSize = this.radius * 0.75;
     let oxidationStateFormat;
     if (this.currentOxidationState > 0) {
       oxidationStateFormat = '+' + this.currentOxidationState.toString();
@@ -51,11 +51,11 @@ export default class Atom {
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
     this.ctx.font = `${fontSize}px Arial`;
-    this.ctx.fillText(this.symbol, this.positionX, this.positionY, this.radius);
+    this.ctx.fillText(this.symbol, this.positionX - (fontSize * 0.25), this.positionY, this.radius);
     this.ctx.beginPath();
     // this.textAlign = 'right';
-    this.ctx.font = `${fontSize * 0.5}px Arial`
-    this.ctx.fillText(oxidationStateFormat, this.positionX + (fontSize * 0.75), this.positionY - (fontSize * 0.75));
+    this.ctx.font = `${fontSize * 0.6}px Arial`
+    this.ctx.fillText(oxidationStateFormat, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
   }
 
