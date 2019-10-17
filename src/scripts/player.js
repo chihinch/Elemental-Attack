@@ -10,7 +10,8 @@ export default class Player {
     this.positionX = (canvas.width - this.width) / 2; // Player starts at the canvas' centre
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
     this.dx = 10; // Player moves 10 pixels at a time?
-    this.drawPlayer = this.drawPlayer.bind(this);
+    
+    this.draw = this.draw.bind(this);
   }
 
   draw() {

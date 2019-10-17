@@ -27,6 +27,8 @@ export default class Game {
     this.ammoStat = document.getElementById('ammo-stat');
     this.pointStat = document.getElementById('point-stat');
 
+    this.isGameOver = this.isGameOver.bind(this);
+    this.gameOver = this.gameOver.bind(this);
     this.updateStats = this.updateStats.bind(this);
   }
 
@@ -34,19 +36,10 @@ export default class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  // Draw on the canvas
-  renderGame() {
-    // Return nothing if the game is paused
-    if (this.paused) {
-      return;
-    }
-
-    this.clearCanvas();
-  }
-
   // Reset the game
   resetGame() {
     this.entities = {};
+    this.player = undefined;
     this.score = 0;
   }
 
@@ -58,9 +51,24 @@ export default class Game {
       // this.canvas.removeEventListener('click', this.newGame());
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
-      this.entities = Object.assign({}, this.entities, this.player);
       debugger
       this.statUpdater = window.setInterval(this.updateStats, 1000);
+      requestAnimationFrame(this.renderGame);
+    }
+  }
+
+  // Draw on the canvas
+  renderGame() {
+    // Return nothing if the game is paused
+    if (this.paused) {
+      return;
+    }
+
+    this.clearCanvas();
+    this.player.draw();
+
+    if (this.isGameOver()) {
+      this.gameOver();
     }
   }
 
@@ -77,8 +85,6 @@ export default class Game {
   togglePause() {
     this.paused = !this.paused;
   }
-
-  // Will need some method to handle gameplay
 
   // Update stats shown on screen
   updateStats() {
