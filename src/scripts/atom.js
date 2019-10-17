@@ -54,7 +54,8 @@ export default class Atom {
     this.ctx.fillText(this.symbol, this.positionX, this.positionY, this.radius);
     this.ctx.beginPath();
     // this.textAlign = 'right';
-    this.ctx.fillText(oxidationStateFormat, this.positionX + fontSize, this.positionY - fontSize);
+    this.ctx.font = `${fontSize * 0.75}px Arial`
+    this.ctx.fillText(oxidationStateFormat, this.positionX + (fontSize * 0.75), this.positionY - (fontSize * 0.75));
     this.ctx.closePath();
   }
 
