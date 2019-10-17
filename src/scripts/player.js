@@ -13,7 +13,7 @@ export default class Player {
     this.drawPlayer = this.drawPlayer.bind(this);
   }
 
-  drawPlayer() {
+  draw() {
     this.ctx.beginPath();
     this.ctx.rect(this.positionX, this.canvas.height - this.height, this.width, this.height);
     this.ctx.fillStyle = "black";
@@ -22,7 +22,7 @@ export default class Player {
   }
 
   isPlayerDefeated() {
-    return this.heath === 0;
+    return this.health === 0;
   }
 
   isAmmoEmpty() {

@@ -52,14 +52,15 @@ export default class Game {
 
   // Begin a new game
   newGame(e) {
-    debugger
+    // debugger
     if (e.type === 'click') {
-      debugger
+      // debugger
       // this.canvas.removeEventListener('click', this.newGame());
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
+      this.entities = Object.assign({}, this.entities, this.player);
       debugger
-      window.setInterval(this.updateStats, 1000);
+      this.statUpdater = window.setInterval(this.updateStats, 1000);
     }
   }
 
@@ -69,7 +70,7 @@ export default class Game {
   }
 
   gameOver() {
-
+    window.clearInterval(this.statUpdater);
   }
 
   // Toggle pause
@@ -79,9 +80,7 @@ export default class Game {
 
   // Will need some method to handle gameplay
 
-  // Update stats
-
-
+  // Update stats shown on screen
   updateStats() {
   // debugger
   this.healthStat.innerHTML = this.player.health;
