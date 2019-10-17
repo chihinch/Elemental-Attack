@@ -43,15 +43,16 @@ export default class Atom {
     this.dX = 2;
     this.dY = -2;
 
-    this.drawAtom = this.drawAtom.bind(this);
+    this.draw = this.draw.bind(this);
   }
 
-  drawAtom() {
+  draw() {
     // Will have to change the centre of the circle as atoms fly around the canvas
     this.ctx.beginPath();
     this.ctx.strokeStyle = this.cpkHexColor;
-    this.fillStyle = this.cpkHexColor;
-    this.ctx.arc(100, 100, this.radius, 0, 2 * Math.PI, true);
+    this.ctx.fillStyle = this.cpkHexColor;
+    // debugger
+    this.ctx.arc(this.positionX, this.positionY, this.radius, 0, 2 * Math.PI, true);
     this.ctx.stroke();
     this.ctx.fill();
     this.ctx.closePath();
