@@ -41,10 +41,8 @@ export default class Game {
 
   // Begin a new game
   newGame() {
-    this.canvas.removeEventListener('click', this.newGame());
-    this.canvas.removeEventListener('keydown', this.newGame());
-
-    this.player = new Player(this.canvas, this.ctx);
+    // this.canvas.removeEventListener('click', this.newGame());
+    // this.player = new Player(this.canvas, this.ctx);
   }
 
   // Returns true if the player is defeated
