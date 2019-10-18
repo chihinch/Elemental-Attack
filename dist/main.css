@@ -1,0 +1,113 @@
+.hide {
+    display: none;
+}
+
+body {
+    background-color: lightblue;
+    color: green;
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    margin: 0 auto;
+    width: 800px;
+    height: 600px;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#navbar {
+    width: 100%;
+    box-sizing: content-box;
+    height: 40px;
+    border: 1px solid;
+    display: flex;
+    justify-content: space-between;
+}
+
+#nav-logo {
+    width: 384px;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#nav-logo h1 {
+    margin: 0;
+}
+
+#nav-links {
+    width: 25%;
+    height: 100%;
+    border: 1px solid;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#nav-links a {
+    width: 36px;
+    height: 36px;
+    text-decoration: none;
+    color: grey;
+}
+
+#nav-links a:hover {
+    color: darkblue;
+}
+
+#nav-links i {
+    font-size: 36px;
+}
+
+#game-header {
+    width: 800px;
+    height: 40px;
+    border: 1px solid;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-header-side {
+    width: 35%;
+    height: 100%;
+    border: 1px solid;
+}
+
+#player-status {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+}
+
+#status-header, #status-values {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#help {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#game {
+    width: 800px;
+    height: 480px;
+    border: 1px solid;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+#canvas {
+    background: transparent;
+}
+
+/*# sourceMappingURL=main.css.map*/
