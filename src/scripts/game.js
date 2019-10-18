@@ -35,7 +35,6 @@ export default class Game {
     this.updateStats = this.updateStats.bind(this);
 
     this.generateAtom = this.generateAtom.bind(this);
-    // this.generateArmyofAtoms = this.generateArmyofAtoms.bind(this);
   }
 
   clearCanvas() {
@@ -55,8 +54,6 @@ export default class Game {
       this.canvas.removeEventListener('click', this.newGame);
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
-      // this.testAtom = this.generateAtom();
-      // this.testAtomB = this.generateAtom();
       this.statUpdater = window.setInterval(this.updateStats, 1000);
       
       window.setInterval(this.renderGame, 10);
