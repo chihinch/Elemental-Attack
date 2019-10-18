@@ -2,6 +2,7 @@ export default class Player {
   constructor(canvas, ctx) {
     this.canvas = canvas;
     this.ctx = ctx;
+
     this.health = 100;
     this.points = 0;
     this.electrons = 25;
@@ -12,6 +13,9 @@ export default class Player {
     this.dx = 10; // Player moves 10 pixels at a time?
     
     this.draw = this.draw.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyRelease = this.handleKeyRelease.bind(this);
+    this.changePlayerStats = this.changePlayerStats.bind(this);
   }
 
   draw() {
@@ -35,9 +39,11 @@ export default class Player {
     e.preventDefault();
     switch (e.key) {
       case ('ArrowLeft' || 'Left'):
+        console.log("Left");
         this.direction = -1;
         break;
       case ('ArrowRight' || 'Right'):
+        console.log("Right");
         this.direction = 1;
         break;
       default:

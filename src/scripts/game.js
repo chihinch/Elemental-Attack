@@ -1,6 +1,7 @@
 import Player from './player';
 import Atom from './atom';
 // may need to import controls
+import { handlePlayerKeyDown } from './control';
 
 export default class Game {
   constructor(canvas, ctx) {
@@ -54,6 +55,7 @@ export default class Game {
       this.canvas.removeEventListener('click', this.newGame);
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
+      window.addEventListener('keydown', this.player.handleKeyPress);
       this.statUpdater = window.setInterval(this.updateStats, 1000);
       
       window.setInterval(this.renderGame, 10);

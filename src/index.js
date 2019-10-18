@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', () => {
         gameDivs[i].className = 'show';
       }
       else {
-        gameDivs[i].className = 'hide';
+        gameDivs[i].className = 'hidae';
       }
     }
   };
