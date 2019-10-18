@@ -77,11 +77,16 @@ window.addEventListener('DOMContentLoaded', () => {
   };
 
   function handleKeyDown(e) {
+    const interfaceKeys = ['a', 'c', 't'];
+    const playerKeys = ['ArrowLeft', 'Left', 'ArrowRight', 'Right', 'Z', 'X', 'P'];
     if (e.key === 'Escape') {
       leaveHelpScreen();
     } 
-    else {
+    else if (interfaceKeys.includes(e.key)) {
       handleHelpButton(e);
+    }
+    else if (playerKeys.includes(e.key)) {
+      // pass it off to controls?
     }
   };
 
