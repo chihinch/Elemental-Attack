@@ -37,13 +37,12 @@ export default class Player {
   // Eventually add cases for using the weapons
   handleKeyPress(e) {
     e.preventDefault();
+    console.log(e.key);
     switch (e.key) {
       case ('ArrowLeft' || 'Left'):
-        console.log("Left");
         this.direction = -1;
         break;
       case ('ArrowRight' || 'Right'):
-        console.log("Right");
         this.direction = 1;
         break;
       default:

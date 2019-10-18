@@ -1,7 +1,5 @@
 import Player from './player';
 import Atom from './atom';
-// may need to import controls
-import { handlePlayerKeyDown } from './control';
 
 export default class Game {
   constructor(canvas, ctx) {
@@ -89,7 +87,9 @@ export default class Game {
     return this.player.isPlayerDefeated();
   }
 
+  // Do some cleanup when game ends
   gameOver() {
+    document.removeEventListener('keydown', this.player.handleKeyPress);
     window.clearInterval(this.statUpdater);
     window.clearInterval(this.renderGame);
   }
@@ -113,6 +113,7 @@ export default class Game {
       return;
     }
 
+    // Choose a random element between Hydrogen (1) and Uranium (92)
     const element = this.periodicTable.numbers[Math.floor(Math.random() * 92)];
     let oxidationState;
     // Element has only one oxidation state
