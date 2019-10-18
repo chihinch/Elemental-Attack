@@ -13,15 +13,15 @@ export default class Atom {
     this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol)
     // Atoms are represented by circles whose radii are (for now) set equal to
     // sqrt(this.atomicRadius) * 3
-    this.radius = Math.sqrt(this.atomicRadius) * 3;
+    this.radius = Math.sqrt(this.atomicRadius) * 2;
 
     // Atom is generated at a random position on the x-axis on the top of the screen
-    this.positionX = Math.floor(Math.random() * canvas.width);
-    this.positionY = Math.floor(Math.random() * canvas.width);
+    this.positionX = Math.floor(Math.random() * (canvas.width - 2));
+    this.positionY = Math.floor(Math.random() * (canvas.height - 2));
 
     // Speed of the atom
-    this.dX = Math.sqrt(atomicMass) / 2;
-    this.dY = Math.sqrt(atomicMass) / 2;
+    this.dX = Math.tan(this.positionX);
+    this.dY = -Math.tan(this.positionY);
 
     this.draw = this.draw.bind(this);
   }

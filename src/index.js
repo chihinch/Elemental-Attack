@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
         case 'c':
           target = 'controls-button';
           break;
-        case 'p':
+        case 't':
           target = 'periodic-button';
           break;
         default:

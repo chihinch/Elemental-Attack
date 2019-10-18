@@ -57,16 +57,18 @@ export default class Game {
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
       this.testAtom = this.generateAtom();
+      this.testAtomB = this.generateAtom();
       // debugger
       this.statUpdater = window.setInterval(this.updateStats, 1000);
       
-      requestAnimationFrame(this.renderGame);
+      window.setInterval(this.renderGame, 10);
+      // requestAnimationFrame(this.renderGame);
     }
   }
   
   // Draw on the canvas
   renderGame() {
-    setInterval(this.renderGame, 1000);
+    // setInterval(this.renderGame, 1000);
     // Return nothing if the game is paused
     if (this.paused) {
       return;
@@ -75,6 +77,7 @@ export default class Game {
     this.clearCanvas();
     this.player.draw();
     this.testAtom.draw();
+    this.testAtomB.draw();
 
     // setInterval(this.renderGame, 10);
 
