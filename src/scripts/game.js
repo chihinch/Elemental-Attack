@@ -13,8 +13,8 @@ export default class Game {
     this.over = false;
     this.score = 0;
 
-    // Entities (the player and the atom) being drawn
-    this.entities = {};
+    // Current atoms being displayed
+    this.atomArmy = [];
 
     // Elemental properties
     this.periodicTable = require('../assets/data/periodicTable');
@@ -35,6 +35,7 @@ export default class Game {
     this.updateStats = this.updateStats.bind(this);
 
     this.generateAtom = this.generateAtom.bind(this);
+    // this.generateArmyofAtoms = this.generateArmyofAtoms.bind(this);
   }
 
   clearCanvas() {
@@ -50,36 +51,34 @@ export default class Game {
 
   // Begin a new game
   newGame(e) {
-    // debugger
     if (e.type === 'click') {
-      // debugger
       this.canvas.removeEventListener('click', this.newGame);
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
-      this.testAtom = this.generateAtom();
-      this.testAtomB = this.generateAtom();
-      // debugger
+      // this.testAtom = this.generateAtom();
+      // this.testAtomB = this.generateAtom();
       this.statUpdater = window.setInterval(this.updateStats, 1000);
       
       window.setInterval(this.renderGame, 10);
-      // requestAnimationFrame(this.renderGame);
+      window.setInterval(this.generateAtom, 3000);
     }
   }
   
   // Draw on the canvas
   renderGame() {
-    // setInterval(this.renderGame, 1000);
     // Return nothing if the game is paused
     if (this.paused) {
+      window.clearInterval(this.generateAtom)
       return;
     }
 
+    // Generate a new atom every 5 seconds while there are fewer than 10 atoms simultaneously bouncing around
     this.clearCanvas();
     this.player.draw();
-    this.testAtom.draw();
-    this.testAtomB.draw();
 
-    // setInterval(this.renderGame, 10);
+    this.atomArmy.forEach((atom) => {
+      atom.draw();
+    });
 
     if (this.isGameOver()) {
       this.gameOver();
@@ -93,6 +92,7 @@ export default class Game {
 
   gameOver() {
     window.clearInterval(this.statUpdater);
+    window.clearInterval(this.renderGame);
   }
 
   // Toggle pause
@@ -102,16 +102,20 @@ export default class Game {
 
   // Update stats shown on screen
   updateStats() {
-  // debugger
   this.healthStat.innerHTML = this.player.health;
   this.ammoStat.innerHTML = this.player.electrons;
   this.pointStat.innerHTML = this.score;
   }
 
   generateAtom() {
+    // Yes, the player should be bombarded with atoms, but I'll keep the number of atoms
+    // simultaneously bouncing around reasonable
+    if (this.atomArmy.length > 10) {
+      return;
+    }
+
     const element = this.periodicTable.numbers[Math.floor(Math.random() * 92)];
     let oxidationState;
-    // debugger
     // Element has only one oxidation state
     if (typeof element.oxidationStates === 'number') {
       oxidationState = element.oxidationStates;
@@ -119,7 +123,6 @@ export default class Game {
     // Element has multiple oxidation states: choose one based on its electronegativity
     else {
       const oxStates = element.oxidationStates.split(", ");
-      // debugger
       if (element.electronegativity >= 2.50) {
         oxidationState = parseInt(oxStates[oxStates.length - 1]);
       } 
@@ -128,7 +131,8 @@ export default class Game {
       }
     }
 
-    return new Atom(this.canvas, this.ctx, element.cpkHexColor, element.symbol, element.atomicRadius, element.atomicMass, oxidationState);
+    const newAtom = new Atom(this.canvas, this.ctx, element.cpkHexColor, element.symbol, element.atomicRadius, element.atomicMass, oxidationState);
+    this.atomArmy.push(newAtom);
   }
 
 }

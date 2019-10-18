@@ -16,12 +16,12 @@ export default class Atom {
     this.radius = Math.sqrt(this.atomicRadius) * 2;
 
     // Atom is generated at a random position on the x-axis on the top of the screen
-    this.positionX = Math.floor(Math.random() * (canvas.width - 2));
-    this.positionY = Math.floor(Math.random() * (canvas.height - 2));
+    this.positionX = Math.random() * (canvas.width - 200);
+    this.positionY = Math.random() * (canvas.height - 200);
 
     // Speed of the atom
-    this.dX = Math.tan(this.positionX);
-    this.dY = -Math.tan(this.positionY);
+    this.dX = Math.random() * 4 - 2;
+    this.dY = Math.random() * 4 -2;
 
     this.draw = this.draw.bind(this);
   }
