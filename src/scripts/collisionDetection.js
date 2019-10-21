@@ -13,5 +13,12 @@ export const collisionCircleCircle = (circleA, circleB) => {
 
   const hypotenuse = (sideX ** 2) + (sideY ** 2);
 
-  return (hypotenuse < (circleA.radius + circleB.radius) ? true : false);
+  // return (hypotenuse < (circleA.radius + circleB.radius) ? true : false);
+
+  if (hypotenuse < (circleA.radius + circleB.radius)) {
+    circleA.dX = -(circleA.dX);
+    circleA.dY = -(circleA.dY);
+    circleB.dX = -(cirlceB.dX);
+    circleB.dY = -(circleB.dY);
+  }
 }

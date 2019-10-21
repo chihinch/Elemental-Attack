@@ -56,10 +56,10 @@ export default class Atom {
     this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
 
-    collisionCircleWall(this.canvas, this);
+    // collisionCircleWall(this.canvas, this);
 
-    this.positionX += this.dX;
-    this.positionY += this.dY;
+    // this.positionX += this.dX;
+    // this.positionY += this.dY;
   }
 
   damageAtom(weapon) {
