@@ -3,6 +3,11 @@ export default class Player {
     this.canvas = canvas;
     this.ctx = ctx;
 
+    // Attempting to decorate the player - holding off on it for now
+    this.image = new Image();
+    // this.image.src = '../assets/images/chemist.png';
+    // debugger
+
     this.health = 100;
     this.points = 0;
     this.electrons = 25;

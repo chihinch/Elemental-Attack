@@ -27,17 +27,16 @@ export default class Atom {
   }
 
   draw() {
-    // Will have to change the centre of the circle as atoms fly around the canvas
     const fontSize = this.radius * 0.75;
-    let oxidationStateFormat;
+    let oxidationStateDisplay;
     if (this.currentOxidationState > 0) {
-      oxidationStateFormat = '+' + this.currentOxidationState.toString();
+      oxidationStateDisplay = '+' + this.currentOxidationState.toString();
     } 
     else if (this.currentOxidationState == 0) {
-      oxidationStateFormat = "";
+      oxidationStateDisplay = "";
     } 
     else {
-      oxidationStateFormat = this.currentOxidationState.toString();
+      oxidationStateDisplay = this.currentOxidationState.toString();
     }
 
     this.ctx.beginPath();
@@ -54,9 +53,10 @@ export default class Atom {
     this.ctx.fillText(this.symbol, this.positionX - (fontSize * 0.25), this.positionY, this.radius);
     this.ctx.beginPath();
     this.ctx.font = `${fontSize * 0.6}px Arial`
-    this.ctx.fillText(oxidationStateFormat, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
+    this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
 
+    // Atom collision with walls
     if (this.positionX + this.dX > this.canvas.width - this.radius || this.positionX + this.dX < this.radius) {
       this.dX = -(this.dX);
     }
@@ -85,6 +85,7 @@ export default class Atom {
     }
   }
 
+  // Atom is defeated if its current oxidation state = its assigned (target) oxidation state
   isAtomDefeated() {
     return this.oxidationState === this.currentOxidationState;
   }

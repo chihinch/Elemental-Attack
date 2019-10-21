@@ -20,20 +20,18 @@ export default class Game {
 
     this.newGame = this.newGame.bind(this);
     this.renderGame = this.renderGame.bind(this);
+    this.isGameOver = this.isGameOver.bind(this);
     this.gameOver = this.gameOver.bind(this);
     this.resetGame = this.resetGame.bind(this);
     this.togglePause = this.togglePause.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
+    this.generateAtom = this.generateAtom.bind(this);
 
     this.healthStat = document.getElementById('health-stat');
     this.ammoStat = document.getElementById('ammo-stat');
     this.pointStat = document.getElementById('point-stat');
 
-    this.isGameOver = this.isGameOver.bind(this);
-    this.gameOver = this.gameOver.bind(this);
     this.updateStats = this.updateStats.bind(this);
-
-    this.generateAtom = this.generateAtom.bind(this);
   }
 
   clearCanvas() {
@@ -42,7 +40,7 @@ export default class Game {
 
   // Reset the game
   resetGame() {
-    this.entities = {};
+    this.entities = [];
     this.player = undefined;
     this.score = 0;
   }
@@ -57,7 +55,8 @@ export default class Game {
       this.statUpdater = window.setInterval(this.updateStats, 1000);
       
       window.setInterval(this.renderGame, 10);
-      window.setInterval(this.generateAtom, 3000);
+      window.requestAnimationFrame(this.renderGame);
+      window.setInterval(this.generateAtom, 5000);
     }
   }
   
@@ -69,7 +68,6 @@ export default class Game {
       return;
     }
 
-    // Generate a new atom every 5 seconds while there are fewer than 10 atoms simultaneously bouncing around
     this.clearCanvas();
     this.player.draw();
 
@@ -107,8 +105,6 @@ export default class Game {
   }
 
   generateAtom() {
-    // Yes, the player should be bombarded with atoms, but I'll keep the number of atoms
-    // simultaneously bouncing around reasonable
     if (this.atomArmy.length > 10) {
       return;
     }
@@ -116,6 +112,7 @@ export default class Game {
     // Choose a random element between Hydrogen (1) and Uranium (92)
     const element = this.periodicTable.numbers[Math.floor(Math.random() * 92)];
     let oxidationState;
+
     // Element has only one oxidation state
     if (typeof element.oxidationStates === 'number') {
       oxidationState = element.oxidationStates;
