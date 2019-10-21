@@ -1,6 +1,6 @@
 import Player from './player';
 import Atom from './atom';
-import { collisionCircleWall } from './collisionDetection';
+import { collisionCircleWall, collisionCircleRectangle } from './collisionDetection';
 
 export default class Game {
   constructor(canvas, ctx) {
@@ -75,6 +75,10 @@ export default class Game {
     this.atomArmy.forEach((atom) => {
       atom.draw();
       collisionCircleWall(canvas, atom);
+      if (collisionCircleRectangle(atom, this.player)) {
+        console.log('ouch');
+        this.player.health -= 1;
+      }
       atom.positionX += atom.dX;
       atom.positionY += atom.dY;
     });
