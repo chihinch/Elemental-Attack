@@ -1,3 +1,5 @@
+import { collisionCircleWall } from './collisionDetection';
+
 export default class Atom {
   constructor(canvas, ctx, cpkHexColor, symbol, atomicRadius, atomicMass, oxidationState) {
     this.canvas = canvas;
@@ -11,8 +13,6 @@ export default class Atom {
     this.currentOxidationState = 3;
 
     this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol)
-    // Atoms are represented by circles whose radii are (for now) set equal to
-    // sqrt(this.atomicRadius) * 3
     this.radius = Math.sqrt(this.atomicRadius) * 2;
 
     // Atom is generated at a random position on the x-axis on the top of the screen
@@ -56,13 +56,7 @@ export default class Atom {
     this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
 
-    // Atom collision with walls
-    if (this.positionX + this.dX > this.canvas.width - this.radius || this.positionX + this.dX < this.radius) {
-      this.dX = -(this.dX);
-    }
-    if (this.positionY + this.dY > this.canvas.height - this.radius || this.positionY + this.dY < this.radius) {
-      this.dY = -(this.dY);
-    }
+    collisionCircleWall(this.canvas, this);
 
     this.positionX += this.dX;
     this.positionY += this.dY;
