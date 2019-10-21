@@ -29,14 +29,33 @@ window.addEventListener('DOMContentLoaded', () => {
   // Add event listeners for toggling betweens displays
   document.addEventListener('keydown', handleKeyDown);
 
+  // Filters through the key pressed
+  function handleKeyDown(e) {
+    const interfaceKeys = ['a', 'c', 't'];
+    if (e.key === 'Escape') {
+      leaveHelpScreen();
+    }
+    else if (e.key === 'p') {
+      game.togglePause();
+    }
+    else if (interfaceKeys.includes(e.key)) {
+      handleHelpButton(e);
+    }
+  };
+
   // Upon pressing one of the help buttons, pause the game and show the relevant screen
   function handleHelpButton(e) {
-    game.togglePause();
+    if (!game.paused) {
+      game.togglePause();
+    }
+
     let showDivId;
     let target;
+
     if (e.type === 'click') {
       target = e.target.id;
-    } else {
+    } 
+    else {
       switch (e.key) {
         case 'a':
           target = 'about-button';
@@ -48,7 +67,7 @@ window.addEventListener('DOMContentLoaded', () => {
           target = 'periodic-button';
           break;
         default:
-          target = undefined;
+          return;
       }
     }
 
@@ -76,25 +95,18 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  function handleKeyDown(e) {
-    if (e.key === 'Escape') {
-      leaveHelpScreen();
-    } 
-    else {
-      handleHelpButton(e);
-    }
-  };
-
   // Return to the game and resume
   function leaveHelpScreen() {
     for (let i = 0; i < gameDivs.length; i++) {
       if (gameDivs[i].id === 'canvas') {
         gameDivs[i].className = 'show';
+        if (game.paused) {
+          game.togglePause();
+        }
       }
       else {
         gameDivs[i].className = 'hide';
       }
     }
-    game.togglePause();
   }
 });
