@@ -1,5 +1,5 @@
 import Player from './player';
-import { collisionCircleWall, collisionCircleRectangle } from './collisionDetection';
+import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
 export default class Game {
@@ -49,8 +49,6 @@ export default class Game {
       this.player = new Player(this.canvas, this.ctx);
       window.addEventListener('keydown', this.player.handleKeyPress);
       this.statUpdater = window.setInterval(this.updateStats, 500);
-      
-      // window.setInterval(this.renderGame, 20);
       requestAnimationFrame(this.renderGame);
       window.setInterval(this.buildAtomArmy, 2000);
     }
@@ -58,7 +56,6 @@ export default class Game {
   
   // Draw on the canvas
   renderGame() {
-    // Return nothing if the game is paused
     if (this.paused) {
       window.clearInterval(this.generateAtom)
       return;
@@ -66,6 +63,8 @@ export default class Game {
 
     this.clearCanvas();
     this.player.draw();
+    this.player.positionX += this.player.direction * this.player.dX;
+    collisionRectangleWall(canvas, this.player);
 
     this.atomArmy.forEach((atom) => {
       atom.draw();
@@ -101,6 +100,7 @@ export default class Game {
   togglePause() {
     this.paused = !this.paused;
     if (!this.paused) {
+      window.setInterval(this.updateStats, 500);
       this.renderGame();
     }
   }
