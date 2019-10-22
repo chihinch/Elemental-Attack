@@ -9,8 +9,8 @@ export default class Game {
     this.ctx = ctx;
 
     // Game status
-    this.inProgress = false;
-    this.paused = false;
+    this.inProgress = false; // Game is either running or not
+    this.paused = false; // Game may be inProgress but paused
     this.score = 0;
     this.animationFrameId = undefined;
 
@@ -42,6 +42,8 @@ export default class Game {
   // Reset the game
   resetGame() {
     this.player = undefined;
+    this.paused = false;
+    this.atomArmy.length = 0;
     this.score = 0;
     this.inProgress = false;
   }
@@ -90,7 +92,7 @@ export default class Game {
   }
 
   checkCollisions() {
-    collisionCircleWall(this.canvas, this.player);
+    collisionRectangleWall(this.canvas, this.player);
     this.atomArmy.forEach((atom) => {
       collisionCircleWall(this.canvas, atom);
       if (collisionCircleRectangle(atom, this.player)) {
@@ -118,11 +120,12 @@ export default class Game {
     // debugger
     this.inProgress = false;
     this.atomArmy.length = 0;
-    document.removeEventListener('keydown', this.player.handleKeyPress);
-    document.removeEventListener('keyup', this.player.handleKeyRelease);
+    window.removeEventListener('keydown', this.player.handleKeyPress);
+    window.removeEventListener('keyup', this.player.handleKeyRelease);
     this.player = undefined;
     window.cancelAnimationFrame(this.animationFrameId);
     window.clearInterval(this.buildAtomArmy);
+    this.healthStat.innerHTML = 0;
     window.clearInterval(this.statUpdater);
   }
 
