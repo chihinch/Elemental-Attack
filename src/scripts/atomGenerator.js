@@ -8,6 +8,7 @@ export const generateAtom = (canvas, ctx) => {
   // Math.floor(Math.random() * (max - min + 1)) + min
   // where min = 1, max = 92
   const element = periodicTable.numbers[Math.floor(Math.random() * (92 - 1 + 1) + 1)];
+  // const element = periodicTable.numbers[54];
   let oxidationState;
 
   // Element has only one oxidation state

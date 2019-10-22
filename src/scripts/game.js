@@ -49,7 +49,7 @@ export default class Game {
       this.player = new Player(this.canvas, this.ctx);
       window.addEventListener('keydown', this.player.handleKeyPress);
       window.addEventListener('keyup', this.player.handleKeyRelease);
-      this.statUpdater = window.setInterval(this.updateStats, 500);
+      this.statUpdater = window.setInterval(this.updateStats, 100);
       requestAnimationFrame(this.renderGame);
       window.setInterval(this.buildAtomArmy, 2000);
     }
@@ -63,6 +63,7 @@ export default class Game {
     }
 
     this.clearCanvas();
+
     this.player.draw();
     this.player.positionX += this.player.direction * this.player.dX;
     collisionRectangleWall(canvas, this.player);
@@ -71,8 +72,13 @@ export default class Game {
       atom.draw();
       collisionCircleWall(canvas, atom);
       if (collisionCircleRectangle(atom, this.player)) {
-        console.log('ouch');
-        this.player.health -= 1;
+        if (atom.nobleGas) {
+          this.player.changePlayerStats('health', 5);
+          this.atomArmy.splice(this.atomArmy.indexOf(atom), 1);
+        }
+        else {
+          this.player.changePlayerStats('health', -5);
+        }
       }
       atom.positionX += atom.dX;
       atom.positionY += atom.dY;
@@ -101,7 +107,7 @@ export default class Game {
   togglePause() {
     this.paused = !this.paused;
     if (!this.paused) {
-      window.setInterval(this.updateStats, 500);
+      window.setInterval(this.updateStats, 100);
       this.renderGame();
     }
   }

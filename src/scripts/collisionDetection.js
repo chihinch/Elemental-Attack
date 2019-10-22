@@ -38,42 +38,8 @@ export const collisionCircleCircle = (circleA, circleB) => {
 };
 
 export const collisionCircleRectangle = (circle, rectangle) => {
-  // Points of the rectangle
-  // const upperLeft = [rectangle.positionX, rectangle.positionY];
-  // const upperRight = [rectangle.positionX + rectangle.width, rectangle.positionY];
-  // const lowerLeft = [rectangle.positionX, rectangle.positionY + rectangle.height];
-  // const lowerRight = [rectangle.positionX + rectangle.width, rectangle.positionY + rectangle.height];
-  
-  // const rectangleVertices = [upperLeft, upperRight, lowerLeft, lowerRight];
-
-  let closestX;
-  let closestY;
-
-  // if (circle.positionX < upperLeft[0]) {
-  //   closestX = upperLeft[0];
-  // }
-  // else if (circle.positionX > upperRight[0]) {
-  //   closestX = upperRight[0];
-  // }
-  // else {
-  //   closestX = circle.positionX;
-  // }
-
-  // if (circle.positionY < upperLeft[1]) {
-  //   closestY = upperLeft[1];
-  // }
-  // else if (circle.positionY > upperRight[1]) {
-  //   closestY = upperRight[1];
-  // }
-  // else {
-  //   closestY = circle.positionY;
-  // }
-
-  // const hypotenuse = distanceSquared(closestX, closestY, circle.positionX, circle.positionY);
-
-  
-  closestX = Math.max(rectangle.positionX, Math.min(circle.positionX, rectangle.positionX + rectangle.width));
-  closestY = Math.max(rectangle.positionY, Math.min(circle.positionY, rectangle.positionY + rectangle.height));
+  const closestX = Math.max(rectangle.positionX, Math.min(circle.positionX, rectangle.positionX + rectangle.width));
+  const closestY = Math.max(rectangle.positionY, Math.min(circle.positionY, rectangle.positionY + rectangle.height));
   const hypotenuse = distanceSquared(closestX, closestY, circle.positionX, circle.positionY);
 
   if (hypotenuse < (circle.radius ** 2)) {

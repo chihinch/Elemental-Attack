@@ -66,6 +66,9 @@ export default class Player {
     switch (stat) {
       case 'health':
         this.health = this.health + amount;
+        if (this.health > 100) {
+          this.health = 100;
+        }
       case 'ammo':
         this.electrons = this.electrons + amount;
       default:
