@@ -1,5 +1,5 @@
 import Player from './player';
-import { collisionCircleWall, collisionCircleRectangle } from './collisionDetection';
+import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
 export default class Game {
@@ -10,14 +10,14 @@ export default class Game {
 
     // Game status
     this.paused = false;
-    this.over = false;
     this.score = 0;
 
     // Current atoms being displayed
     this.atomArmy = [];
-
-    // Elemental properties
-    this.periodicTable = require('../assets/data/periodicTable');
+    
+    this.healthStat = document.getElementById('health-stat');
+    this.ammoStat = document.getElementById('ammo-stat');
+    this.pointStat = document.getElementById('point-stat');
 
     this.newGame = this.newGame.bind(this);
     this.renderGame = this.renderGame.bind(this);
@@ -27,11 +27,6 @@ export default class Game {
     this.togglePause = this.togglePause.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.buildAtomArmy = this.buildAtomArmy.bind(this);
-
-    this.healthStat = document.getElementById('health-stat');
-    this.ammoStat = document.getElementById('ammo-stat');
-    this.pointStat = document.getElementById('point-stat');
-
     this.updateStats = this.updateStats.bind(this);
   }
 
@@ -53,31 +48,37 @@ export default class Game {
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
       window.addEventListener('keydown', this.player.handleKeyPress);
-      this.statUpdater = window.setInterval(this.updateStats, 500);
-      
-      window.setInterval(this.renderGame, 20);
-      // window.requestAnimationFrame(this.renderGame);
+      window.addEventListener('keyup', this.player.handleKeyRelease);
+      this.statUpdater = window.setInterval(this.updateStats, 100);
+      requestAnimationFrame(this.renderGame);
       window.setInterval(this.buildAtomArmy, 2000);
     }
   }
   
   // Draw on the canvas
   renderGame() {
-    // Return nothing if the game is paused
     if (this.paused) {
       window.clearInterval(this.generateAtom)
       return;
     }
 
     this.clearCanvas();
+
     this.player.draw();
+    this.player.positionX += this.player.direction * this.player.dX;
+    collisionRectangleWall(canvas, this.player);
 
     this.atomArmy.forEach((atom) => {
       atom.draw();
       collisionCircleWall(canvas, atom);
       if (collisionCircleRectangle(atom, this.player)) {
-        console.log('ouch');
-        this.player.health -= 1;
+        if (atom.nobleGas) {
+          this.player.changePlayerStats('health', 5);
+          this.atomArmy.splice(this.atomArmy.indexOf(atom), 1);
+        }
+        else {
+          this.player.changePlayerStats('health', -5);
+        }
       }
       atom.positionX += atom.dX;
       atom.positionY += atom.dY;
@@ -86,6 +87,8 @@ export default class Game {
     if (this.isGameOver()) {
       this.gameOver();
     }
+
+    requestAnimationFrame(this.renderGame);
   }
 
   // Returns true if the player is defeated
@@ -103,6 +106,10 @@ export default class Game {
   // Toggle pause
   togglePause() {
     this.paused = !this.paused;
+    if (!this.paused) {
+      window.setInterval(this.updateStats, 100);
+      this.renderGame();
+    }
   }
 
   // Update stats shown on screen
