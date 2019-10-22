@@ -3,7 +3,6 @@ const periodicTable = require('../assets/data/periodicTable');
 import Atom from './atom';
 
 export const generateAtom = (canvas, ctx) => {
-  debugger
   // Choose a random element between Hydrogen (1) and Uranium (92)
   // Following MDN guide where formula for a random number =
   // Math.floor(Math.random() * (max - min + 1)) + min
