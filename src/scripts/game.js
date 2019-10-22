@@ -12,6 +12,7 @@ export default class Game {
     this.inProgress = false;
     this.paused = false;
     this.score = 0;
+    this.animationFrameId = undefined;
 
     // Current atoms being displayed
     this.atomArmy = [];
@@ -28,6 +29,10 @@ export default class Game {
     this.clearCanvas = this.clearCanvas.bind(this);
     this.buildAtomArmy = this.buildAtomArmy.bind(this);
     this.updateStats = this.updateStats.bind(this);
+
+    this.drawEntities = this.drawEntities.bind(this);
+    this.checkCollisions = this.checkCollisions.bind(this);
+    this.moveEntities = this.moveEntities.bind(this);
   }
 
   clearCanvas() {
@@ -36,7 +41,6 @@ export default class Game {
 
   // Reset the game
   resetGame() {
-    this.entities = [];
     this.player = undefined;
     this.score = 0;
     this.inProgress = false;
@@ -52,8 +56,8 @@ export default class Game {
       window.addEventListener('keyup', this.player.handleKeyRelease);
       this.inProgress = true;
 
-      requestAnimationFrame(this.renderGame);
       this.statUpdater = window.setInterval(this.updateStats, 100);
+      window.requestAnimationFrame(this.renderGame);
       window.setInterval(this.buildAtomArmy, 2000);
     }
   }
@@ -66,14 +70,29 @@ export default class Game {
     }
 
     this.clearCanvas();
+    this.drawEntities();
+    this.checkCollisions();
+    this.moveEntities();
 
+    console.log(this.player.health);
+    if (this.player.isPlayerDefeated()) {
+      this.gameOver();
+    }
+
+    this.animationFrameId = window.requestAnimationFrame(this.renderGame);
+  }
+
+  drawEntities() {
     this.player.draw();
-    this.player.positionX += this.player.direction * this.player.dX;
-    collisionRectangleWall(canvas, this.player);
-
     this.atomArmy.forEach((atom) => {
       atom.draw();
-      collisionCircleWall(canvas, atom);
+    });
+  }
+
+  checkCollisions() {
+    collisionCircleWall(this.canvas, this.player);
+    this.atomArmy.forEach((atom) => {
+      collisionCircleWall(this.canvas, atom);
       if (collisionCircleRectangle(atom, this.player)) {
         if (atom.nobleGas) {
           this.player.changePlayerStats('health', 5);
@@ -83,23 +102,27 @@ export default class Game {
           this.player.changePlayerStats('health', -5);
         }
       }
+    });
+  }
+
+  moveEntities() {
+    this.player.positionX += this.player.direction * this.player.dX;
+    this.atomArmy.forEach((atom) => {
       atom.positionX += atom.dX;
       atom.positionY += atom.dY;
-    });
-
-    console.log(this.player.health);
-    if (this.player.isPlayerDefeated()) {
-      this.gameOver();
-    }
-
-    requestAnimationFrame(this.renderGame);
+    })
   }
 
   // Do some cleanup when game ends
   gameOver() {
+    // debugger
+    this.inProgress = false;
+    this.atomArmy.length = 0;
     document.removeEventListener('keydown', this.player.handleKeyPress);
     document.removeEventListener('keyup', this.player.handleKeyRelease);
-    cancelAnimationFrame(this.renderGame);
+    this.player = undefined;
+    window.cancelAnimationFrame(this.animationFrameId);
+    window.clearInterval(this.buildAtomArmy);
     window.clearInterval(this.statUpdater);
   }
 
@@ -120,9 +143,11 @@ export default class Game {
   }
 
   buildAtomArmy() {
-    if (this.atomArmy.length >= 10) {
-      return
+    if (this.inProgress) {
+      if (this.atomArmy.length >= 10) {
+        return
+      }
+      this.atomArmy.push(generateAtom(this.canvas, this.ctx));
     }
-    this.atomArmy.push(generateAtom(this.canvas, this.ctx));
   }
 }
