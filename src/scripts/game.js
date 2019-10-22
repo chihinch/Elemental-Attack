@@ -50,8 +50,8 @@ export default class Game {
       window.addEventListener('keydown', this.player.handleKeyPress);
       this.statUpdater = window.setInterval(this.updateStats, 500);
       
-      window.setInterval(this.renderGame, 20);
-      // window.requestAnimationFrame(this.renderGame);
+      // window.setInterval(this.renderGame, 20);
+      requestAnimationFrame(this.renderGame);
       window.setInterval(this.buildAtomArmy, 2000);
     }
   }
@@ -81,6 +81,8 @@ export default class Game {
     if (this.isGameOver()) {
       this.gameOver();
     }
+
+    requestAnimationFrame(this.renderGame);
   }
 
   // Returns true if the player is defeated
@@ -98,6 +100,9 @@ export default class Game {
   // Toggle pause
   togglePause() {
     this.paused = !this.paused;
+    if (!this.paused) {
+      this.renderGame();
+    }
   }
 
   // Update stats shown on screen
