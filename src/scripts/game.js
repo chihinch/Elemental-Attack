@@ -10,14 +10,14 @@ export default class Game {
 
     // Game status
     this.paused = false;
-    this.over = false;
     this.score = 0;
 
     // Current atoms being displayed
     this.atomArmy = [];
-
-    // Elemental properties
-    this.periodicTable = require('../assets/data/periodicTable');
+    
+    this.healthStat = document.getElementById('health-stat');
+    this.ammoStat = document.getElementById('ammo-stat');
+    this.pointStat = document.getElementById('point-stat');
 
     this.newGame = this.newGame.bind(this);
     this.renderGame = this.renderGame.bind(this);
@@ -27,11 +27,6 @@ export default class Game {
     this.togglePause = this.togglePause.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.buildAtomArmy = this.buildAtomArmy.bind(this);
-
-    this.healthStat = document.getElementById('health-stat');
-    this.ammoStat = document.getElementById('ammo-stat');
-    this.pointStat = document.getElementById('point-stat');
-
     this.updateStats = this.updateStats.bind(this);
   }
 

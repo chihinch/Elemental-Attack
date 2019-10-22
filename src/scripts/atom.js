@@ -22,14 +22,14 @@ export default class Atom {
     this.positionY = Math.floor(Math.random() * ((this.canvas.height - 100) - 100 + 1) + 100);
 
     // Speed of the atom
-    this.dX = Math.random() * 4 - 2;
-    this.dY = Math.random() * 4 -2;
+    this.dX = 2;
+    this.dY = -2;
 
     this.draw = this.draw.bind(this);
   }
 
   draw() {
-    const fontSize = this.radius * 0.75;
+    const fontSize = Math.floor(this.radius * 0.75);
     let oxidationStateDisplay;
     if (this.currentOxidationState > 0) {
       oxidationStateDisplay = '+' + this.currentOxidationState.toString();
