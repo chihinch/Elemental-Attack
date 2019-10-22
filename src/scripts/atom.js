@@ -55,11 +55,6 @@ export default class Atom {
     this.ctx.font = `${fontSize * 0.6}px Arial`
     this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
-
-    // collisionCircleWall(this.canvas, this);
-
-    // this.positionX += this.dX;
-    // this.positionY += this.dY;
   }
 
   damageAtom(weapon) {

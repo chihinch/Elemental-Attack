@@ -1,6 +1,6 @@
 import Player from './player';
-import Atom from './atom';
 import { collisionCircleWall, collisionCircleRectangle } from './collisionDetection';
+import { generateAtom } from './atomGenerator';
 
 export default class Game {
   constructor(canvas, ctx) {
@@ -26,7 +26,7 @@ export default class Game {
     this.resetGame = this.resetGame.bind(this);
     this.togglePause = this.togglePause.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
-    this.generateAtom = this.generateAtom.bind(this);
+    this.buildAtomArmy = this.buildAtomArmy.bind(this);
 
     this.healthStat = document.getElementById('health-stat');
     this.ammoStat = document.getElementById('ammo-stat');
@@ -53,11 +53,11 @@ export default class Game {
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
       window.addEventListener('keydown', this.player.handleKeyPress);
-      this.statUpdater = window.setInterval(this.updateStats, 1000);
+      this.statUpdater = window.setInterval(this.updateStats, 500);
       
-      window.setInterval(this.renderGame, 10);
-      window.requestAnimationFrame(this.renderGame);
-      window.setInterval(this.generateAtom, 5000);
+      window.setInterval(this.renderGame, 20);
+      // window.requestAnimationFrame(this.renderGame);
+      window.setInterval(this.buildAtomArmy, 2000);
     }
   }
   
@@ -112,35 +112,10 @@ export default class Game {
   this.pointStat.innerHTML = this.score;
   }
 
-  generateAtom() {
-    if (this.atomArmy.length > 10) {
-      return;
+  buildAtomArmy() {
+    if (this.atomArmy.length >= 10) {
+      return
     }
-
-    // Choose a random element between Hydrogen (1) and Uranium (92)
-    // Following MDN guide where formula for a random number =
-    // Math.floor(Math.random() * (max - min + 1)) + min
-    // where min = 1, max = 92
-    const element = this.periodicTable.numbers[Math.floor(Math.random() * (92 - 1 + 1) + 1)];
-    let oxidationState;
-
-    // Element has only one oxidation state
-    if (typeof element.oxidationStates === 'number') {
-      oxidationState = element.oxidationStates;
-    }
-    // Element has multiple oxidation states: choose one based on its electronegativity
-    else {
-      const oxStates = element.oxidationStates.split(", ");
-      if (element.electronegativity >= 2.50) {
-        oxidationState = parseInt(oxStates[oxStates.length - 1]);
-      } 
-      else {
-        oxidationState = parseInt(oxStates[0]);
-      }
-    }
-
-    const newAtom = new Atom(this.canvas, this.ctx, element.cpkHexColor, element.symbol, element.atomicRadius, element.atomicMass, oxidationState);
-    this.atomArmy.push(newAtom);
+    this.atomArmy.push(generateAtom(this.canvas, this.ctx));
   }
-
 }
