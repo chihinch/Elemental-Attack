@@ -14,6 +14,7 @@ export default class Player {
     this.width = 10;
     this.height = 30;
     this.positionX = (canvas.width - this.width) / 2; // Player starts at the canvas' centre
+    this.positionY = canvas.height - this.height; // This should never change since the player is "grounded" 
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
     this.dX = 10;
     
@@ -25,7 +26,7 @@ export default class Player {
 
   draw() {
     this.ctx.beginPath();
-    this.ctx.rect(this.positionX, this.canvas.height - this.height, this.width, this.height);
+    this.ctx.rect(this.positionX, this.positionY, this.width, this.height);
     this.ctx.fillStyle = "black";
     this.ctx.fill();
     this.ctx.closePath();
