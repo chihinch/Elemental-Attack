@@ -118,7 +118,10 @@ export default class Game {
     }
 
     // Choose a random element between Hydrogen (1) and Uranium (92)
-    const element = this.periodicTable.numbers[Math.floor(Math.random() * 92)];
+    // Following MDN guide where formula for a random number =
+    // Math.floor(Math.random() * (max - min + 1)) + min
+    // where min = 1, max = 92
+    const element = this.periodicTable.numbers[Math.floor(Math.random() * (92 - 1 + 1) + 1)];
     let oxidationState;
 
     // Element has only one oxidation state
