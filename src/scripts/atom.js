@@ -15,9 +15,11 @@ export default class Atom {
     this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol)
     this.radius = Math.sqrt(this.atomicRadius) * 2;
 
-    // Atom is generated at a random position on the x-axis on the top of the screen
-    this.positionX = Math.random() * (canvas.width - 200);
-    this.positionY = Math.random() * (canvas.height - 200);
+    // Math.floor(Math.random() * (max - min + 1)) + min
+    // Atom's initial position is a random position on the canvas
+    // with a 100px boundary from all edges
+    this.positionX = Math.floor(Math.random() * ((this.canvas.width - 100) - 100 + 1) + 100);
+    this.positionY = Math.floor(Math.random() * ((this.canvas.height - 100) - 100 + 1) + 100);
 
     // Speed of the atom
     this.dX = Math.random() * 4 - 2;
@@ -55,11 +57,6 @@ export default class Atom {
     this.ctx.font = `${fontSize * 0.6}px Arial`
     this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
-
-    // collisionCircleWall(this.canvas, this);
-
-    // this.positionX += this.dX;
-    // this.positionY += this.dY;
   }
 
   damageAtom(weapon) {

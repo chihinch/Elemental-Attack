@@ -15,7 +15,7 @@ export default class Player {
     this.height = 30;
     this.positionX = (canvas.width - this.width) / 2; // Player starts at the canvas' centre
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
-    this.dx = 10; // Player moves 10 pixels at a time?
+    this.dx = 25; // Player moves 10 pixels at a time?
     
     this.draw = this.draw.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
