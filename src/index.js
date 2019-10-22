@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < gameDivs.length; i++) {
       if (gameDivs[i].id === 'canvas') {
         gameDivs[i].className = 'show';
-        if (game.paused) {
+        if (game.inProgress && game.paused) {
           game.togglePause();
         }
       }

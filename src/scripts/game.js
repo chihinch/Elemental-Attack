@@ -9,6 +9,7 @@ export default class Game {
     this.ctx = ctx;
 
     // Game status
+    this.inProgress = false;
     this.paused = false;
     this.score = 0;
 
@@ -21,7 +22,6 @@ export default class Game {
 
     this.newGame = this.newGame.bind(this);
     this.renderGame = this.renderGame.bind(this);
-    this.isGameOver = this.isGameOver.bind(this);
     this.gameOver = this.gameOver.bind(this);
     this.resetGame = this.resetGame.bind(this);
     this.togglePause = this.togglePause.bind(this);
@@ -39,6 +39,7 @@ export default class Game {
     this.entities = [];
     this.player = undefined;
     this.score = 0;
+    this.inProgress = false;
   }
 
   // Begin a new game
@@ -49,8 +50,10 @@ export default class Game {
       this.player = new Player(this.canvas, this.ctx);
       window.addEventListener('keydown', this.player.handleKeyPress);
       window.addEventListener('keyup', this.player.handleKeyRelease);
-      this.statUpdater = window.setInterval(this.updateStats, 100);
+      this.inProgress = true;
+
       requestAnimationFrame(this.renderGame);
+      this.statUpdater = window.setInterval(this.updateStats, 100);
       window.setInterval(this.buildAtomArmy, 2000);
     }
   }
@@ -84,23 +87,20 @@ export default class Game {
       atom.positionY += atom.dY;
     });
 
-    if (this.isGameOver()) {
+    console.log(this.player.health);
+    if (this.player.isPlayerDefeated()) {
       this.gameOver();
     }
 
     requestAnimationFrame(this.renderGame);
   }
 
-  // Returns true if the player is defeated
-  isGameOver() {
-    return this.player.isPlayerDefeated();
-  }
-
   // Do some cleanup when game ends
   gameOver() {
     document.removeEventListener('keydown', this.player.handleKeyPress);
+    document.removeEventListener('keyup', this.player.handleKeyRelease);
+    cancelAnimationFrame(this.renderGame);
     window.clearInterval(this.statUpdater);
-    window.clearInterval(this.renderGame);
   }
 
   // Toggle pause

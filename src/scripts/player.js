@@ -33,11 +33,11 @@ export default class Player {
   }
 
   isPlayerDefeated() {
-    return this.health === 0;
+    return this.health == 0;
   }
 
   isAmmoEmpty() {
-    return this.electrons === 0;
+    return this.electrons == 0;
   }
 
   // Eventually add cases for using the weapons
@@ -69,8 +69,10 @@ export default class Player {
         if (this.health > 100) {
           this.health = 100;
         }
+        break;
       case 'ammo':
         this.electrons = this.electrons + amount;
+        break;
       default:
         break;
     }
