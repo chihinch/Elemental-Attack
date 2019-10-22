@@ -10,13 +10,7 @@ export const collisionCircleWall = (canvas, circle) => {
     circle.dY = -(circle.dY);
   }
 };
-    // this.positionX = this.positionX + (this.direction * this.dx);
-    // if (this.positionX < 0) {
-    //   this.positionX = 0;
-    // }
-    // else if (this.positionX + this.width > this.canvas.width) {
-    //   this.positionX = this.canvas.width - this.width;
-    // }
+
 export const collisionRectangleWall = (canvas, rectangle) => {
   if (rectangle.positionX < 0) {
     rectangle.positionX = 0;

@@ -48,6 +48,7 @@ export default class Game {
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
       window.addEventListener('keydown', this.player.handleKeyPress);
+      window.addEventListener('keyup', this.player.handleKeyRelease);
       this.statUpdater = window.setInterval(this.updateStats, 500);
       requestAnimationFrame(this.renderGame);
       window.setInterval(this.buildAtomArmy, 2000);
