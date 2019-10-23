@@ -4,32 +4,29 @@ import { generateAtom } from './atomGenerator';
 
 export default class Game {
   constructor(canvas, ctx) {
-    // Things to draw on
     this.canvas = canvas;
     this.ctx = ctx;
 
-    // Game status
     this.inProgress = false; // Game is either running or not
     this.paused = false; // Game may be inProgress but paused
     this.score = 0;
     this.animationFrameId = undefined;
 
-    // Current atoms being displayed
     this.atomArmy = [];
     
     this.healthStat = document.getElementById('health-stat');
     this.ammoStat = document.getElementById('ammo-stat');
     this.pointStat = document.getElementById('point-stat');
 
-    this.newGame = this.newGame.bind(this);
-    this.renderGame = this.renderGame.bind(this);
-    this.gameOver = this.gameOver.bind(this);
     this.resetGame = this.resetGame.bind(this);
+    this.newGame = this.newGame.bind(this);
+    this.gameOver = this.gameOver.bind(this);
     this.togglePause = this.togglePause.bind(this);
-    this.clearCanvas = this.clearCanvas.bind(this);
     this.buildAtomArmy = this.buildAtomArmy.bind(this);
     this.updateStats = this.updateStats.bind(this);
-
+    
+    this.clearCanvas = this.clearCanvas.bind(this);
+    this.renderGame = this.renderGame.bind(this);
     this.drawEntities = this.drawEntities.bind(this);
     this.checkCollisions = this.checkCollisions.bind(this);
     this.moveEntities = this.moveEntities.bind(this);
@@ -39,16 +36,15 @@ export default class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  // Reset the game
   resetGame() {
-    this.player = undefined;
     this.paused = false;
+    this.inProgress = false;
+    this.player = undefined;
     this.atomArmy.length = 0;
     this.score = 0;
-    this.inProgress = false;
+    this.clearCanvas();
   }
 
-  // Begin a new game
   newGame(e) {
     if (e.type === 'click') {
       this.canvas.removeEventListener('click', this.newGame);
@@ -59,12 +55,11 @@ export default class Game {
       this.inProgress = true;
 
       this.statUpdater = window.setInterval(this.updateStats, 100);
-      window.requestAnimationFrame(this.renderGame);
       window.setInterval(this.buildAtomArmy, 2000);
+      this.renderGame();
     }
   }
-  
-  // Draw on the canvas
+
   renderGame() {
     if (this.paused) {
       window.clearInterval(this.generateAtom)
@@ -76,12 +71,13 @@ export default class Game {
     this.checkCollisions();
     this.moveEntities();
 
-    console.log(this.player.health);
     if (this.player.isPlayerDefeated()) {
       this.gameOver();
     }
 
-    this.animationFrameId = window.requestAnimationFrame(this.renderGame);
+    if (this.inProgress) {
+      window.requestAnimationFrame(this.renderGame);
+    }
   }
 
   drawEntities() {
@@ -115,16 +111,13 @@ export default class Game {
     })
   }
 
-  // Do some cleanup when game ends
   gameOver() {
-    // debugger
     this.inProgress = false;
     this.atomArmy.length = 0;
     this.healthStat.innerHTML = this.player.health;
     window.removeEventListener('keydown', this.player.handleKeyPress);
     window.removeEventListener('keyup', this.player.handleKeyRelease);
     this.player = undefined;
-    window.cancelAnimationFrame(this.animationFrameId);
     window.clearInterval(this.buildAtomArmy);
     window.clearInterval(this.statUpdater);
   }
@@ -136,7 +129,6 @@ export default class Game {
   // as long as game isn't over keep animating
   // string interpolate the player's health
 
-  // Toggle pause
   togglePause() {
     this.paused = !this.paused;
     if (!this.paused) {
@@ -145,7 +137,6 @@ export default class Game {
     }
   }
 
-  // Update stats shown on screen
   updateStats() {
   this.healthStat.innerHTML = this.player.health;
   this.ammoStat.innerHTML = this.player.electrons;
