@@ -120,14 +120,21 @@ export default class Game {
     // debugger
     this.inProgress = false;
     this.atomArmy.length = 0;
+    this.healthStat.innerHTML = this.player.health;
     window.removeEventListener('keydown', this.player.handleKeyPress);
     window.removeEventListener('keyup', this.player.handleKeyRelease);
     this.player = undefined;
     window.cancelAnimationFrame(this.animationFrameId);
     window.clearInterval(this.buildAtomArmy);
-    this.healthStat.innerHTML = 0;
     window.clearInterval(this.statUpdater);
   }
+
+  // dont' have to remove the player's eventListeners so that if game resets don't have to re-add them
+  // if game over animate, else don't animate
+  // on game over run fn to game.gameoverscreen
+
+  // as long as game isn't over keep animating
+  // string interpolate the player's health
 
   // Toggle pause
   togglePause() {
