@@ -49,23 +49,30 @@ export default class Player {
   handleKeyPress(e) {
     e.preventDefault();
     console.log(e.key);
-    switch (e.key) {
-      case ('ArrowLeft' || 'Left'):
-        this.direction = -1;
-        break;
-      case ('ArrowRight' || 'Right'):
-        this.direction = 1;
-        break;
-      case 'z':
-        this.fireWeapon('ioniser');
-      default:
-        this.direction = 0;
+
+    if (e.key === 'ArrowLeft' || e.key === 'Left') {
+      this.direction = -1;
+    }
+    else if (e.key === 'ArrowRight' || e.key === 'Right') {
+      this.direction = 1;
+    }
+    else if (e.key === 'z') {
+      this.fireWeapon('ioniser');
+    }
+    else if (e.key === 'x') {
+      if (this.electrons > 0) {
+        this.fireWeapon('electron');
+        this.electrons--;
+      }
     }
   }
 
   handleKeyRelease(e) {
     e.preventDefault();
-    this.direction = 0;
+    const directionalKeys = ['ArrowLeft', 'Left', 'ArrowRight', 'Right'];
+    if (directionalKeys.includes(e.key)) {
+      this.direction = 0;
+    }
   }
 
   // I moved the point tracker to game.js so that this only cares about the player's stats
