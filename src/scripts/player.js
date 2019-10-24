@@ -1,3 +1,5 @@
+import Projectile from "./projectile";
+
 export default class Player {
   constructor(canvas, ctx) {
     this.canvas = canvas;
@@ -9,7 +11,6 @@ export default class Player {
     // debugger
 
     this.health = 100;
-    this.points = 0;
     this.electrons = 25;
     this.width = 10;
     this.height = 30;
@@ -17,17 +18,21 @@ export default class Player {
     this.positionY = canvas.height - this.height; // This should never change since the player is "grounded" 
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
     this.dX = 10;
+
+    this.projectiles = [];
     
     this.draw = this.draw.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleKeyRelease = this.handleKeyRelease.bind(this);
     this.changePlayerStats = this.changePlayerStats.bind(this);
+
+    this.fireWeapon = this.fireWeapon.bind(this);
   }
 
   draw() {
     this.ctx.beginPath();
     this.ctx.rect(this.positionX, this.positionY, this.width, this.height);
-    this.ctx.fillStyle = "black";
+    this.ctx.fillStyle = "white";
     this.ctx.fill();
     this.ctx.closePath();
   }
@@ -51,6 +56,8 @@ export default class Player {
       case ('ArrowRight' || 'Right'):
         this.direction = 1;
         break;
+      case 'z':
+        this.fireWeapon('ioniser');
       default:
         this.direction = 0;
     }
@@ -75,6 +82,20 @@ export default class Player {
         break;
       default:
         break;
+    }
+  }
+
+  fireWeapon(type) {
+    // centreOfPlayer = this.positionX + this.width / 2;
+    switch (type) {
+      case 'ioniser':
+        this.projectiles.push(new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY));
+        break;
+      case 'electron':
+        this.projectiles.push(new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY));
+        break;
+      default:
+        return;
     }
   }
 }

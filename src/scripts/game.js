@@ -10,9 +10,9 @@ export default class Game {
     this.inProgress = false; // Game is either running or not
     this.paused = false; // Game may be inProgress but paused
     this.score = 0;
-    this.animationFrameId = undefined;
 
     this.atomArmy = [];
+    this.projectiles = [];
     
     this.healthStat = document.getElementById('health-stat');
     this.ammoStat = document.getElementById('ammo-stat');
@@ -85,6 +85,9 @@ export default class Game {
     this.atomArmy.forEach((atom) => {
       atom.draw();
     });
+    this.player.projectiles.forEach((projectile) => {
+      projectile.draw();
+    })
   }
 
   checkCollisions() {
@@ -109,6 +112,12 @@ export default class Game {
       atom.positionX += atom.dX;
       atom.positionY += atom.dY;
     })
+    this.player.projectiles.forEach((projectile) => {
+      projectile.positionY += projectile.direction * projectile.dY;
+      if (projectile.outOfBounds()) {
+        this.player.projectiles.splice(this.player.projectiles.indexOf(projectile), 1);
+      }
+    })
   }
 
   gameOver() {
@@ -121,13 +130,6 @@ export default class Game {
     window.clearInterval(this.buildAtomArmy);
     window.clearInterval(this.statUpdater);
   }
-
-  // dont' have to remove the player's eventListeners so that if game resets don't have to re-add them
-  // if game over animate, else don't animate
-  // on game over run fn to game.gameoverscreen
-
-  // as long as game isn't over keep animating
-  // string interpolate the player's health
 
   togglePause() {
     this.paused = !this.paused;
@@ -151,4 +153,5 @@ export default class Game {
       this.atomArmy.push(generateAtom(this.canvas, this.ctx));
     }
   }
+
 }

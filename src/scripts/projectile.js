@@ -10,14 +10,14 @@ export default class Projectile {
     this.dX = 0;
     this.dY = 5;
 
-    this.initialDirection();
+    this.setDirection();
     this.identifyFoe();
 
     this.draw = this.draw.bind(this);
   }
 
-  initialDirection() {
-    this.direction = this.type === 'neutron' ? -1 : 1;
+  setDirection() {
+    this.direction = this.type === 'neutron' ? 1 : -1;
   }
 
   identifyFoe() {
@@ -33,4 +33,12 @@ export default class Projectile {
     this.ctx.stroke();
   }
 
+  outOfBounds() {
+    if (this.type === 'neutron') {
+      return this.positionY > this.canvas.height;
+    }
+    else {
+      return this.positionY < 0;
+    }
+  }
 }
