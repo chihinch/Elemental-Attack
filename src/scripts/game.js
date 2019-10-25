@@ -50,8 +50,8 @@ export default class Game {
       this.canvas.removeEventListener('click', this.newGame);
       this.resetGame();
       this.player = new Player(this.canvas, this.ctx);
-      window.addEventListener('keydown', this.player.handleKeyPress);
-      window.addEventListener('keyup', this.player.handleKeyRelease);
+      document.addEventListener('keydown', this.player.handleKeyPress);
+      document.addEventListener('keyup', this.player.handleKeyRelease);
       this.inProgress = true;
 
       this.statUpdater = window.setInterval(this.updateStats, 100);
@@ -71,7 +71,7 @@ export default class Game {
     this.checkCollisions();
     this.moveEntities();
 
-    if (this.player.isPlayerDefeated()) {
+    if (this.player.health === 0) {
       this.gameOver();
     }
 
@@ -124,8 +124,8 @@ export default class Game {
     this.inProgress = false;
     this.atomArmy.length = 0;
     this.healthStat.innerHTML = this.player.health;
-    window.removeEventListener('keydown', this.player.handleKeyPress);
-    window.removeEventListener('keyup', this.player.handleKeyRelease);
+    document.removeEventListener('keydown', this.player.handleKeyPress);
+    document.removeEventListener('keyup', this.player.handleKeyRelease);
     this.player = undefined;
     window.clearInterval(this.buildAtomArmy);
     window.clearInterval(this.statUpdater);
