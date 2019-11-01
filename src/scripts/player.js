@@ -1,4 +1,5 @@
 import Projectile from "./projectile";
+import Chemist from '../assets/images/chemist.png';
 
 export default class Player {
   constructor(canvas, ctx) {
@@ -7,7 +8,7 @@ export default class Player {
 
     // Attempting to decorate the player - holding off on it for now
     this.image = new Image();
-    // this.image.src = '../assets/images/chemist.png';
+    this.image.src = Chemist;
     // debugger
 
     this.health = 100;
@@ -33,7 +34,7 @@ export default class Player {
   draw() {
     this.ctx.beginPath();
     this.ctx.rect(this.positionX, this.positionY, this.width, this.height);
-    this.ctx.fillStyle = "white";
+    this.ctx.fillStyle = this.image;
     this.ctx.fill();
     this.ctx.closePath();
   }
