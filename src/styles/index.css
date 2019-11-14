@@ -89,6 +89,20 @@ body {
     height: 100%;
 }
 
+.help-button {
+    height: 30px;
+    width: 150px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.help-button:hover {
+    background-color: #94bbe9;
+    cursor: pointer;
+    color: white
+}
+
 #player-status {
     display: flex;
     flex-direction: column;
