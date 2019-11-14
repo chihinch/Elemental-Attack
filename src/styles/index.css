@@ -11,8 +11,8 @@ body {
 
 #app {
     margin: 0 auto;
-    width: 800px;
-    height: 600px;
+    width: inherit;
+    height: inherit;
     border: 1px solid;
     display: flex;
     flex-direction: column;
