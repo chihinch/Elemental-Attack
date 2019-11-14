@@ -1,5 +1,3 @@
-import { collisionCircleWall } from './collisionDetection';
-
 export default class Atom {
   constructor(canvas, ctx, cpkHexColor, symbol, atomicRadius, atomicMass, oxidationState) {
     this.canvas = canvas;
@@ -59,15 +57,15 @@ export default class Atom {
     this.ctx.closePath();
   }
 
-  damageAtom(weapon) {
+  damageAtom(projectile) {
     // The goal is to make currentOxidationState = oxidationState
 
     // Ionisers can only hit elements with positive oxidation states
-    if (weapon === 'ioniser' && this.oxidationState > 0) {
+    if (projectile === 'ioniser' && this.oxidationState > 0) {
       this.currentOxidationState = this.currentOxidationState - 1;
     } 
     // Electron guns can only hit elements with negative oxidation states
-    else if (weapon === 'electronGun' && this.oxidationState < 0) {
+    else if (projectile === 'electron' && this.oxidationState < 0) {
       this.currentOxidationState = this.currentOxidationState + 1;
     }
     // Ensure that currentOxidationState isn't changed otherwise

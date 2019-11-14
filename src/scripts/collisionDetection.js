@@ -12,11 +12,14 @@ export const collisionCircleWall = (canvas, circle) => {
 };
 
 export const collisionRectangleWall = (canvas, rectangle) => {
-  if (rectangle.positionX < 0) {
+  const displacement = rectangle.direction * rectangle.dX;
+  if (rectangle.positionX + displacement < 0) {
     rectangle.positionX = 0;
+    rectangle.direction = 0; // Ensures that the even if the player keeps pressing ArrowLeft the character doesn't go off-screen
   }
-  else if (rectangle.positionX + rectangle.width > canvas.width) {
+  else if (rectangle.positionX + rectangle.width + displacement > canvas.width) {
     rectangle.positionX = canvas.width - rectangle.width;
+    rectangle.direction = 0;
   }
 };
 
