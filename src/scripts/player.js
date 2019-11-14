@@ -45,11 +45,11 @@ export default class Player {
     console.log(e.key + 'keydown');
 
     if (e.key === 'ArrowLeft' || e.key === 'Left') {
-      // this.direction = -1;
+      this.direction = -1;
       this.directionalKey = 'left';
     }
     else if (e.key === 'ArrowRight' || e.key === 'Right') {
-      // this.direction = 1;
+      this.direction = 1;
       this.directionalKey = 'right';
     }
     else if (e.key === 'z') {
