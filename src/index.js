@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const webpage = document.getElementById('webpage');
   
   // Get the divs holding help screens and the periodic table
-  const gameDivs = document.getElementById('game').children;
+  const gameDivs = document.querySelectorAll('.help-screen, canvas');
 
   // Add event listeners to the help buttons
   const helpButtons = document.getElementsByClassName('help-button');
@@ -16,9 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
   // Get the canvas
   const canvas = document.querySelector('canvas');
   const ctx = canvas.getContext('2d');
-
-  // canvas.width = 800;
-  // canvas.height = 480;
 
   // Instantiate a new game
   const game = new Game(canvas, ctx);
@@ -98,14 +95,15 @@ window.addEventListener('DOMContentLoaded', () => {
   // Return to the game and resume
   function leaveHelpScreen() {
     for (let i = 0; i < gameDivs.length; i++) {
-      if (gameDivs[i].id === 'canvas') {
-        gameDivs[i].className = 'show';
+      const currentGameDiv = gameDivs[i];
+      if (currentGameDiv.id === 'canvas') {
+        currentGameDiv.className = 'show';
         if (game.inProgress && game.paused) {
           game.togglePause();
         }
       }
       else {
-        gameDivs[i].className = 'hide';
+        currentGameDiv.className = 'hide';
       }
     }
   }

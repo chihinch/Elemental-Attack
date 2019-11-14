@@ -65,7 +65,7 @@
         </div>
       </div>
 
-      <div id="game">
+      <!-- <div id="game"> -->
         <!-- Replace gameplay with game instructions -->
         <div id="instructions-screen" class="help-screen show">
           <h1>Atoms Demand Revenge!</h1>
@@ -96,23 +96,25 @@
         <!-- Replace gameplay with info about controls -->
         <div id="controls-screen" class="help-screen hide">
           <h1>Controls</h1>
-          <p>[←] or [→]: move player</p>
-          <p>[Z]: shoot ioniser</p>
-          <p>[X]: shoot electron gun</p>
-          <p>[esc]: return to game</p>
-          <p>[click] Periodic Table: pause game and show periodic table</p>
+          <p>[esc]: Return to game</p>
+          <p>[←] or [→]: Move player</p>
+          <p>[Z]: Fire your ioniser</p>
+          <p>[X]: Fire your electron gun</p>
+          <p>[A]: About the Game / Rules</p>
+          <p>[C]: Show Controls</p>
+          <p>[P]: Show the periodic table</p>
         </div>
 
         <!-- Replace gameplay with periodic table -->
         <div id="periodic-table" class="help-screen hide">
-          <h1>This would be the periodic table</h1>
+          <img src="./src/assets/images/periodic_table_oxidation.png" alt="Periodic Table with Oxidation States">
         </div>
 
         <!-- Canvas that holds the game -->
-        <div id="canvas" class="hide">
-          <canvas></canvas>
-        </div>
-      </div>
+        <!-- <div id="canvas" class="hide"> -->
+        <canvas id="canvas" class="hide"></canvas>
+        <!-- </div> -->
+      <!-- </div> -->
     </div>
   </div>
   <script src="./dist/main.js"></script>
