@@ -7,7 +7,7 @@
     border-right: 5px solid;
     border-bottom: 5px solid;
     padding: 10px;
-    height: inherit;
+    max-height: 500px;
 }
 
 .show h1 {
