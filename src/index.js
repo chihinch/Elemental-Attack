@@ -14,11 +14,11 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   // Get the canvas
-  const canvas = document.getElementById('canvas');
+  const canvas = document.querySelector('canvas');
   const ctx = canvas.getContext('2d');
 
-  canvas.width = 800;
-  canvas.height = 480;
+  // canvas.width = 800;
+  // canvas.height = 480;
 
   // Instantiate a new game
   const game = new Game(canvas, ctx);

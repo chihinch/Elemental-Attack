@@ -74,6 +74,12 @@ body {
     font-size: 18px;
 }
 
+#game-container {
+    /* background-image: url("../assets/images/atom_background.png") */
+    width: inherit;
+    height: inherit;
+}
+
 #game-header {
     width: inherit;
     height: 40px;
@@ -91,10 +97,20 @@ body {
 
 .help-button {
     height: 30px;
-    width: 150px;
-    font-size: 20px;
+    width: 80px;
+    font-size: 16px;
+    font-weight: bold;
+    color: inherit;
     border: none;
     border-radius: 5px;
+}
+
+#controls-button {
+    width: 100px;
+}
+
+#periodic-button {
+    width: 150px;
 }
 
 .help-button:hover {
@@ -114,6 +130,7 @@ body {
     display: flex;
     justify-content: space-around;
     text-align: center;
+    font-weight: bold;
 }
 
 #help {
@@ -128,9 +145,18 @@ body {
     border-left: 5px solid;
     border-right: 5px solid;
     border-bottom: 5px solid;
-    background-color: grey;
+}
+
+.help-screen {
+    padding: 20px;
+}
+
+#instructions-screen h1 {
+    margin: 0;
 }
 
 #canvas {
     background: transparent;
+    width: inherit;
+    height: inherit;
 }

@@ -16,13 +16,14 @@
 
 <body id="webpage">
   <div id="app">
-      <div id="navbar">
-        <div id="nav-logo">
-          <!-- Elemental Attack logo -->
-          <img src="./src/assets/images/logo.png" alt="Logo">
-        </div>
-        <div id="nav-links">
-          <h1>Created by Danny Chan</h1>
+    <div id="navbar">
+      <div id="nav-logo">
+        <!-- Elemental Attack logo -->
+        <img src="./src/assets/images/logo.png" alt="Logo">
+      </div>
+
+      <div id="nav-links">
+        <h1>Created by Danny Chan</h1>
         <!-- Links to GitHub, LinkedIn, personal site, contact info -->
         <a href="https://dannychan.dev" target="_blank" class="navlink">
           <i class="fas fa-user-circle"></i>
@@ -37,75 +38,83 @@
           <i class="fas fa-envelope"></i>
         </a>
       </div>
-    </div> 
-
-    <div id="game-header">
-      <div id="player-status" class="game-header-side">
-        <!-- Player's health and ammo displayed here -->
-        <div id="status-header">
-          <div>Health</div>
-          <div>Electrons</div>
-          <div>Points</div>
-        </div>
-        <div id=status-values>
-          <div id="health-stat"></div>
-          <div id="ammo-stat"></div>
-          <div id=point-stat></div>
-        </div>
-      </div>
-      <div id="help" class="game-header-side">
-        <!-- Buttons to activate modals for help button and periodic table -->
-        <button id="about-button" class="help-button">About</button>
-        <button id="controls-button" class="help-button">Controls</button>
-        <button id="periodic-button" class="help-button">Periodic Table</button>
-      </div>
     </div>
 
-    <div id="game">
-      <!-- Replace gameplay with game instructions -->
-      <div id="instructions-screen" class="hide">
-        <h1>Atoms Demand Revenge!</h1>
-        <p>
-          A bunch of atoms are displeased that you didn't pay attention in chemistry class, so a rogue faction has set out to teach you a (chemistry) lesson.
-        </p>
-        <p>
-          Atoms have a valence shell containing a certain amount of electrons. Defeat each atom by fulfilling the octet rule (i.e. give it 8 valence electrons).
-        </p>
-        <p>
-          Defend yourself with two weapons: an ioniser and an electron gun.
-        </p>
-        <p>
-          The ioniser uses the perfect amount of ionisation energy to remove one valence electron.
-        </p>
-        <p>
-          Shoot atoms with the electron gun to fill their valence shell. Careful: you have a limited amount of electrons, but each successful hit from the ioniser will refill the electron gun.
-        </p>
-        <p>
-          Atoms with positive oxidation states are immune to electrons. Atoms with negative oxidation states are immune to the ioniser.
-        </p>
-        <p>
-          (Hint: the oxidation state tells you how many electrons you must add or remove to defeat an atom.)
-        </p>
-        <h3>Press [esc] to return to game!</h3>
+    <div id="game-container">
+      <div id="game-header">
+        <div id="player-status" class="game-header-side">
+          <!-- Player's health and ammo displayed here -->
+          <div id="status-header">
+            <div>Health</div>
+            <div>Electrons</div>
+            <div>Points</div>
+          </div>
+
+          <div id=status-values>
+            <div id="health-stat"></div>
+            <div id="ammo-stat"></div>
+            <div id=point-stat></div>
+          </div>
+        </div>
+
+        <div id="help" class="game-header-side">
+          <!-- Buttons to activate modals for help button and periodic table -->
+          <button id="about-button" class="help-button">[A]bout</button>
+          <button id="controls-button" class="help-button">[C]ontrols</button>
+          <button id="periodic-button" class="help-button">Periodic [T]able</button>
+        </div>
       </div>
-      <!-- Replace gameplay with info about controls -->
-      <div id="controls-screen" class="hide">
-        <h1>Controls</h1>
-        <p>[←] or [→]: move player</p>
-        <p>[Z]: shoot ioniser</p>
-        <p>[X]: shoot electron gun</p>
-        <p>[esc]: return to game</p>
-        <p>[click] Periodic Table: pause game and show periodic table</p>
+
+      <div id="game">
+        <!-- Replace gameplay with game instructions -->
+        <div id="instructions-screen" class="help-screen show">
+          <h1>Atoms Demand Revenge!</h1>
+          <p>
+            A bunch of atoms are displeased that you didn't pay attention in chemistry class, so a rogue faction has set out to teach you a (chemistry) lesson.
+          </p>
+          <p>
+            Atoms have a valence shell containing a certain amount of electrons. Defeat each atom by fulfilling the octet rule (i.e. give it 8 valence electrons).
+          </p>
+          <p>
+            Defend yourself with two weapons: an ioniser and an electron gun.
+          </p>
+          <p>
+            The ioniser uses the perfect amount of ionisation energy to remove one valence electron.
+          </p>
+          <p>
+            Shoot atoms with the electron gun to fill their valence shell. Careful: you have a limited amount of electrons, but each successful hit from the ioniser will refill the electron gun.
+          </p>
+          <p>
+            Atoms with positive oxidation states are immune to electrons. Atoms with negative oxidation states are immune to the ioniser.
+          </p>
+          <p>
+            (Hint: the oxidation state tells you how many electrons you must add or remove to defeat an atom.)
+          </p>
+          <h3>Press [esc] to return to game!</h3>
+        </div>
+
+        <!-- Replace gameplay with info about controls -->
+        <div id="controls-screen" class="help-screen hide">
+          <h1>Controls</h1>
+          <p>[←] or [→]: move player</p>
+          <p>[Z]: shoot ioniser</p>
+          <p>[X]: shoot electron gun</p>
+          <p>[esc]: return to game</p>
+          <p>[click] Periodic Table: pause game and show periodic table</p>
+        </div>
+
+        <!-- Replace gameplay with periodic table -->
+        <div id="periodic-table" class="help-screen hide">
+          <h1>This would be the periodic table</h1>
+        </div>
+
+        <!-- Canvas that holds the game -->
+        <div id="canvas" class="hide">
+          <canvas></canvas>
+        </div>
       </div>
-      <!-- Replace gameplay with periodic table -->
-      <div id="periodic-table" class="hide">
-        <h1>This would be the periodic table</h1>
-      </div>
-      <!-- Canvas that holds the game -->
-      <canvas id="canvas" class="show"></canvas>
     </div>
   </div>
-
   <script src="./dist/main.js"></script>
 </body>
 
