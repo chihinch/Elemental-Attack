@@ -3,9 +3,10 @@
 }
 
 body {
-    background-color: lightblue;
-    color: green;
-    width: 100%;
+    background: rgb(174,238,180);
+    background: radial-gradient(circle, rgba(174,238,180,1) 0%, rgba(148,187,233,1) 100%);
+    color: darkslategray;
+    width: calc(100% - 10px);
     height: 100%;
 }
 
@@ -13,7 +14,6 @@ body {
     margin: 0 auto;
     width: inherit;
     height: inherit;
-    border: 1px solid;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -22,11 +22,12 @@ body {
 
 #navbar {
     width: 100%;
-    box-sizing: content-box;
     height: 40px;
-    border: 1px solid;
+    box-sizing: content-box;
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #nav-logo {
@@ -37,6 +38,11 @@ body {
     align-items: flex-end;
 }
 
+#nav-logo img {
+    width: inherit;
+    height: inherit;
+}
+
 #nav-logo h1 {
     margin: 0;
 }
@@ -44,7 +50,6 @@ body {
 #nav-links {
     width: 25%;
     height: 100%;
-    border: 1px solid;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -54,21 +59,27 @@ body {
     width: 36px;
     height: 36px;
     text-decoration: none;
-    color: grey;
+    color: darkslategray;
 }
 
 #nav-links a:hover {
-    color: darkblue;
+    color: grey;
 }
 
 #nav-links i {
     font-size: 36px;
 }
 
+#nav-links h1 {
+    font-size: 18px;
+}
+
 #game-header {
-    width: 800px;
+    width: inherit;
     height: 40px;
-    border: 1px solid;
+    border-top: 5px solid;
+    border-left: 5px solid;
+    border-right: 5px solid;
     display: flex;
     justify-content: space-between;
 }
@@ -76,7 +87,6 @@ body {
 .game-header-side {
     width: 35%;
     height: 100%;
-    border: 1px solid;
 }
 
 #player-status {
@@ -99,10 +109,11 @@ body {
 }
 
 #game {
-    width: 800px;
-    height: 480px;
-    border: 1px solid;
-    margin-bottom: 10px;
+    width: inherit;
+    height: 600px;
+    border-left: 5px solid;
+    border-right: 5px solid;
+    border-bottom: 5px solid;
     background-color: grey;
 }
 
