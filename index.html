@@ -39,21 +39,21 @@
 
     <div id="game-container">
       <div id="about" className="slideshow-container">
-        <div class="about-slide fade">
+        <div class="about-slide">
           <img src="./src/assets/images/aboutSlideshow/elementalAttackIntro.png">
         </div>
 
-        <div class="about-slide fade">
+        <div class="about-slide">
           <img src="./src/assets/images/aboutSlideshow/elementalAttackStory.png">
         </div>
 
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-        <div style="text-align:center">
+        
+        <div class="slideshow-navigation">
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <span class="dot" onclick="currentSlide(1)"></span>
           <span class="dot" onclick="currentSlide(2)"></span>
           <span class="dot" onclick="currentSlide(3)"></span>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
       </div>
     </div>
