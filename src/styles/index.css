@@ -1,4 +1,4 @@
-.hide {
+/* .hide {
     display: none;
 }
 
@@ -12,13 +12,13 @@
 
 .show h1 {
     margin: 0;
-}
+} */
 
 body {
     background: rgb(174,238,180);
     background: radial-gradient(circle, rgba(174,238,180,1) 0%, rgba(148,187,233,1) 100%);
     color: darkslategray;
-    width: calc(100% - 10px);
+    width: 100%;
     height: 100%;
 }
 
@@ -33,13 +33,12 @@ body {
 }
 
 #navbar {
-    width: 100%;
+    margin: 10px;
+    width: 1200px;
     height: 40px;
     box-sizing: content-box;
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 #nav-game-logo {
@@ -55,10 +54,6 @@ body {
     height: inherit;
 }
 
-#nav-logo h1 {
-    margin: 0;
-}
-
 #nav-links {
     width: 40%;
     height: 100%;
@@ -67,9 +62,14 @@ body {
     align-items: center;
 }
 
+#nav-links h1 {
+    font-size: 18px;
+}
+
 #nav-links a {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
+    font-size: 32px;
     text-decoration: none;
     color: darkslategray;
 }
@@ -78,26 +78,16 @@ body {
     color: grey;
 }
 
-#nav-links i {
-    font-size: 36px;
-}
-
-#nav-links h1 {
-    font-size: 18px;
-}
-
 #game-container {
-    /* background-image: url("../assets/images/atom_background.png") */
-    width: inherit;
-    height: 700px;
+    margin: 0 10px 10px 10px;
+    width: 1200px;
+    height: 800px;
+    border: 1px solid;
 }
 
 #game-header {
     width: inherit;
     height: 40px;
-    border-top: 5px solid;
-    border-left: 5px solid;
-    border-right: 5px solid;
     display: flex;
     justify-content: space-between;
 }
@@ -151,7 +141,7 @@ body {
     align-items: center;
 }
 
-#periodic-table.show {
+/* #periodic-table.show {
     display: flex;
     justify-content: center;
 }
@@ -172,4 +162,4 @@ canvas {
     border-left: 5px solid;
     border-right: 5px solid;
     border-bottom: 5px solid;
-}
+} */
