@@ -1,0 +1,53 @@
+        <!-- <div id="game"> -->
+          <!-- Replace gameplay with game instructions -->
+          <div id="instructions-screen" class="help-screen show">
+            <h1>Atoms Demand Revenge!</h1>
+            <p>
+              A bunch of atoms are displeased that you didn't pay attention in chemistry class, so a rogue faction has set out to teach you a (chemistry) lesson.
+            </p>
+            <p>
+              Atoms have a valence shell containing a certain amount of electrons. Defeat each atom by fulfilling the octet rule (i.e. give it 8 valence electrons).
+            </p>
+            <p>
+              Defend yourself with two weapons: an ioniser and an electron gun.
+            </p>
+            <p>
+              The ioniser uses the perfect amount of ionisation energy to remove one valence electron.
+            </p>
+            <p>
+              Shoot atoms with the electron gun to fill their valence shell. Careful: you have a limited amount of electrons, but each successful hit from the ioniser will refill the electron gun.
+            </p>
+            <p>
+              Atoms with positive oxidation states are immune to electrons. Atoms with negative oxidation states are immune to the ioniser.
+            </p>
+            <p>
+              (Hint: the oxidation state tells you how many electrons you must add or remove to defeat an atom.)
+            </p>
+            <h3>Press [esc] and click the screen to start!</h3>
+          </div>
+
+          <!-- Replace gameplay with info about controls -->
+          <div id="controls-screen" class="help-screen hide">
+            <h1>Controls</h1>
+            <p>[esc]: Return to game</p>
+            <p>[←] or [→]: Move player</p>
+            <p>[Z]: Fire your ioniser</p>
+            <p>[X]: Fire your electron gun</p>
+            <p>[A]: About the Game / Rules</p>
+            <p>[C]: Show Controls</p>
+            <p>[P]: Show the periodic table</p>
+          </div>
+
+          <!-- Replace gameplay with periodic table -->
+          <div id="periodic-table" class="help-screen hide">
+            <img src="./src/assets/images/periodic_table_oxidation.png" alt="Periodic Table with Oxidation States">
+          </div>
+
+          <!-- Canvas that holds the game -->
+          <!-- <div id="canvas" class="hide"> -->
+          <canvas id="canvas" class="hide"></canvas>
+          <!-- </div> -->
+        <!-- </div> -->
+      </div>
+    </div>
+    <!-- <script src="./dist/main.js"></script> -->

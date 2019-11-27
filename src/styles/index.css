@@ -42,7 +42,7 @@ body {
     margin-bottom: 10px;
 }
 
-#nav-logo {
+#nav-game-logo {
     width: 384px;
     height: 100%;
     display: flex;
@@ -50,7 +50,7 @@ body {
     align-items: flex-end;
 }
 
-#nav-logo img {
+#nav-game-logo img {
     width: inherit;
     height: inherit;
 }
@@ -60,7 +60,7 @@ body {
 }
 
 #nav-links {
-    width: 25%;
+    width: 40%;
     height: 100%;
     display: flex;
     justify-content: space-around;
