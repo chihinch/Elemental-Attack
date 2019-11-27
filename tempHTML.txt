@@ -51,3 +51,28 @@
       </div>
     </div>
     <!-- <script src="./dist/main.js"></script> -->
+
+
+
+      <!-- <div id="game-content-container">
+        <div id="game-header">
+          <div class="game-header-side" id="player-status">
+            <div id="status-header">
+              <div>Health</div>
+              <div>Electrons</div>
+              <div>Points</div>
+            </div>
+      
+            <div id=status-values>
+              <div id="health-stat"></div>
+              <div id="ammo-stat"></div>
+              <div id=point-stat></div>
+            </div>
+          </div>
+      
+          <div class="game-header-side" id="help">
+            <button id="about-button" class="help-button">[A]bout</button>
+            <button id="controls-button" class="help-button">[C]ontrols</button>
+            <button id="periodic-button" class="help-button">Periodic [T]able</button>
+          </div>
+        </div> -->
