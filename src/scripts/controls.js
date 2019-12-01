@@ -1,13 +1,21 @@
-const addKeydownListener = () => {
-  document.addEventListener('keydown', handleKeyDown);
+const addKeyDownListener = (game) => {
+  // document.addEventListener('keydown', handleKeyDown);
+  document.addEventListener('keydown', function() { 
+    handleKeyDown(game); 
+  });
 };
 
-const keyDownListener = (event) => {
-  switch (event.key) {
-    case " ":
-    default:
-      return;
-  }
+const handleKeyDown = (event, game) => {
+  // console.log(arguments);
+  console.log(event);
+  console.log(game);
+  // switch (event.key) {
+  //   case 'p':
+  //     console.log('p')
+  //     game.togglePause();
+  //   default:
+  //     return;
+  // }
 };
 
-export { addKeydownListener };
+export { addKeyDownListener, handleKeyDown };

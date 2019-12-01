@@ -2,6 +2,8 @@
 import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
+import { handleKeyDown } from './controls';
+
 export default class Game {
   constructor(canvas, ctx) {
     this.canvas = canvas;
@@ -37,9 +39,10 @@ export default class Game {
     const about = document.getElementById("about");
     const canvasContainer = document.getElementById("canvas-container");
     
-    document.removeEventListener("click", this.newGame)
     about.style.display = "none";
     canvasContainer.style.display = "block";
+
+    handleKeyDown();
 
     this.togglePause();
     this.renderGame();
@@ -69,7 +72,7 @@ export default class Game {
   drawEntities() {
     // this.player.draw();
     this.atomArmy.forEach((atom) => {
-      console.log(atom.radius);
+      // console.log(atom.radius);
       atom.draw();
     });
     // this.player.projectiles.forEach((projectile) => {
