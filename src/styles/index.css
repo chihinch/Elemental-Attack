@@ -123,7 +123,7 @@ body {
     border: 1px solid;
 }
 
-#game-header {
+/* #game-header {
     width: inherit;
     height: 40px;
     display: flex;
@@ -133,9 +133,9 @@ body {
 .game-header-side {
     width: 35%;
     height: 100%;
-}
+} */
 
-.help-button {
+/* .help-button {
     height: 30px;
     width: 80px;
     font-size: 16px;
@@ -151,10 +151,10 @@ body {
 
 #periodic-button {
     width: 150px;
-}
+} */
 
-.help-button:hover {
-    background-color: #94bbe9;
+/* .help-button:hover { */
+    /* background-color: #94bbe9;
     cursor: pointer;
     color: white
 }
@@ -171,9 +171,9 @@ body {
     justify-content: space-around;
     text-align: center;
     font-weight: bold;
-}
+} */
 
-#help {
+/* #help {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -182,7 +182,7 @@ body {
 #game-content-container {
     width: inherit;
     height: 560px;
-}
+} */
 
 .slideshow-container {
   width: inherit;
@@ -254,6 +254,10 @@ body {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+canvas {
+    width: 
 }
 
 /* #periodic-table.show {
