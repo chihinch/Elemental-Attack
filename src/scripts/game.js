@@ -2,7 +2,7 @@
 import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
-import { handleKeyDown } from './controls';
+// import { handleKeyDown } from './control';
 
 export default class Game {
   constructor(canvas, ctx) {
@@ -41,8 +41,6 @@ export default class Game {
     
     about.style.display = "none";
     canvasContainer.style.display = "block";
-
-    handleKeyDown();
 
     this.togglePause();
     this.renderGame();

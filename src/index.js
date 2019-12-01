@@ -1,8 +1,7 @@
 import Game from './scripts/game';
-import { addKeyDownListener } from './scripts/controls';
+import Control from './scripts/control';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const about = document.getElementById('about');
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
 
@@ -11,17 +10,6 @@ window.addEventListener('DOMContentLoaded', () => {
   
   // Instantiate a new game
   const game = new Game(canvas, ctx);
-  addKeyDownListener(game);
-  document.addEventListener("keydown", listenForSpace);
-
-  function listenForSpace(event) {
-    switch (event.key) {
-      case " ":
-        game.newGame();
-        break;
-      default:
-        return;
-    }
-  };
-
+  const gameControls = new Control(game);
+  gameControls.addKeyDownListener();
 });
