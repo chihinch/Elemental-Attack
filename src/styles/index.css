@@ -256,8 +256,14 @@ body {
   to {opacity: 1}
 }
 
+#canvas-container {
+    width: 1200px;
+    height: 600px;
+}
+
 canvas {
-    width: 
+    width: 1200px;
+    height: 600px;
 }
 
 /* #periodic-table.show {
