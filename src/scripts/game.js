@@ -69,6 +69,7 @@ export default class Game {
   drawEntities() {
     // this.player.draw();
     this.atomArmy.forEach((atom) => {
+      console.log(atom.radius);
       atom.draw();
     });
     // this.player.projectiles.forEach((projectile) => {
