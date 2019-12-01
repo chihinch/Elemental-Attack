@@ -1,19 +1,17 @@
 export default class Atom {
-  constructor(canvas, ctx, cpkHexColor, symbol, atomicRadius, atomicMass, oxidationState) {
+  constructor(canvas, ctx, cpkHexColor, symbol, atomicRadius, oxidationState) {
     this.canvas = canvas;
     this.ctx = ctx;
 
     this.cpkHexColor = cpkHexColor;
     this.symbol = symbol;
     this.atomicRadius = atomicRadius;
-    this.atomicMass = atomicMass;
     this.oxidationState = oxidationState;
-    this.currentOxidationState = 3;
+    this.currentOxidationState = oxidationState;
 
-    this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol)
+    this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol);
     this.radius = Math.sqrt(this.atomicRadius) * 2;
 
-    // Math.floor(Math.random() * (max - min + 1)) + min
     // Atom's initial position is a random position on the canvas
     // with a 100px boundary from all edges
     this.positionX = Math.floor(Math.random() * ((this.canvas.width - 100) - 100 + 1) + 100);

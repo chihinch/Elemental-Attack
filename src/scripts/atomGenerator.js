@@ -4,11 +4,8 @@ import Atom from './atom';
 
 export const generateAtom = (canvas, ctx) => {
   // Choose a random element between Hydrogen (1) and Uranium (92)
-  // Following MDN guide where formula for a random number =
-  // Math.floor(Math.random() * (max - min + 1)) + min
-  // where min = 1, max = 92
   const element = periodicTable.numbers[Math.floor(Math.random() * (92 - 1 + 1) + 1)];
-  // const element = periodicTable.numbers[54];
+
   let oxidationState;
 
   // Element has only one oxidation state
@@ -26,5 +23,5 @@ export const generateAtom = (canvas, ctx) => {
     }
   }
 
-  return new Atom(canvas, ctx, element.cpkHexColor, element.symbol, element.atomicRadius, element.atomicMass, oxidationState);
+  return new Atom(canvas, ctx, element.cpkHexColor, element.symbol, element.atomicRadius, oxidationState);
 }
