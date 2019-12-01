@@ -103,11 +103,15 @@ body {
 }
 
 #game-container {
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 40px);
+}
+
+#game-container-contents {
     width: 1200px;
     height: 600px;
-    border: 1px solid;
 }
 
 .slideshow-container {
