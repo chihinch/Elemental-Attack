@@ -105,6 +105,9 @@ export default class Player {
           this.electrons = 25;
         }
         break;
+      case 'points':
+        this.points = this.points + amount;
+        break;
       default:
         return;
     }
@@ -113,7 +116,6 @@ export default class Player {
   fireWeapon(type) {
     switch (type) {
       case 'ioniser':
-        // this.projectiles.push(new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY));
         this.projectiles[`ion-${Math.random()}`] = new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY);
         break;
       case 'electron':

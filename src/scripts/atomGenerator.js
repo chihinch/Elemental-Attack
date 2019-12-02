@@ -7,7 +7,7 @@ export const generateAtom = (canvas, ctx) => {
   const element = periodicTable.numbers[Math.floor(Math.random() * (92 - 1 + 1) + 1)];
   const oxidationState = chooseOxidationState(element);
 
-  return new Atom(canvas, ctx, element.cpkHexColor, element.symbol, element.atomicMass, element.atomicRadius, oxidationState);
+  return new Atom(canvas, ctx, element.cpkHexColor, element.atomicNumber, element.symbol, element.atomicMass, element.atomicRadius, oxidationState);
 }
 
 function chooseOxidationState(element) {

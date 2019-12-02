@@ -70,13 +70,16 @@ export default class Game {
       return;
     }
 
-    const atomArmy = Object.values(this.atomArmy);
-    const projectiles = Object.values(this.player.projectiles);
+    // const atomArmy = Object.values(this.atomArmy);
+    // const projectiles = Object.values(this.player.projectiles);
 
     this.clearCanvas();
-    this.drawEntities(atomArmy, projectiles);
-    this.checkCollisions(atomArmy, projectiles);
-    this.moveEntities(atomArmy, projectiles);
+    this.drawEntities();
+    this.checkCollisions();
+    this.moveEntities();
+    // this.drawEntities(atomArmy, projectiles);
+    // this.checkCollisions(atomArmy, projectiles);
+    // this.moveEntities(atomArmy, projectiles);
 
 
     if (this.player.health > 0) {
@@ -90,20 +93,23 @@ export default class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  drawEntities(atomArmy, projectiles) {
+  drawEntities() {
     this.player.draw();
 
-    atomArmy.forEach((atom) => {
+    Object.values(this.atomArmy).forEach((atom) => {
       atom.draw();
     });
 
-    projectiles.forEach((projectile) => {
+    Object.values(this.player.projectiles).forEach((projectile) => {
       projectile.draw();
     });
   }
 
-  checkCollisions(atomArmy, projectiles) {
+  checkCollisions() {
     collisionRectangleWall(this.canvas, this.player);
+
+    let atomArmy = Object.values(this.atomArmy);
+    let projectiles = Object.values(this.player.projectiles);
 
     atomArmy.forEach((atom) => {
       collisionCircleWall(this.canvas, atom);
@@ -118,6 +124,30 @@ export default class Game {
       // }
     });
 
+    let projectileAtomPairs = [];
+    if (projectiles.length > 0 && atomArmy.length > 0) {
+        for (let i = 0; i < projectiles.length; i++) {
+          for (let j = 0; j < atomArmy.length; j++) {
+            projectileAtomPairs.push([projectiles[i], atomArmy[j]]);
+          }
+      }
+
+      projectileAtomPairs.forEach((pair) => {
+        const projectile = pair[0];
+        const atom = pair[1];
+
+        if (collisionCircleCircle(projectile, atom)) {
+          delete this.player.projectiles[projectile.ref];
+          atom.damage(projectile.type);
+
+          if (atom.isAtomDefeated()) {
+            delete this.atomArmy[atom.ref];
+            this.player.changePlayerStats('points', atom.atomicNumber);
+          }
+        }
+      })
+    }
+
     let atomPairs = [];
     if (atomArmy.length > 1) {
       this.getPairs(atomArmy, 0, [], atomPairs);
@@ -129,17 +159,18 @@ export default class Game {
         }
       });
     }
+
   }
 
-  moveEntities(atomArmy, projectiles) {
+  moveEntities() {
     this.player.positionX += this.player.direction * this.player.dX;
 
-    atomArmy.forEach((atom) => {
+    Object.values(this.atomArmy).forEach((atom) => {
       atom.positionX += atom.dX;
       atom.positionY += atom.dY;
     })
 
-    projectiles.forEach((projectile) => {
+    Object.values(this.player.projectiles).forEach((projectile) => {
       projectile.positionY += projectile.direction * projectile.dY;
       if (projectile.outOfBounds()) {
         delete(this.player.projectiles[projectile.ref]);

@@ -1,9 +1,10 @@
 export default class Atom {
-  constructor(canvas, ctx, cpkHexColor, symbol, atomicMass, atomicRadius, oxidationState) {
+  constructor(canvas, ctx, cpkHexColor, atomicNumber, symbol, atomicMass, atomicRadius, oxidationState) {
     this.canvas = canvas;
     this.ctx = ctx;
 
     this.cpkHexColor = cpkHexColor;
+    this.atomicNumber = atomicNumber;
     this.symbol = symbol;
     this.mass = atomicMass;
     this.atomicRadius = atomicRadius;
