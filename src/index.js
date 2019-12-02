@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
   
   // Instantiate a new game
   const game = new Game(canvas, ctx);
-  const gameControls = new Control(game);
-  gameControls.addKeyDownListener();
-  gameControls.addKeyUpListener();
+  // const gameControls = new Control(game);
+  // gameControls.addKeyDownListener();
+  // gameControls.addKeyUpListener();
 });

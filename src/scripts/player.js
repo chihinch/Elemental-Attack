@@ -90,15 +90,6 @@ export default class Player {
     this.ctx.closePath();
   }
 
-  // handleKeyRelease(e) {
-  //   e.preventDefault();
-  //   console.log(e.key + 'keyup');
-  //   const directionalKeys = ['ArrowLeft', 'Left', 'ArrowRight', 'Right'];
-  //   if (directionalKeys.includes(e.key)) {
-  //     this.direction = 0;
-  //   }
-  // }
-
   changePlayerStats(stat, amount) {
     switch (stat) {
       case 'health':

@@ -42,7 +42,6 @@ export const collisionCircleRectangle = (circle, rectangle) => {
   if (dSquared <= (circle.radius ** 2)) {
     // Prevent atom from overlapping the player
     if (dSquared < (circle.radius ** 2)) {
-      // circle.positionX = closestX;
       circle.positionY = closestY - circle.radius;
     }
     circle.dX = -(circle.dX);

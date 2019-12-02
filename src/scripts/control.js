@@ -13,8 +13,13 @@ export default class Control {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
 
+  
   addKeyUpListener() {
     document.addEventListener('keyup', this.handleKeyUp);
+  }
+  
+  removeKeyUpListener() {
+    document.removeEventListener('keyup', this.handleKeyUp);
   }
 
   handleKeyDown(event) {

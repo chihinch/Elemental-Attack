@@ -1,12 +1,16 @@
 import Player from './player';
 import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
+import Control from './control';
 
 export default class Game {
   constructor(canvas, ctx) {
     this.canvas = canvas;
     this.ctx = ctx;
     this.paused = true;
+    this.control = new Control(this);
+    this.control.addKeyDownListener();
+    this.control.addKeyUpListener();
     
     this.player = new Player(canvas, ctx);
 
@@ -48,6 +52,10 @@ export default class Game {
   newGame() {
     this.togglePause();
     this.renderGame();
+  }
+
+  gameOver() {
+
   }
 
   renderGame() {
