@@ -62,6 +62,7 @@ export default class Game {
 
     if (this.player.health > 0) {
       this.player.drawHealth();
+      this.player.drawElectrons();
       this.player.drawScore();
     }
   }
@@ -76,7 +77,7 @@ export default class Game {
     this.atomArmy.forEach((atom) => {
       atom.draw();
     });
-    
+
     this.player.projectiles.forEach((projectile) => {
       projectile.draw();
     })

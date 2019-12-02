@@ -9,6 +9,7 @@ export default class Player {
     this.image.src = "/src/assets/images/chemist.png";
 
     this.health = 100;
+    this.electrons = 25;
     this.points = 0;
 
     this.width = 10;
@@ -35,7 +36,7 @@ export default class Player {
     this.ctx.beginPath();
     this.ctx.fillStyle = "#ffffff";
     this.ctx.font = "bold 24px Arial";
-    this.ctx.fillText("Health: ", 50, 50)
+    this.ctx.fillText("Health: ", 100, 50)
     this.ctx.fill();
     this.ctx.closePath();
 
@@ -47,7 +48,28 @@ export default class Player {
       this.ctx.fillStyle = "#a85732";
     }
     this.ctx.font = "bold 32px Arial";
-    this.ctx.fillText(this.health.toString(), 125, 50)
+    this.ctx.fillText(this.health.toString(), 250, 50)
+    this.ctx.fill();
+    this.ctx.closePath();
+  }
+
+  drawElectrons() {
+    this.ctx.beginPath();
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.font = "bold 24px Arial";
+    this.ctx.fillText("Electrons: ", 100, 100)
+    this.ctx.fill();
+    this.ctx.closePath();
+
+    this.ctx.beginPath();
+    if (this.electrons > 10) {
+      this.ctx.fillStyle = "#64a832";
+    }
+    else {
+      this.ctx.fillStyle = "#a85732";
+    }
+    this.ctx.font = "bold 32px Arial";
+    this.ctx.fillText(this.electrons.toString(), 250, 100)
     this.ctx.fill();
     this.ctx.closePath();
   }
@@ -56,14 +78,14 @@ export default class Player {
     this.ctx.beginPath();
     this.ctx.fillStyle = "#ffffff";
     this.ctx.font = "bold 24px Arial";
-    this.ctx.fillText("Score: ", 50, 100)
+    this.ctx.fillText("Score: ", 100, 150)
     this.ctx.fill();
     this.ctx.closePath();
 
     this.ctx.beginPath();
     this.ctx.fillStyle = "#64a832";
     this.ctx.font = "bold 32px Arial";
-    this.ctx.fillText(this.points.toString(), 125, 100)
+    this.ctx.fillText(this.points.toString(), 250, 150)
     this.ctx.fill();
     this.ctx.closePath();
   }
@@ -99,7 +121,13 @@ export default class Player {
         this.projectiles.push(new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY));
         break;
       case 'electron':
-        this.projectiles.push(new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY));
+        if (this.electrons <= 0) {
+          return;
+        }
+        else {
+          this.projectiles.push(new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY));
+          this.electrons--;
+        }
         break;
       default:
         return;
