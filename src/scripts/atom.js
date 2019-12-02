@@ -12,8 +12,7 @@ export default class Atom {
     this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol);
     this.radius = Math.ceil(Math.sqrt(this.atomicRadius) * 3);
 
-    // Atom's initial position is a random position on the canvas
-    // with a 100px boundary from all edges
+    // Atom's initial position is a random position on the canvas with a 100px boundary from all edges
     this.positionX = Math.floor(Math.random() * ((this.canvas.width - 100) - 100 + 1) + 100);
     this.positionY = Math.floor(Math.random() * ((this.canvas.height - 100) - 100 + 1) + 100);
 
@@ -27,6 +26,7 @@ export default class Atom {
 
   draw() {
     const fontSize = Math.floor(this.radius * 0.75);
+
     let oxidationStateDisplay;
     if (this.currentOxidationState > 0) {
       oxidationStateDisplay = '+' + this.currentOxidationState.toString();
@@ -34,9 +34,6 @@ export default class Atom {
     else if (this.currentOxidationState == 0) {
       oxidationStateDisplay = "";
     }
-    else if (this.currentOxidationState < 0) {
-      oxidationStateDisplay = '-' + this.currentOxidationState.toString();
-    } 
     else {
       oxidationStateDisplay = this.currentOxidationState.toString();
     }
@@ -51,10 +48,10 @@ export default class Atom {
     this.ctx.fillStyle = 'black';
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
-    this.ctx.font = `${fontSize}px Arial`;
+    this.ctx.font = `${fontSize}px Verdana`;
     this.ctx.fillText(this.symbol, this.positionX - (fontSize * 0.25), this.positionY, this.radius);
     this.ctx.beginPath();
-    this.ctx.font = `${fontSize * 0.6}px Arial`
+    this.ctx.font = `${fontSize * 0.6}px Verdana`
     this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
   }
@@ -76,9 +73,8 @@ export default class Atom {
     }
   }
 
-  // Atom is defeated if its current oxidation state = its assigned (target) oxidation state
   isAtomDefeated() {
-    return this.oxidationState === this.currentOxidationState;
+    return this.currentOxidationState === 0;
   }
 
 }
