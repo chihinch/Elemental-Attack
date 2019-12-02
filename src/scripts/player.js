@@ -6,10 +6,11 @@ export default class Player {
     this.ctx = ctx;
 
     this.image = new Image();
-    this.image.src = "src/assets/images/chemist.png";
+    this.image.src = "/src/assets/images/chemist.png";
 
     this.health = 100;
-    this.electrons = 25;
+    this.points = 0;
+
     this.width = 10;
     this.height = 30;
     this.positionX = (canvas.width - this.width) / 2; // Player starts at the canvas' centre
@@ -18,7 +19,7 @@ export default class Player {
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
     this.dX = 5;
 
-    // this.projectiles = [];
+    this.projectiles = [];
     
     // this.draw = this.draw.bind(this);
     // this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -29,7 +30,44 @@ export default class Player {
   }
 
   draw() {
-    this.ctx.drawImage(this.image, 80, 30, 110, 200, this.canvas.width / 2, this.canvas.height, 110, 200);
+    this.ctx.drawImage(this.image, 100, 100, 20, 20, this.canvas.width / 2, this.canvas.height, 20, 20);
+  }
+
+  drawHealth() {
+    this.ctx.beginPath();
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.font = "bold 24px Arial";
+    this.ctx.fillText("Health: ", 50, 50)
+    this.ctx.fill();
+    this.ctx.closePath();
+
+    this.ctx.beginPath();
+    if (this.health > 25) {
+      this.ctx.fillStyle = "#64a832";
+    }
+    else {
+      this.ctx.fillStyle = "#a85732";
+    }
+    this.ctx.font = "bold 32px Arial";
+    this.ctx.fillText(this.health.toString(), 125, 50)
+    this.ctx.fill();
+    this.ctx.closePath();
+  }
+
+  drawScore() {
+    this.ctx.beginPath();
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.font = "bold 24px Arial";
+    this.ctx.fillText("Score: ", 50, 100)
+    this.ctx.fill();
+    this.ctx.closePath();
+
+    this.ctx.beginPath();
+    this.ctx.fillStyle = "#64a832";
+    this.ctx.font = "bold 32px Arial";
+    this.ctx.fillText(this.points.toString(), 125, 100)
+    this.ctx.fill();
+    this.ctx.closePath();
   }
 
   // // Eventually add cases for using the weapons

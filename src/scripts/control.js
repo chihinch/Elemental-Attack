@@ -19,6 +19,13 @@ export default class Control {
         break;
       case 'p':
         this.game.togglePause();
+        break;
+      case 'z':
+        this.game.player.fireWeapon('ioniser');
+        break;
+      case 'x':
+        this.game.player.fireWeapon('electron');
+        break;
       default:
         return;
     }

@@ -43,20 +43,15 @@ export default class Game {
   }
 
   newGame() {
-    console.log("felsjkges registered");
-    
-    // const about = document.getElementById("about");
-    // const canvasContainer = document.getElementById("canvas-container");
-    
-    // about.style.display = "none";
-    // canvasContainer.style.display = "block";
-
     this.togglePause();
     this.renderGame();
   }
 
   renderGame() {
+    let animationRequest = window.requestAnimationFrame(this.renderGame);
+
     if (this.paused) {
+      cancelAnimationFrame(animationRequest);
       return;
     }
 
@@ -65,11 +60,10 @@ export default class Game {
     this.checkCollisions();
     this.moveEntities();
 
-    // if (this.player.health === 0) {
-    //   this.gameOver();
-    // }
-
-    window.requestAnimationFrame(this.renderGame);
+    if (this.player.health > 0) {
+      this.player.drawHealth();
+      this.player.drawScore();
+    }
   }
 
   clearCanvas() {
@@ -81,9 +75,9 @@ export default class Game {
     this.atomArmy.forEach((atom) => {
       atom.draw();
     });
-    // this.player.projectiles.forEach((projectile) => {
-    //   projectile.draw();
-    // })
+    this.player.projectiles.forEach((projectile) => {
+      projectile.draw();
+    })
   }
 
   checkCollisions() {
@@ -108,12 +102,12 @@ export default class Game {
       atom.positionX += atom.dX;
       atom.positionY += atom.dY;
     })
-    // this.player.projectiles.forEach((projectile) => {
-    //   projectile.positionY += projectile.direction * projectile.dY;
-    //   if (projectile.outOfBounds()) {
-    //     this.player.projectiles.splice(this.player.projectiles.indexOf(projectile), 1);
-    //   }
-    // })
+    this.player.projectiles.forEach((projectile) => {
+      projectile.positionY += projectile.direction * projectile.dY;
+      if (projectile.outOfBounds()) {
+        this.player.projectiles.splice(this.player.projectiles.indexOf(projectile), 1);
+      }
+    })
   }
 
   buildAtomArmy() {
