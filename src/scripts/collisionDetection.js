@@ -1,5 +1,7 @@
-function distanceSquared(x1, y1, x2, y2) {
-  return ((x1 - x2) ** 2) + ((y1 - y2) ** 2);
+function distance(x1, y1, x2, y2) {
+  const dx = x1 - x2;
+  const dy = y1 - y2;
+  return Math.sqrt(dx * dx + dy * dy);
 };
 
 export const collisionCircleWall = (canvas, circle) => {
@@ -24,22 +26,17 @@ export const collisionRectangleWall = (canvas, rectangle) => {
 };
 
 export const collisionCircleCircle = (circleA, circleB) => {
-  const dSquared = distanceSquared(circleA.positionX, circleA.positionY, circleB.positionX, circleB.positionY);
+  const d = distance(circleA.positionX, circleA.positionY, circleB.positionX, circleB.positionY);
 
-  if (dSquared < ((circleA.radius + circleB.radius) ** 2)) {
-    circleA.dX = -(circleA.dX);
-    circleA.dY = -(circleA.dY);
-    circleB.dX = -(circleB.dX);
-    circleB.dY = -(circleB.dY);
-  }
+  return circleA.radius + circleB.radius > d;
 };
 
 export const collisionCircleRectangle = (circle, rectangle) => {
   const closestX = Math.max(rectangle.positionX, Math.min(circle.positionX, rectangle.positionX + rectangle.width));
   const closestY = Math.max(rectangle.positionY, Math.min(circle.positionY, rectangle.positionY + rectangle.height));
-  const dSquared = distanceSquared(closestX, closestY, circle.positionX, circle.positionY);
+  const d = d(closestX, closestY, circle.positionX, circle.positionY);
 
-  if (dSquared <= (circle.radius ** 2)) {
+  if (d <= (circle.radius ** 2)) {
     // Prevent atom from overlapping the player
     if (dSquared < (circle.radius ** 2)) {
       circle.positionY = closestY - circle.radius;

@@ -123,7 +123,10 @@ export default class Game {
       this.getPairs(atomArmy, 0, [], atomPairs);
 
       atomPairs.forEach((pair) => {
-        collisionCircleCircle(pair[0], pair[1]);
+        if (collisionCircleCircle(pair[0], pair[1])) {
+          pair[0].reverseDirection();
+          pair[1].reverseDirection();
+        }
       });
     }
   }

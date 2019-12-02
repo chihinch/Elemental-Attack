@@ -23,6 +23,7 @@ export default class Atom {
     this.dY = -scaledRMS;
 
     this.draw = this.draw.bind(this);
+    this.reverseDirection = this.reverseDirection.bind(this);
   }
 
   draw() {
@@ -55,6 +56,11 @@ export default class Atom {
     this.ctx.font = `${fontSize * 0.6}px Verdana`
     this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
+  }
+
+  reverseDirection() {
+    this.dX = -(this.dX);
+    this.dY = -(this.dY);
   }
 
   damageAtom(projectile) {
