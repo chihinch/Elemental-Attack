@@ -13,8 +13,8 @@ export const generateAtom = (canvas, ctx) => {
   else {
     oxidationStateNums = element.oxidationStates.split(', ');
   }
-  
+
   const oxidationState = oxidationStateNums[Math.floor(Math.random() * oxidationStateNums.length)];
 
-  return new Atom(canvas, ctx, element.cpkHexColor, element.symbol, element.atomicRadius, oxidationState);
+  return new Atom(canvas, ctx, element.cpkHexColor, element.symbol, element.atomicMass, element.atomicRadius, oxidationState);
 }
