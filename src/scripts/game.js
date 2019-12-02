@@ -23,22 +23,31 @@ export default class Game {
   togglePause() {
     this.paused = !this.paused;
 
+    const about = document.getElementById("about");
+    const canvasContainer = document.getElementById("canvas-container");
+
+    
     if (this.paused) {
+      about.style.display = "block";
+      canvasContainer.style.display = "none";
       window.clearInterval(this.buildAtomArmy);
     }
     else {
+      about.style.display = "none";
+      canvasContainer.style.display = "block";
       window.setInterval(this.buildAtomArmy, 2000);
+      this.renderGame();
     }
   }
 
   newGame() {
     console.log("felsjkges registered");
     
-    const about = document.getElementById("about");
-    const canvasContainer = document.getElementById("canvas-container");
+    // const about = document.getElementById("about");
+    // const canvasContainer = document.getElementById("canvas-container");
     
-    about.style.display = "none";
-    canvasContainer.style.display = "block";
+    // about.style.display = "none";
+    // canvasContainer.style.display = "block";
 
     this.togglePause();
     this.renderGame();

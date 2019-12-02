@@ -33,6 +33,9 @@ export default class Atom {
     } 
     else if (this.currentOxidationState == 0) {
       oxidationStateDisplay = "";
+    }
+    else if (this.currentOxidationState < 0) {
+      oxidationStateDisplay = '-' + this.currentOxidationState.toString();
     } 
     else {
       oxidationStateDisplay = this.currentOxidationState.toString();

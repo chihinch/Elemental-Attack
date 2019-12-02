@@ -17,6 +17,8 @@ export default class Control {
       case ' ':
         this.game.newGame();
         break;
+      case 'p':
+        this.game.togglePause();
       default:
         return;
     }
