@@ -22,7 +22,7 @@ export default class Player {
 
     this.projectiles = [];
     
-    // this.changePlayerStats = this.changePlayerStats.bind(this);
+    this.changePlayerStats = this.changePlayerStats.bind(this);
   }
 
   draw() {
@@ -108,10 +108,13 @@ export default class Player {
         }
         break;
       case 'ammo':
+        if (this.electrons > 25) {
+          return;
+        }
         this.electrons = this.electrons + amount;
         break;
       default:
-        break;
+        return;
     }
   }
 

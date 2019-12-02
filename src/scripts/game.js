@@ -20,6 +20,7 @@ export default class Game {
     this.checkCollisions = this.checkCollisions.bind(this);
     this.moveEntities = this.moveEntities.bind(this);
     this.buildAtomArmy = this.buildAtomArmy.bind(this);
+    this.restoreAmmo = this.restoreAmmo.bind(this);
   }
 
   togglePause() {
@@ -33,11 +34,13 @@ export default class Game {
       about.style.display = "block";
       canvasContainer.style.display = "none";
       window.clearInterval(this.buildAtomArmy);
+      window.clearInterval(this.restoreAmmo);
     }
     else {
       about.style.display = "none";
       canvasContainer.style.display = "block";
       window.setInterval(this.buildAtomArmy, 2000);
+      window.setInterval(this.restoreAmmo, 5000);
       this.renderGame();
     }
   }
@@ -123,5 +126,9 @@ export default class Game {
       }
       this.atomArmy.push(generateAtom(this.canvas, this.ctx));
     }
+  }
+
+  restoreAmmo() {
+    this.player.changePlayerStats('ammo', 1);
   }
 }
