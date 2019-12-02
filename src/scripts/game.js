@@ -8,6 +8,7 @@ export default class Game {
     this.canvas = canvas;
     this.ctx = ctx;
     this.paused = true;
+
     this.control = new Control(this);
     this.control.addKeyDownListener();
     this.control.addKeyUpListener();
@@ -56,7 +57,8 @@ export default class Game {
   }
 
   gameOver() {
-
+    this.control.removeKeyDownListener();
+    this.control.removeKeyUpListener();
   }
 
   renderGame() {
@@ -68,11 +70,12 @@ export default class Game {
     }
 
     const atomArmy = Object.values(this.atomArmy);
+    const projectiles = Object.values(this.player.projectiles);
 
     this.clearCanvas();
-    this.drawEntities(atomArmy);
-    this.checkCollisions(atomArmy);
-    this.moveEntities(atomArmy);
+    this.drawEntities(atomArmy, projectiles);
+    this.checkCollisions(atomArmy, projectiles);
+    this.moveEntities(atomArmy, projectiles);
 
 
     if (this.player.health > 0) {
@@ -86,19 +89,19 @@ export default class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  drawEntities(atomArmy) {
+  drawEntities(atomArmy, projectiles) {
     this.player.draw();
 
     atomArmy.forEach((atom) => {
       atom.draw();
     });
 
-    this.player.projectiles.forEach((projectile) => {
+    projectiles.forEach((projectile) => {
       projectile.draw();
-    })
+    });
   }
 
-  checkCollisions(atomArmy) {
+  checkCollisions(atomArmy, projectiles) {
     collisionRectangleWall(this.canvas, this.player);
 
     atomArmy.forEach((atom) => {
@@ -115,7 +118,7 @@ export default class Game {
     });
   }
 
-  moveEntities(atomArmy) {
+  moveEntities(atomArmy, projectiles) {
     this.player.positionX += this.player.direction * this.player.dX;
 
     atomArmy.forEach((atom) => {
@@ -123,10 +126,10 @@ export default class Game {
       atom.positionY += atom.dY;
     })
 
-    this.player.projectiles.forEach((projectile) => {
+    projectiles.forEach((projectile) => {
       projectile.positionY += projectile.direction * projectile.dY;
       if (projectile.outOfBounds()) {
-        this.player.projectiles.splice(this.player.projectiles.indexOf(projectile), 1);
+        delete(this.player.projectiles[projectile.ref]);
       }
     })
   }

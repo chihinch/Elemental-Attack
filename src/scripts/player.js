@@ -5,12 +5,14 @@ export default class Player {
     this.canvas = canvas;
     this.ctx = ctx;
 
-    this.image = new Image();
-    this.image.src = "/src/assets/images/chemist.png";
-
     this.health = 100;
     this.electrons = 25;
     this.points = 0;
+
+    this.projectiles = {};
+
+    this.image = new Image();
+    this.image.src = "/src/assets/images/chemist.png";
 
     this.width = 10;
     this.height = 30;
@@ -20,7 +22,6 @@ export default class Player {
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
     this.dX = 5;
 
-    this.projectiles = [];
     
     this.changePlayerStats = this.changePlayerStats.bind(this);
   }
@@ -112,14 +113,15 @@ export default class Player {
   fireWeapon(type) {
     switch (type) {
       case 'ioniser':
-        this.projectiles.push(new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY));
+        // this.projectiles.push(new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY));
+        this.projectiles[`ion-${Math.random()}`] = new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY);
         break;
       case 'electron':
         if (this.electrons <= 0) {
           return;
         }
         else {
-          this.projectiles.push(new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY));
+          this.projectiles[`electron-${Math.random()}`] = new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY);
           this.electrons--;
         }
         break;
