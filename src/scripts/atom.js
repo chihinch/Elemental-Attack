@@ -16,10 +16,11 @@ export default class Atom {
     this.positionX = Math.floor(Math.random() * ((this.canvas.width - 100) - 100 + 1) + 100);
     this.positionY = Math.floor(Math.random() * ((this.canvas.height - 100) - 100 + 1) + 100);
 
-    // Root mean square speed of a gaseous atom at room temperature (298 K), divided by 100
-    const RMS = Math.floor(Math.sqrt(3 * 8.314 * 298 / (this.mass / 1000)) / 100);
-    this.dX = RMS;
-    this.dY = -RMS;
+    // Atom's speed based on root mean square speed of a gaseous atom at room temperature (298 K)
+    const RMS = Math.sqrt(3 * 8.314 * 298 / (this.mass / 1000));
+    const scaledRMS = Math.ceil((RMS / 1000) + 1);
+    this.dX = scaledRMS;
+    this.dY = -scaledRMS;
 
     this.draw = this.draw.bind(this);
   }
@@ -45,7 +46,7 @@ export default class Atom {
     this.ctx.fill();
     this.ctx.stroke();
     this.ctx.beginPath();
-    this.ctx.fillStyle = 'black';
+    this.ctx.fillStyle = '#42464d';
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
     this.ctx.font = `${fontSize}px Verdana`;

@@ -21,7 +21,7 @@ function chooseOxidationState(element) {
   }
 
   let oxidationState = oxidationStateNums[Math.floor(Math.random() * oxidationStateNums.length)];
-  while (oxidationState === 0 && !['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol)) {
+  while (oxidationState === 0 && !['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(element.symbol)) {
     oxidationState = oxidationStateNums[Math.floor(Math.random() * oxidationStateNums.length)];
   }
 
