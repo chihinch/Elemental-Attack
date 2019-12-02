@@ -1,4 +1,4 @@
-// import Player from './player';
+import Player from './player';
 import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
@@ -7,6 +7,8 @@ export default class Game {
     this.canvas = canvas;
     this.ctx = ctx;
     this.paused = true;
+    
+    this.player = new Player(canvas, ctx);
 
     this.atomArmy = [];
 
@@ -75,9 +77,8 @@ export default class Game {
   }
 
   drawEntities() {
-    // this.player.draw();
+    this.player.draw();
     this.atomArmy.forEach((atom) => {
-      // console.log(atom.radius);
       atom.draw();
     });
     // this.player.projectiles.forEach((projectile) => {

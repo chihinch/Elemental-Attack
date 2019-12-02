@@ -1,15 +1,12 @@
 import Projectile from "./projectile";
-import Chemist from '../assets/images/chemist.png';
 
 export default class Player {
   constructor(canvas, ctx) {
     this.canvas = canvas;
     this.ctx = ctx;
 
-    // Attempting to decorate the player - holding off on it for now
     this.image = new Image();
-    this.image.src = Chemist;
-    // debugger
+    this.image.src = "src/assets/images/chemist.png";
 
     this.health = 100;
     this.electrons = 25;
@@ -21,56 +18,52 @@ export default class Player {
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
     this.dX = 5;
 
-    this.projectiles = [];
+    // this.projectiles = [];
     
-    this.draw = this.draw.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleKeyRelease = this.handleKeyRelease.bind(this);
-    this.changePlayerStats = this.changePlayerStats.bind(this);
+    // this.draw = this.draw.bind(this);
+    // this.handleKeyPress = this.handleKeyPress.bind(this);
+    // this.handleKeyRelease = this.handleKeyRelease.bind(this);
+    // this.changePlayerStats = this.changePlayerStats.bind(this);
 
-    this.fireWeapon = this.fireWeapon.bind(this);
+    // this.fireWeapon = this.fireWeapon.bind(this);
   }
 
   draw() {
-    this.ctx.beginPath();
-    this.ctx.rect(this.positionX, this.positionY, this.width, this.height);
-    this.ctx.fillStyle = this.image;
-    this.ctx.fill();
-    this.ctx.closePath();
+    this.ctx.drawImage(this.image, 80, 30, 110, 200, this.canvas.width / 2, this.canvas.height, 110, 200);
   }
 
-  // Eventually add cases for using the weapons
-  handleKeyPress(e) {
-    e.preventDefault();
-    console.log(e.key + 'keydown');
+  // // Eventually add cases for using the weapons
+  // handleKeyPress(e) {
+  //   e.preventDefault();
+  //   console.log(e.key + 'keydown');
 
-    if (e.key === 'ArrowLeft' || e.key === 'Left') {
-      this.direction = -1;
-      this.directionalKey = 'left';
-    }
-    else if (e.key === 'ArrowRight' || e.key === 'Right') {
-      this.direction = 1;
-      this.directionalKey = 'right';
-    }
-    else if (e.key === 'z') {
-      this.fireWeapon('ioniser');
-    }
-    else if (e.key === 'x') {
-      if (this.electrons > 0) {
-        this.fireWeapon('electron');
-        this.electrons--;
-      }
-    }
-  }
+  //   if (e.key === 'ArrowLeft' || e.key === 'Left') {
+  //     this.direction = -1;
+  //     this.directionalKey = 'left';
+  //   }
+  //   else if (e.key === 'ArrowRight' || e.key === 'Right') {
+  //     this.direction = 1;
+  //     this.directionalKey = 'right';
+  //   }
+  //   else if (e.key === 'z') {
+  //     this.fireWeapon('ioniser');
+  //   }
+  //   else if (e.key === 'x') {
+  //     if (this.electrons > 0) {
+  //       this.fireWeapon('electron');
+  //       this.electrons--;
+  //     }
+  //   }
+  // }
 
-  handleKeyRelease(e) {
-    e.preventDefault();
-    console.log(e.key + 'keyup');
-    const directionalKeys = ['ArrowLeft', 'Left', 'ArrowRight', 'Right'];
-    if (directionalKeys.includes(e.key)) {
-      this.direction = 0;
-    }
-  }
+  // handleKeyRelease(e) {
+  //   e.preventDefault();
+  //   console.log(e.key + 'keyup');
+  //   const directionalKeys = ['ArrowLeft', 'Left', 'ArrowRight', 'Right'];
+  //   if (directionalKeys.includes(e.key)) {
+  //     this.direction = 0;
+  //   }
+  // }
 
   // I moved the point tracker to game.js so that this only cares about the player's stats
   changePlayerStats(stat, amount) {
