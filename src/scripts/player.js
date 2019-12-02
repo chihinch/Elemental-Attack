@@ -27,10 +27,13 @@ export default class Player {
   }
 
   draw() {
-    this.ctx.beginPath();
-    this.ctx.rect(this.positionX, this.positionY, this.width, this.height);
-    this.ctx.stroke();
+    // this.ctx.beginPath();
+    // this.ctx.rect(this.positionX, this.positionY, this.width, this.height);
+    // this.ctx.stroke();
     // this.ctx.drawImage(this.image, 100, 100, 20, 20, this.canvas.width / 2, this.canvas.height, 20, 20);
+    this.ctx.drawImage(this.image, 100, 100);
+    // this.ctx.drawImage(this.image, 100, 100, 20, 20, this.canvas.width / 2, this.canvas.height);
+    // debugger
   }
 
   drawHealth() {

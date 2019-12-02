@@ -70,17 +70,10 @@ export default class Game {
       return;
     }
 
-    // const atomArmy = Object.values(this.atomArmy);
-    // const projectiles = Object.values(this.player.projectiles);
-
     this.clearCanvas();
     this.drawEntities();
     this.checkCollisions();
     this.moveEntities();
-    // this.drawEntities(atomArmy, projectiles);
-    // this.checkCollisions(atomArmy, projectiles);
-    // this.moveEntities(atomArmy, projectiles);
-
 
     if (this.player.health > 0) {
       this.player.drawHealth();
@@ -137,8 +130,10 @@ export default class Game {
         const atom = pair[1];
 
         if (collisionCircleCircle(projectile, atom)) {
-          delete this.player.projectiles[projectile.ref];
-          atom.damage(projectile.type);
+          if (!atom.nobleGas) {
+            delete this.player.projectiles[projectile.ref];
+            atom.damage(projectile.type);
+          }
 
           if (atom.isAtomDefeated()) {
             delete this.atomArmy[atom.ref];
