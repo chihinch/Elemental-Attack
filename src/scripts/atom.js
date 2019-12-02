@@ -68,27 +68,12 @@ export default class Atom {
   }
 
   damage(projectile) {
-    // // The goal is to make currentOxidationState = oxidationState
-
-    // // Ionisers can only hit elements with positive oxidation states
-    // if (projectile === 'ioniser' && this.oxidationState > 0) {
-    //   this.currentOxidationState = this.currentOxidationState - 1;
-    // } 
-    // // Electron guns can only hit elements with negative oxidation states
-    // else if (projectile === 'electron' && this.oxidationState < 0) {
-    //   this.currentOxidationState = this.currentOxidationState + 1;
-    // }
-    // // Ensure that currentOxidationState isn't changed otherwise
-    // else {
-    //   this.currentOxidationState = this.currentOxidationState + 0;
-    // }
-
     switch (projectile) {
       case 'ioniser':
-        this.currentOxidationState--;
+        this.currentOxidationState++;
         break;
       case 'electron':
-        this.currentOxidationState++;
+        this.currentOxidationState--;
         break;
       default:
         return;
