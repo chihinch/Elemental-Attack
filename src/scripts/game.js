@@ -2,8 +2,6 @@
 import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
-// import { handleKeyDown } from './control';
-
 export default class Game {
   constructor(canvas, ctx) {
     this.canvas = canvas;
