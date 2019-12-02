@@ -65,16 +65,8 @@ body {
 }
 
 #nav-game-logo {
-  width: 384px;
+  width: 250px;
   height: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-#nav-game-logo img {
-  width: inherit;
-  height: inherit;
 }
 
 #nav-links {
