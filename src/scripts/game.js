@@ -72,16 +72,19 @@ export default class Game {
 
   drawEntities() {
     this.player.draw();
+
     this.atomArmy.forEach((atom) => {
       atom.draw();
     });
+    
     this.player.projectiles.forEach((projectile) => {
       projectile.draw();
     })
   }
 
   checkCollisions() {
-    // collisionRectangleWall(this.canvas, this.player);
+    collisionRectangleWall(this.canvas, this.player);
+
     this.atomArmy.forEach((atom) => {
       collisionCircleWall(this.canvas, atom);
       // if (collisionCircleRectangle(atom, this.player)) {
@@ -97,11 +100,13 @@ export default class Game {
   }
 
   moveEntities() {
-    // this.player.positionX += this.player.direction * this.player.dX;
+    this.player.positionX += this.player.direction * this.player.dX;
+
     this.atomArmy.forEach((atom) => {
       atom.positionX += atom.dX;
       atom.positionY += atom.dY;
     })
+
     this.player.projectiles.forEach((projectile) => {
       projectile.positionY += projectile.direction * projectile.dY;
       if (projectile.outOfBounds()) {

@@ -26,6 +26,18 @@ export default class Control {
       case 'x':
         this.game.player.fireWeapon('electron');
         break;
+      case 'ArrowLeft':
+        this.game.player.direction = -1;
+        break;
+      case 'Left':
+        this.game.player.direction = -1;
+        break;
+      case 'ArrowRight':
+        this.game.player.direction = 1;
+        break;
+      case 'Right':
+        this.game.player.direction = 1;
+        break;
       default:
         return;
     }

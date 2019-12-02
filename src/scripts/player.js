@@ -21,16 +21,14 @@ export default class Player {
 
     this.projectiles = [];
     
-    // this.draw = this.draw.bind(this);
-    // this.handleKeyPress = this.handleKeyPress.bind(this);
-    // this.handleKeyRelease = this.handleKeyRelease.bind(this);
     // this.changePlayerStats = this.changePlayerStats.bind(this);
-
-    // this.fireWeapon = this.fireWeapon.bind(this);
   }
 
   draw() {
-    this.ctx.drawImage(this.image, 100, 100, 20, 20, this.canvas.width / 2, this.canvas.height, 20, 20);
+    this.ctx.beginPath();
+    this.ctx.rect(this.positionX, this.positionY, this.width, this.height);
+    this.ctx.stroke();
+    // this.ctx.drawImage(this.image, 100, 100, 20, 20, this.canvas.width / 2, this.canvas.height, 20, 20);
   }
 
   drawHealth() {
@@ -70,30 +68,6 @@ export default class Player {
     this.ctx.closePath();
   }
 
-  // // Eventually add cases for using the weapons
-  // handleKeyPress(e) {
-  //   e.preventDefault();
-  //   console.log(e.key + 'keydown');
-
-  //   if (e.key === 'ArrowLeft' || e.key === 'Left') {
-  //     this.direction = -1;
-  //     this.directionalKey = 'left';
-  //   }
-  //   else if (e.key === 'ArrowRight' || e.key === 'Right') {
-  //     this.direction = 1;
-  //     this.directionalKey = 'right';
-  //   }
-  //   else if (e.key === 'z') {
-  //     this.fireWeapon('ioniser');
-  //   }
-  //   else if (e.key === 'x') {
-  //     if (this.electrons > 0) {
-  //       this.fireWeapon('electron');
-  //       this.electrons--;
-  //     }
-  //   }
-  // }
-
   // handleKeyRelease(e) {
   //   e.preventDefault();
   //   console.log(e.key + 'keyup');
@@ -103,7 +77,6 @@ export default class Player {
   //   }
   // }
 
-  // I moved the point tracker to game.js so that this only cares about the player's stats
   changePlayerStats(stat, amount) {
     switch (stat) {
       case 'health':
