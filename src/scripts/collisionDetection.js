@@ -24,12 +24,12 @@ export const collisionRectangleWall = (canvas, rectangle) => {
 };
 
 export const collisionCircleCircle = (circleA, circleB) => {
-  const dSquared = distanceSquared(cirlceA.positionX, circleA.positionY, circleB.positionX, circleB.positionY);
+  const dSquared = distanceSquared(circleA.positionX, circleA.positionY, circleB.positionX, circleB.positionY);
 
   if (dSquared < ((circleA.radius + circleB.radius) ** 2)) {
     circleA.dX = -(circleA.dX);
     circleA.dY = -(circleA.dY);
-    circleB.dX = -(cirlceB.dX);
+    circleB.dX = -(circleB.dX);
     circleB.dY = -(circleB.dY);
   }
 };

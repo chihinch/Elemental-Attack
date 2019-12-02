@@ -1,5 +1,5 @@
 import Player from './player';
-import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle } from './collisionDetection';
+import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle, collisionCircleCircle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 import Control from './control';
 
@@ -27,6 +27,7 @@ export default class Game {
     this.moveEntities = this.moveEntities.bind(this);
     this.buildAtomArmy = this.buildAtomArmy.bind(this);
     this.restoreAmmo = this.restoreAmmo.bind(this);
+    this.getPairs = this.getPairs.bind(this);
   }
 
   togglePause() {
@@ -116,6 +117,15 @@ export default class Game {
       //   }
       // }
     });
+
+    let atomPairs = [];
+    if (atomArmy.length > 1) {
+      this.getPairs(atomArmy, 0, [], atomPairs);
+
+      atomPairs.forEach((pair) => {
+        collisionCircleCircle(pair[0], pair[1]);
+      });
+    }
   }
 
   moveEntities(atomArmy, projectiles) {
@@ -146,5 +156,16 @@ export default class Game {
 
   restoreAmmo() {
     this.player.changePlayerStats('ammo', 1);
+  }
+
+  getPairs(array, startIdx, currCombo, output) {
+    if (currCombo.length >= 2) {
+      output.push(currCombo);
+    }
+    else {
+      for (let i = startIdx; i < array.length; i++) {
+        this.getPairs(array, i + 1, currCombo.concat(array[i]), output);
+      }
+    }
   }
 }
