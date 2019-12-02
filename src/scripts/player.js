@@ -108,10 +108,10 @@ export default class Player {
         }
         break;
       case 'ammo':
-        if (this.electrons > 25) {
-          return;
-        }
         this.electrons = this.electrons + amount;
+        if (this.electrons > 25) {
+          this.electrons = 25;
+        }
         break;
       default:
         return;

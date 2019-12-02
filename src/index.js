@@ -12,4 +12,5 @@ window.addEventListener('DOMContentLoaded', () => {
   const game = new Game(canvas, ctx);
   const gameControls = new Control(game);
   gameControls.addKeyDownListener();
+  gameControls.addKeyUpListener();
 });

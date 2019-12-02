@@ -2,6 +2,7 @@ export default class Control {
   constructor(game) {
     this.game = game;
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this); 
   }
 
   addKeyDownListener() {
@@ -10,6 +11,10 @@ export default class Control {
 
   removeKeyDownListener() {
     document.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  addKeyUpListener() {
+    document.addEventListener('keyup', this.handleKeyUp);
   }
 
   handleKeyDown(event) {
@@ -37,6 +42,25 @@ export default class Control {
         break;
       case 'Right':
         this.game.player.direction = 1;
+        break;
+      default:
+        return;
+    }
+  }
+
+  handleKeyUp(event) {
+    switch(event.key) {
+      case 'ArrowLeft':
+        this.game.player.direction = 0;
+        break;
+      case 'Left':
+        this.game.player.direction = 0;
+        break;
+      case 'ArrowRight':
+        this.game.player.direction = 0;
+        break;
+      case 'Right':
+        this.game.player.direction = 0;
         break;
       default:
         return;
