@@ -14,7 +14,8 @@ export default class Game {
     
     this.player = new Player(canvas, ctx);
 
-    this.atomArmy = [];
+    this.atomArmy = {};
+    this.atomCount = 0;
 
     this.togglePause = this.togglePause.bind(this);
     this.newGame = this.newGame.bind(this);
@@ -66,10 +67,13 @@ export default class Game {
       return;
     }
 
+    const atomArmy = Object.values(this.atomArmy);
+
     this.clearCanvas();
-    this.drawEntities();
-    this.checkCollisions();
-    this.moveEntities();
+    this.drawEntities(atomArmy);
+    this.checkCollisions(atomArmy);
+    this.moveEntities(atomArmy);
+
 
     if (this.player.health > 0) {
       this.player.drawHealth();
@@ -82,10 +86,10 @@ export default class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  drawEntities() {
+  drawEntities(atomArmy) {
     this.player.draw();
 
-    this.atomArmy.forEach((atom) => {
+    atomArmy.forEach((atom) => {
       atom.draw();
     });
 
@@ -94,10 +98,10 @@ export default class Game {
     })
   }
 
-  checkCollisions() {
+  checkCollisions(atomArmy) {
     collisionRectangleWall(this.canvas, this.player);
 
-    this.atomArmy.forEach((atom) => {
+    atomArmy.forEach((atom) => {
       collisionCircleWall(this.canvas, atom);
       // if (collisionCircleRectangle(atom, this.player)) {
       //   if (atom.nobleGas) {
@@ -111,10 +115,10 @@ export default class Game {
     });
   }
 
-  moveEntities() {
+  moveEntities(atomArmy) {
     this.player.positionX += this.player.direction * this.player.dX;
 
-    this.atomArmy.forEach((atom) => {
+    atomArmy.forEach((atom) => {
       atom.positionX += atom.dX;
       atom.positionY += atom.dY;
     })
@@ -129,10 +133,11 @@ export default class Game {
 
   buildAtomArmy() {
     if (!this.paused) {
-      if (this.atomArmy.length >= 10) {
+      if (this.atomCount >= 10) {
         return;
       }
-      this.atomArmy.push(generateAtom(this.canvas, this.ctx));
+      this.atomArmy[`atom-${this.atomCount}`] = generateAtom(this.canvas, this.ctx);
+      this.atomCount += 1;
     }
   }
 
