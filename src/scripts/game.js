@@ -138,7 +138,6 @@ export default class Game {
 
         if (collisionCircleCircle(projectile, atom)) {
           delete this.player.projectiles[projectile.ref];
-          // debugger
           atom.damage(projectile.type);
 
           if (atom.isAtomDefeated()) {
@@ -188,7 +187,6 @@ export default class Game {
       const newAtom = generateAtom(this.canvas, this.ctx);
       this.atomArmy[newAtom.ref] = newAtom;
       this.atomCount += 1;
-      // debugger
     }
   }
 
