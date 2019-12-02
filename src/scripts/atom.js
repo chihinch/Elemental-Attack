@@ -24,6 +24,7 @@ export default class Atom {
 
     this.draw = this.draw.bind(this);
     this.reverseDirection = this.reverseDirection.bind(this);
+    this.damage = this.damage.bind(this);
   }
 
   draw() {
@@ -63,20 +64,31 @@ export default class Atom {
     this.dY = -(this.dY);
   }
 
-  damageAtom(projectile) {
-    // The goal is to make currentOxidationState = oxidationState
+  damage(projectile) {
+    // // The goal is to make currentOxidationState = oxidationState
 
-    // Ionisers can only hit elements with positive oxidation states
-    if (projectile === 'ioniser' && this.oxidationState > 0) {
-      this.currentOxidationState = this.currentOxidationState - 1;
-    } 
-    // Electron guns can only hit elements with negative oxidation states
-    else if (projectile === 'electron' && this.oxidationState < 0) {
-      this.currentOxidationState = this.currentOxidationState + 1;
-    }
-    // Ensure that currentOxidationState isn't changed otherwise
-    else {
-      this.currentOxidationState = this.currentOxidationState + 0;
+    // // Ionisers can only hit elements with positive oxidation states
+    // if (projectile === 'ioniser' && this.oxidationState > 0) {
+    //   this.currentOxidationState = this.currentOxidationState - 1;
+    // } 
+    // // Electron guns can only hit elements with negative oxidation states
+    // else if (projectile === 'electron' && this.oxidationState < 0) {
+    //   this.currentOxidationState = this.currentOxidationState + 1;
+    // }
+    // // Ensure that currentOxidationState isn't changed otherwise
+    // else {
+    //   this.currentOxidationState = this.currentOxidationState + 0;
+    // }
+
+    switch (projectile) {
+      case 'ioniser':
+        this.currentOxidationState--;
+        break;
+      case 'electron':
+        this.currentOxidationState++;
+        break;
+      default:
+        return;
     }
   }
 

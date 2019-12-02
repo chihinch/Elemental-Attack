@@ -1,5 +1,4 @@
 import Game from './scripts/game';
-import Control from './scripts/control';
 
 window.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('canvas');
