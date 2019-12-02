@@ -2,6 +2,9 @@ export default class Projectile {
   constructor(canvas, ctx, type, color, radius, positionX, positionY) {
     this.canvas = canvas;
     this.ctx = ctx;
+
+    this.ref = `${type}-${Math.random()}`;
+
     this.type = type;
     this.color = color;
     this.radius = radius;

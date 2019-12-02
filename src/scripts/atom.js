@@ -3,6 +3,8 @@ export default class Atom {
     this.canvas = canvas;
     this.ctx = ctx;
 
+    this.ref = `atom-${Math.random()}`;
+
     this.cpkHexColor = cpkHexColor;
     this.atomicNumber = atomicNumber;
     this.symbol = symbol;

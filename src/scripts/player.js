@@ -116,14 +116,18 @@ export default class Player {
   fireWeapon(type) {
     switch (type) {
       case 'ioniser':
-        this.projectiles[`ion-${Math.random()}`] = new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY);
+        // this.projectiles[`ion-${Math.random()}`] = new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY);
+        const newIoniser = new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY);
+        this.projectiles[newIoniser.ref] = newIoniser;
         break;
       case 'electron':
         if (this.electrons <= 0) {
           return;
         }
         else {
-          this.projectiles[`electron-${Math.random()}`] = new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY);
+          // this.projectiles[`electron-${Math.random()}`] = new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY);
+          const newElectron = new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY);
+          this.projectiles[newElectron.ref] = newElectron;
           this.electrons--;
         }
         break;
