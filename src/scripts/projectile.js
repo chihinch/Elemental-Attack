@@ -29,10 +29,10 @@ export default class Projectile {
 
   draw() {
     this.ctx.beginPath();
-    this.ctx.strokeStyle = this.color;
-    this.ctx.fillStyle = this.color;
-    this.ctx.arc(this.positionX, this.positionY, this.radius, 0, 2 * Math.PI, true);
-    this.ctx.fill();
+      this.ctx.strokeStyle = this.color;
+      this.ctx.fillStyle = this.color;
+      this.ctx.arc(this.positionX, this.positionY, this.radius, 0, 2 * Math.PI, true);
+      this.ctx.fill();
     this.ctx.stroke();
   }
 

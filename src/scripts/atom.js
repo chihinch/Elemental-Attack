@@ -45,20 +45,22 @@ export default class Atom {
     }
 
     this.ctx.beginPath();
-    this.ctx.strokeStyle = this.cpkHexColor;
-    this.ctx.fillStyle = this.cpkHexColor;
-    this.ctx.arc(this.positionX, this.positionY, this.radius, 0, 2 * Math.PI, true);
-    this.ctx.fill();
+      this.ctx.strokeStyle = this.cpkHexColor;
+      this.ctx.fillStyle = this.cpkHexColor;
+      this.ctx.arc(this.positionX, this.positionY, this.radius, 0, 2 * Math.PI, true);
+      this.ctx.fill();
     this.ctx.stroke();
+
     this.ctx.beginPath();
-    this.ctx.fillStyle = '#42464d';
-    this.ctx.textAlign = 'center';
-    this.ctx.textBaseline = 'middle';
-    this.ctx.font = `${fontSize}px Verdana`;
+      this.ctx.fillStyle = '#42464d';
+      this.ctx.textAlign = 'center';
+      this.ctx.textBaseline = 'middle';
+      this.ctx.font = `${fontSize}px Verdana`;
     this.ctx.fillText(this.symbol, this.positionX - (fontSize * 0.25), this.positionY, this.radius);
+
     this.ctx.beginPath();
-    this.ctx.font = `${fontSize * 0.6}px Verdana`
-    this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
+      this.ctx.font = `${fontSize * 0.6}px Verdana`
+      this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
   }
 

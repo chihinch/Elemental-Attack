@@ -12,7 +12,7 @@ export default class Player {
     this.projectiles = {};
 
     this.image = new Image();
-    this.image.src = "/src/assets/images/chemist.png";
+    this.image.src = "/src/assets/images/smallChemist.png";
 
     this.width = 10;
     this.height = 30;
@@ -27,70 +27,71 @@ export default class Player {
   }
 
   draw() {
-    // this.ctx.beginPath();
-    // this.ctx.rect(this.positionX, this.positionY, this.width, this.height);
-    // this.ctx.stroke();
-    // this.ctx.drawImage(this.image, 100, 100, 20, 20, this.canvas.width / 2, this.canvas.height, 20, 20);
-    this.ctx.drawImage(this.image, 100, 100);
-    // this.ctx.drawImage(this.image, 100, 100, 20, 20, this.canvas.width / 2, this.canvas.height);
-    // debugger
+    // Image has dimensions 32px x 62px
+    this.ctx.drawImage(this.image, this.positionX - 16, this.positionY - 62);
   }
 
   drawHealth() {
     this.ctx.beginPath();
-    this.ctx.fillStyle = "#ffffff";
-    this.ctx.font = "bold 24px Arial";
-    this.ctx.fillText("Health: ", 100, 50)
-    this.ctx.fill();
+      this.ctx.fillStyle = "#ffffff";
+      this.ctx.font = "bold 24px Arial";
+      this.ctx.textAlign = "left";
+      this.ctx.fillText("Health: ", 100, 50)
+      this.ctx.fill();
     this.ctx.closePath();
 
     this.ctx.beginPath();
-    if (this.health > 25) {
-      this.ctx.fillStyle = "#64a832";
-    }
-    else {
-      this.ctx.fillStyle = "#a85732";
-    }
-    this.ctx.font = "bold 32px Arial";
-    this.ctx.fillText(this.health.toString(), 250, 50)
-    this.ctx.fill();
+      if (this.health > 25) {
+        this.ctx.fillStyle = "#64a832";
+      }
+      else {
+        this.ctx.fillStyle = "#a85732";
+      }
+      this.ctx.font = "bold 32px Arial";
+      this.ctx.textAlign = "left";
+      this.ctx.fillText(this.health.toString(), 250, 50)
+      this.ctx.fill();
     this.ctx.closePath();
   }
 
   drawElectrons() {
     this.ctx.beginPath();
-    this.ctx.fillStyle = "#ffffff";
-    this.ctx.font = "bold 24px Arial";
-    this.ctx.fillText("Electrons: ", 100, 100)
-    this.ctx.fill();
+      this.ctx.fillStyle = "#ffffff";
+      this.ctx.font = "bold 24px Arial";
+      this.ctx.textAlign = "left";
+      this.ctx.fillText("Electrons: ", 100, 100)
+      this.ctx.fill();
     this.ctx.closePath();
 
     this.ctx.beginPath();
-    if (this.electrons > 10) {
-      this.ctx.fillStyle = "#64a832";
-    }
-    else {
-      this.ctx.fillStyle = "#a85732";
-    }
-    this.ctx.font = "bold 32px Arial";
-    this.ctx.fillText(this.electrons.toString(), 250, 100)
-    this.ctx.fill();
+      if (this.electrons > 10) {
+        this.ctx.fillStyle = "#64a832";
+      }
+      else {
+        this.ctx.fillStyle = "#a85732";
+      }
+      this.ctx.font = "bold 32px Arial";
+      this.ctx.textAlign = "left";
+      this.ctx.fillText(this.electrons.toString(), 250, 100)
+      this.ctx.fill();
     this.ctx.closePath();
   }
 
   drawScore() {
-    this.ctx.beginPath();
-    this.ctx.fillStyle = "#ffffff";
-    this.ctx.font = "bold 24px Arial";
-    this.ctx.fillText("Score: ", 100, 150)
-    this.ctx.fill();
+      this.ctx.beginPath();
+      this.ctx.fillStyle = "#ffffff";
+      this.ctx.font = "bold 24px Arial";
+      this.ctx.textAlign = "left";
+      this.ctx.fillText("Score: ", 100, 150);
+      this.ctx.fill();
     this.ctx.closePath();
 
     this.ctx.beginPath();
-    this.ctx.fillStyle = "#64a832";
-    this.ctx.font = "bold 32px Arial";
-    this.ctx.fillText(this.points.toString(), 250, 150)
-    this.ctx.fill();
+      this.ctx.fillStyle = "#64a832";
+      this.ctx.font = "bold 32px Arial";
+      this.ctx.textAlign = "left";
+      this.ctx.fillText(this.points.toString(), 250, 150)
+      this.ctx.fill();
     this.ctx.closePath();
   }
 
@@ -119,8 +120,7 @@ export default class Player {
   fireWeapon(type) {
     switch (type) {
       case 'ioniser':
-        // this.projectiles[`ion-${Math.random()}`] = new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY);
-        const newIoniser = new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX + this.width / 2, this.positionY);
+        const newIoniser = new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX, this.positionY - 75);
         this.projectiles[newIoniser.ref] = newIoniser;
         break;
       case 'electron':
@@ -128,8 +128,7 @@ export default class Player {
           return;
         }
         else {
-          // this.projectiles[`electron-${Math.random()}`] = new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY);
-          const newElectron = new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX + this.width / 2, this.positionY);
+          const newElectron = new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX, this.positionY - 75);
           this.projectiles[newElectron.ref] = newElectron;
           this.electrons--;
         }
