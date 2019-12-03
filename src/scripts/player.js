@@ -24,6 +24,7 @@ export default class Player {
 
     
     this.changePlayerStats = this.changePlayerStats.bind(this);
+    this.isAlive = this.isAlive.bind(this);
   }
 
   draw() {
@@ -136,5 +137,9 @@ export default class Player {
       default:
         return;
     }
+  }
+
+  isAlive() {
+    return this.health > 0;
   }
 }

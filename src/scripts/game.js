@@ -1,7 +1,8 @@
 import Player from './player';
+import Control from './control';
+import gameOver from './gameOver';
 import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle, collisionCircleCircle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
-import Control from './control';
 
 export default class Game {
   constructor(canvas, ctx) {
@@ -9,17 +10,20 @@ export default class Game {
     this.ctx = ctx;
     this.paused = true;
 
+    this.player = new Player(canvas, ctx);
+
     this.control = new Control(this);
     this.control.addKeyDownListener();
     this.control.addKeyUpListener();
     
-    this.player = new Player(canvas, ctx);
+    this.gameOverHandler = new gameOver(canvas, ctx);
 
     this.atomArmy = {};
     this.atomCount = 0;
 
     this.togglePause = this.togglePause.bind(this);
     this.newGame = this.newGame.bind(this);
+    this.gameOver = this.gameOver.bind(this);
     this.renderGame = this.renderGame.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.drawEntities = this.drawEntities.bind(this);
@@ -60,6 +64,8 @@ export default class Game {
   gameOver() {
     this.control.removeKeyDownListener();
     this.control.removeKeyUpListener();
+    this.clearCanvas();
+    this.gameOverHandler.draw();
   }
 
   renderGame() {
@@ -75,10 +81,14 @@ export default class Game {
     this.checkCollisions();
     this.moveEntities();
 
-    if (this.player.health > 0) {
+    // if (this.player.health > 0) {
       this.player.drawHealth();
       this.player.drawElectrons();
       this.player.drawScore();
+    // }
+    if (!this.player.isAlive()) {
+      cancelAnimationFrame(animationRequest);
+      this.gameOver();
     }
   }
 
@@ -106,15 +116,16 @@ export default class Game {
 
     atomArmy.forEach((atom) => {
       collisionCircleWall(this.canvas, atom);
-      // if (collisionCircleRectangle(atom, this.player)) {
-      //   if (atom.nobleGas) {
-      //     this.player.changePlayerStats('health', 5);
-      //     this.atomArmy.splice(this.atomArmy.indexOf(atom), 1);
-      //   }
-      //   else {
-      //     this.player.changePlayerStats('health', -5);
-      //   }
-      // }
+      if (collisionCircleRectangle(atom, this.player)) {
+        if (atom.nobleGas) {
+          this.player.changePlayerStats('health', 5);
+          // this.atomArmy.splice(this.atomArmy.indexOf(atom), 1);
+          delete this.atomArmy[atom.ref];
+        }
+        else {
+          this.player.changePlayerStats('health', -5);
+        }
+      }
     });
 
     let projectileAtomPairs = [];

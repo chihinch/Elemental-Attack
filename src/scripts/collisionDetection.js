@@ -34,13 +34,11 @@ export const collisionCircleCircle = (circleA, circleB) => {
 export const collisionCircleRectangle = (circle, rectangle) => {
   const closestX = Math.max(rectangle.positionX, Math.min(circle.positionX, rectangle.positionX + rectangle.width));
   const closestY = Math.max(rectangle.positionY, Math.min(circle.positionY, rectangle.positionY + rectangle.height));
-  const d = d(closestX, closestY, circle.positionX, circle.positionY);
+  const d = distance(closestX, closestY, circle.positionX, circle.positionY);
 
-  if (d <= (circle.radius ** 2)) {
+  if (d <= (circle.radius)) {
     // Prevent atom from overlapping the player
-    if (dSquared < (circle.radius ** 2)) {
-      circle.positionY = closestY - circle.radius;
-    }
+    circle.positionY = closestY - circle.radius;
     circle.dX = -(circle.dX);
     circle.dY = -(circle.dY);
     return true
