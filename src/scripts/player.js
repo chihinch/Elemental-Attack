@@ -5,7 +5,7 @@ export default class Player {
     this.canvas = canvas;
     this.ctx = ctx;
 
-    this.health = 100;
+    this.health = 5;
     this.electrons = 25;
     this.points = 0;
 

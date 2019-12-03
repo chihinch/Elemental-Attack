@@ -1,6 +1,6 @@
 import Player from './player';
 import Control from './control';
-import gameOver from './gameOver';
+import gameOverHandler from './gameOver';
 import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle, collisionCircleCircle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
@@ -16,7 +16,7 @@ export default class Game {
     this.control.addKeyDownListener();
     this.control.addKeyUpListener();
     
-    this.gameOverHandler = new gameOver(canvas, ctx);
+    this.gameOverHandler = new gameOverHandler(canvas, ctx);
 
     this.atomArmy = {};
     this.atomCount = 0;
@@ -24,6 +24,7 @@ export default class Game {
     this.togglePause = this.togglePause.bind(this);
     this.newGame = this.newGame.bind(this);
     this.gameOver = this.gameOver.bind(this);
+    this.renderGameOver = this.renderGameOver.bind(this);
     this.renderGame = this.renderGame.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
     this.drawEntities = this.drawEntities.bind(this);
@@ -64,15 +65,20 @@ export default class Game {
   gameOver() {
     this.control.removeKeyDownListener();
     this.control.removeKeyUpListener();
+    this.renderGameOver();
+  }
+  
+  renderGameOver() {
     this.clearCanvas();
-    this.gameOverHandler.draw();
+    this.gameOverHandler.drawGameOver();
+    window.requestAnimationFrame(this.renderGameOver);
   }
 
   renderGame() {
     let animationRequest = window.requestAnimationFrame(this.renderGame);
 
     if (this.paused) {
-      cancelAnimationFrame(animationRequest);
+      window.cancelAnimationFrame(animationRequest);
       return;
     }
 
@@ -87,7 +93,7 @@ export default class Game {
       this.player.drawScore();
     // }
     if (!this.player.isAlive()) {
-      cancelAnimationFrame(animationRequest);
+      window.cancelAnimationFrame(animationRequest);
       this.gameOver();
     }
   }
