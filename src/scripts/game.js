@@ -73,7 +73,6 @@ export default class Game {
   }
   
   renderGameOver() {
-    this.clearCanvas();
     this.gameOverHandler.drawGameOver();
     this.gameOverAnimationRequest = window.requestAnimationFrame(this.renderGameOver);
   }
