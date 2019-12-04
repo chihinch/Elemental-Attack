@@ -15,12 +15,8 @@ export default class Game {
     this.player = new Player(this.canvas, this.ctx);
 
     this.slideshow = new Slideshow(this.canvas, this.ctx);
-    this.slideshow.drawSlide();
-
     this.gameOverHandler = new GameOverHandler(this.canvas, this.ctx);
-
     this.control = new Control(this);
-    this.control.addKeyDownOutsideGameListener();
 
     this.atomArmy = {};
     this.atomCount = 0;
@@ -44,27 +40,21 @@ export default class Game {
 
   togglePause() {
     this.paused = !this.paused;
-
-    // const about = document.getElementById("about");
-    // const canvasContainer = document.getElementById("canvas-container");
-
     
     if (this.paused) {
-      // about.style.display = "block";
-      // canvasContainer.style.display = "none";
       window.clearInterval(this.buildAtomArmy);
       window.clearInterval(this.restoreAmmo);
     }
     else {
-      // about.style.display = "none";
-      // canvasContainer.style.display = "block";
       window.setInterval(this.buildAtomArmy, 2000);
       window.setInterval(this.restoreAmmo, 5000);
-      // this.renderGame();
     }
   }
 
   newGame() {
+    this.control.removeKeyDownOutsideGameListener();
+    this.control.addKeyDownInGameListener();
+    this.control.addKeyUpInGameListener();
     this.togglePause();
     this.renderGame();
   }
@@ -83,22 +73,21 @@ export default class Game {
   }
 
   renderGame() {
-    this.animationRequest = window.requestAnimationFrame(this.renderGame);
-
     if (this.paused) {
       return;
     }
+
+    this.animationRequest = window.requestAnimationFrame(this.renderGame);
 
     this.clearCanvas();
     this.drawEntities();
     this.checkCollisions();
     this.moveEntities();
 
-    // if (this.player.health > 0) {
-      this.player.drawHealth();
-      this.player.drawElectrons();
-      this.player.drawScore();
-    // }
+    this.player.drawHealth();
+    this.player.drawElectrons();
+    this.player.drawScore();
+
     if (!this.player.isAlive()) {
       this.gameOver();
     }
@@ -131,7 +120,6 @@ export default class Game {
       if (collisionCircleRectangle(atom, this.player)) {
         if (atom.nobleGas) {
           this.player.changePlayerStats('health', 5);
-          // this.atomArmy.splice(this.atomArmy.indexOf(atom), 1);
           delete this.atomArmy[atom.ref];
         }
         else {

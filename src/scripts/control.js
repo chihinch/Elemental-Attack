@@ -4,7 +4,7 @@ export default class Control {
 
     this.handleKeyDownOutsideGame = this.handleKeyDownOutsideGame.bind(this);
     this.handleKeyDownInGame = this.handleKeyDownInGame.bind(this);
-    this.handleKeyUp = this.handleKeyUp.bind(this); 
+    this.handleKeyUpInGame = this.handleKeyUp.bind(this); 
   }
 
   addKeyDownOutsideGameListener() {
@@ -23,12 +23,12 @@ export default class Control {
     document.removeEventListener('keydown', this.handleKeyDownInGame);
   }
 
-  addKeyUpListener() {
-    document.addEventListener('keyup', this.handleKeyUp);
+  addKeyUpInGameListener() {
+    document.addEventListener('keyup', this.handleKeyUpInGame);
   }
   
-  removeKeyUpListener() {
-    document.removeEventListener('keyup', this.handleKeyUp);
+  removeKeyUpInGameListener() {
+    document.removeEventListener('keyup', this.handleKeyUpInGame);
   }
 
   handleKeyDownOutsideGame(event) {
@@ -83,7 +83,7 @@ export default class Control {
     }
   }
 
-  handleKeyUp(event) {
+  handleKeyUpInGame(event) {
     switch(event.key) {
       case 'ArrowLeft':
         this.game.player.direction = 0;
