@@ -4,8 +4,7 @@ export default class Slideshow {
     this.ctx = ctx;
 
     this.intro = new Image();
-    this.intro.src = "/src/assets/images/chemist.png";
-    // this.intro.src = "/src/assets/images/aboutSlideshow/elementalAttackIntro.png";
+    this.intro.src = "/src/assets/images/aboutSlideshow/elementalAttackIntro.png";
 
     this.story = new Image();
     this.story.src = "/src/assets/images/aboutSlideshow/elementalAttackStory.png";
@@ -13,7 +12,7 @@ export default class Slideshow {
     this.instructions = new Image();
     this.instructions.src = "/src/assets/images/aboutSlideshow/elementalAttackDiagram.png";
 
-    this.slideNumber = 3;
+    this.slideNumber = 1;
     this.allowGameStart = false;
 
     this.clearCanvas = this.clearCanvas.bind(this);
@@ -35,7 +34,7 @@ export default class Slideshow {
   }
 
   drawIntro() {
-    this.ctx.drawImage(this.intro, 100, 100);
+    this.ctx.drawImage(this.intro, 0, 0);
   }
 
   drawStory() {
@@ -45,6 +44,25 @@ export default class Slideshow {
   drawInstructions() {
     this.ctx.drawImage(this.instructions, 0, 0);
     this.allowGameStart = true;
+    console.log(`Game can be started: ${this.allowGameStart}`);
+  }
+
+  drawSlide() {
+    this.clearCanvas();
+    this.drawNavbar();
+    switch (this.slideNumber) {
+      case 1:
+        this.drawIntro();
+        break;
+      case 2:
+        this.drawStory();
+        break;
+      case 3:
+        this.drawInstructions();
+        break;
+      default:
+        return;
+    }
   }
 
   drawNavbar() {
@@ -106,40 +124,26 @@ export default class Slideshow {
     this.ctx.fill();
   }
 
-  drawSlide() {
-    this.clearCanvas();
-    this.drawNavbar();
-    switch (this.slideNumber) {
-      case 1:
-        this.drawIntro();
-        break;
-      case 2:
-        this.drawStory();
-        break;
-      case 3:
-        this.drawInstructions();
-        break;
-      default:
-        return;
-    }
-  }
-
   advanceSlide() {
     if (this.slideNumber >= 1 && this.slideNumber < 3) {
       this.slideNumber++;
+      console.log(`Advance slide to ${this.slideNumber}`);
     }
     else {
       return;
     }
+    this.drawSlide();
   }
 
   backwardSlide() {
     if (this.slideNumber >= 2  && this.slideNumber <= 3) {
       this.slideNumber--;
+      console.log(`Return slide to ${this.slideNumber}`);
     }
     else {
       return;
     }
+    this.drawSlide();
   }
 
   setSlide(num) {
@@ -149,34 +153,6 @@ export default class Slideshow {
     else {
       return;
     }
+    this.drawSlide();
   }
 };
-
-// let slideIndex = 1;
-// showSlides(slideIndex);
-
-// // Next/previous controls
-// function plusSlides(n) {
-//   showSlides(slideIndex += n);
-// }
-
-// // Thumbnail image controls
-// function currentSlide(n) {
-//   showSlides(slideIndex = n);
-// }
-
-// function showSlides(n) {
-//   let i;
-//   const slides = document.getElementsByClassName("about-slide");
-//   const dots = document.getElementsByClassName("dot");
-//   if (n > slides.length) { slideIndex = 1 }
-//   if (n < 1) { slideIndex = slides.length }
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-//   for (i = 0; i < dots.length; i++) {
-//     dots[i].className = dots[i].className.replace(" active", "");
-//   }
-//   slides[slideIndex - 1].style.display = "block";
-//   dots[slideIndex - 1].className += " active";
-// }

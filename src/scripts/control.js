@@ -33,6 +33,18 @@ export default class Control {
 
   handleKeyDownOutsideGame(event) {
     switch(event.key) {
+      case 'ArrowLeft':
+        this.game.slideshow.backwardSlide();
+        break;
+      case 'Left':
+        this.game.slideshow.backwardSlide();
+        break;
+      case 'ArrowRight':
+        this.game.slideshow.advanceSlide();
+        break;
+      case 'Right':
+        this.game.slideshow.advanceSlide();
+        break;
       case ' ':
         if (this.game.slideshow.allowGameStart) {
           this.game.newGame();

@@ -21,7 +21,6 @@ export default class Player {
     this.directionalKey = undefined; 
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
     this.dX = 5;
-
     
     this.changePlayerStats = this.changePlayerStats.bind(this);
     this.isAlive = this.isAlive.bind(this);
