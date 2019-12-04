@@ -42,12 +42,15 @@ export default class Game {
     this.paused = !this.paused;
     
     if (this.paused) {
+      console.log(this.animationRequest);
       window.clearInterval(this.buildAtomArmy);
       window.clearInterval(this.restoreAmmo);
+      this.slideshow.setSlide(3);
     }
     else {
       window.setInterval(this.buildAtomArmy, 2000);
       window.setInterval(this.restoreAmmo, 5000);
+      this.renderGame();
     }
   }
 
@@ -60,16 +63,17 @@ export default class Game {
   }
 
   gameOver() {
-    window.cancelAnimationFrame(this.animationRequest);
-    this.control.removeKeyDownListener();
-    this.control.removeKeyUpListener();
+    console.log(this.animationRequest);
+    console.log('Game over');
+    this.control.removeKeyDownInGameListener();
+    this.control.removeKeyUpInGameListener();
     this.renderGameOver();
   }
   
   renderGameOver() {
     this.clearCanvas();
     this.gameOverHandler.drawGameOver();
-    let gameOverAnimationRequest = window.requestAnimationFrame(this.renderGameOver);
+    this.gameOverAnimationRequest = window.requestAnimationFrame(this.renderGameOver);
   }
 
   renderGame() {
@@ -77,20 +81,25 @@ export default class Game {
       return;
     }
 
-    this.animationRequest = window.requestAnimationFrame(this.renderGame);
+    console.log(this.animationRequest);
 
     this.clearCanvas();
     this.drawEntities();
     this.checkCollisions();
     this.moveEntities();
-
+    
     this.player.drawHealth();
     this.player.drawElectrons();
     this.player.drawScore();
-
-    if (!this.player.isAlive()) {
+    
+    if (this.player.isAlive()) {
+      this.animationRequest = window.requestAnimationFrame(this.renderGame);
+    }
+    else {
+      window.cancelAnimationFrame(this.animationRequest);
       this.gameOver();
     }
+
   }
 
   clearCanvas() {

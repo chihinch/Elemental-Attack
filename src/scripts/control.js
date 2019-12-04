@@ -4,7 +4,7 @@ export default class Control {
 
     this.handleKeyDownOutsideGame = this.handleKeyDownOutsideGame.bind(this);
     this.handleKeyDownInGame = this.handleKeyDownInGame.bind(this);
-    this.handleKeyUpInGame = this.handleKeyUp.bind(this); 
+    this.handleKeyUpInGame = this.handleKeyUpInGame.bind(this); 
   }
 
   addKeyDownOutsideGameListener() {
