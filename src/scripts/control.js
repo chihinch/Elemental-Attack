@@ -46,7 +46,7 @@ export default class Control {
         this.game.slideshow.advanceSlide();
         break;
       case ' ':
-        if (this.game.slideshow.allowGameStart) {
+        if (this.game.slideshow.controlSeen) {
           this.game.newGame();
         }
         break;

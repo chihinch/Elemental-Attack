@@ -13,7 +13,10 @@ export default class Slideshow {
     this.instructions.src = "/src/assets/images/aboutSlideshow/elementalAttackDiagram.png";
 
     this.slideNumber = 1;
-    this.allowGameStart = false;
+    this.controlSeen = false;
+    this.gameStarted = false;
+    this.gameMessageActive = false;
+    this.gameMessageInterval = undefined;
 
     this.clearCanvas = this.clearCanvas.bind(this);
     this.drawIntro = this.drawIntro.bind(this);
@@ -24,6 +27,7 @@ export default class Slideshow {
     this.drawNavBarTwo = this.drawNavBarTwo.bind(this);
     this.drawNavBarThree = this.drawNavBarThree.bind(this);
     this.drawSlide = this.drawSlide.bind(this);
+    this.drawGameMessage = this.drawGameMessage.bind(this);
     this.advanceSlide = this.advanceSlide.bind(this);
     this.backwardSlide = this.backwardSlide.bind(this);
     this.setSlide = this.setSlide.bind(this);
@@ -43,10 +47,11 @@ export default class Slideshow {
 
   drawInstructions() {
     this.ctx.drawImage(this.instructions, 0, 0);
-    if (this.allowGameStart === false) {
-      this.allowGameStart = true;
-      console.log(`Game can be started: ${this.allowGameStart}`);
+    if (this.controlSeen === false) {
+      this.controlSeen = true;
+      console.log(`Game can be started: ${this.controlSeen}`);
     }
+    this.gameMessageInterval = window.setInterval(this.drawGameMessage, 1000);
   }
 
   drawSlide() {
@@ -69,7 +74,7 @@ export default class Slideshow {
 
   drawNavbar() {
     this.ctx.beginPath();
-      this.ctx.rect(0, 520, 1200, 30);
+      this.ctx.rect(0, 540, 1200, 10);
       this.ctx.fillStyle = "black";
     this.ctx.fill();
 
@@ -93,39 +98,69 @@ export default class Slideshow {
 
   drawNavBarOne() {
     this.ctx.beginPath();
-      this.ctx.moveTo(0, 520);
-      this.ctx.lineTo(400, 520);
-      this.ctx.lineTo(425, 535);
+      this.ctx.moveTo(0, 540);
+      this.ctx.lineTo(400, 540);
+      this.ctx.lineTo(425, 545);
       this.ctx.lineTo(400, 550);
       this.ctx.lineTo(0, 550);
-      this.ctx.lineTo(0, 520);
+      this.ctx.lineTo(0, 540);
       this.ctx.fillStyle = "#e60909";
     this.ctx.fill();
   }
 
   drawNavBarTwo() {
     this.ctx.beginPath();
-      this.ctx.moveTo(400, 520);
-      this.ctx.lineTo(800, 520);
-      this.ctx.lineTo(825, 535);
+      this.ctx.moveTo(400, 540);
+      this.ctx.lineTo(800, 540);
+      this.ctx.lineTo(825, 545);
       this.ctx.lineTo(800, 550);
       this.ctx.lineTo(400, 550);
-      this.ctx.lineTo(425, 535);
-      this.ctx.lineTo(400, 520);
+      this.ctx.lineTo(425, 545);
+      this.ctx.lineTo(400, 540);
       this.ctx.fillStyle = "#e6e609";
     this.ctx.fill();
   }
 
   drawNavBarThree() {
     this.ctx.beginPath();
-      this.ctx.moveTo(800, 520);
-      this.ctx.lineTo(1200, 520);
+      this.ctx.moveTo(800, 540);
+      this.ctx.lineTo(1200, 540);
       this.ctx.lineTo(1200, 550);
       this.ctx.lineTo(800, 550);
-      this.ctx.lineTo(825, 535);      
-      this.ctx.lineTo(800, 520);      
+      this.ctx.lineTo(825, 545);      
+      this.ctx.lineTo(800, 540);      
       this.ctx.fillStyle = "#26e609";
     this.ctx.fill();
+  }
+
+  drawGameMessage() {
+    this.ctx.clearRect(50, 475, 300, 35);
+    this.ctx.beginPath();
+      this.ctx.rect(50, 475, 300, 35);
+      this.ctx.fillStyle = "black";
+    this.ctx.fill();
+
+    if (this.gameMessageActive) {
+      if (this.gameStarted) {
+        this.ctx.beginPath();
+          this.ctx.font = 'bold 30px "Nunito"';
+          this.ctx.fillStyle = "#e3bc52";
+          this.ctx.textAlign = "left";
+        this.ctx.fillText('Press P to resume', 50, 500);
+        this.gameMessageActive = false;
+      }
+      else {
+        this.ctx.beginPath();
+          this.ctx.font = 'bold 30px "Nunito"';
+          this.ctx.fillStyle = "#e3bc52";
+          this.ctx.textAlign = "left";
+        this.ctx.fillText('Press SPACE to begin', 50, 500);
+        this.gameMessageActive = false;
+      }
+    }
+    else {
+      this.gameMessageActive = true;
+    }
   }
 
   advanceSlide() {

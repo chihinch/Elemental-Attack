@@ -50,6 +50,7 @@ export default class Game {
     else {
       window.setInterval(this.buildAtomArmy, 2000);
       window.setInterval(this.restoreAmmo, 5000);
+      window.clearInterval(this.slideshow.gameMessageInterval);
       this.renderGame();
     }
   }
@@ -58,6 +59,7 @@ export default class Game {
     this.control.removeKeyDownOutsideGameListener();
     this.control.addKeyDownInGameListener();
     this.control.addKeyUpInGameListener();
+    this.slideshow.gameStarted = true;
     this.togglePause();
   }
 
@@ -66,6 +68,7 @@ export default class Game {
     console.log('Game over');
     this.control.removeKeyDownInGameListener();
     this.control.removeKeyUpInGameListener();
+    this.slideshow.gameStarted = false;
     this.renderGameOver();
   }
   
