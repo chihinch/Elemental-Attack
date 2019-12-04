@@ -1,32 +1,3 @@
-// let slideIndex = 1;
-// showSlides(slideIndex);
-
-// // Next/previous controls
-// function plusSlides(n) {
-//   showSlides(slideIndex += n);
-// }
-
-// // Thumbnail image controls
-// function currentSlide(n) {
-//   showSlides(slideIndex = n);
-// }
-
-// function showSlides(n) {
-//   let i;
-//   const slides = document.getElementsByClassName("about-slide");
-//   const dots = document.getElementsByClassName("dot");
-//   if (n > slides.length) { slideIndex = 1 }
-//   if (n < 1) { slideIndex = slides.length }
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-//   for (i = 0; i < dots.length; i++) {
-//     dots[i].className = dots[i].className.replace(" active", "");
-//   }
-//   slides[slideIndex - 1].style.display = "block";
-//   dots[slideIndex - 1].className += " active";
-// }
-
 export default class Slideshow {
   constructor(canvas, ctx) {
     this.canvas = canvas;
@@ -52,7 +23,6 @@ export default class Slideshow {
     this.advanceSlide = this.advanceSlide.bind(this);
     this.backwardSlide = this.backwardSlide.bind(this);
     this.setSlide = this.setSlide.bind(this);
-
   }
 
   clearCanvas() {
@@ -72,6 +42,7 @@ export default class Slideshow {
   drawInstructions() {
     this.clearCanvas();
     this.ctx.drawImage(this.instructions, 0, 0);
+    this.allowGameStart = true;
   }
 
   drawSlide() {
@@ -116,4 +87,33 @@ export default class Slideshow {
       return;
     }
   }
-}
+};
+
+// let slideIndex = 1;
+// showSlides(slideIndex);
+
+// // Next/previous controls
+// function plusSlides(n) {
+//   showSlides(slideIndex += n);
+// }
+
+// // Thumbnail image controls
+// function currentSlide(n) {
+//   showSlides(slideIndex = n);
+// }
+
+// function showSlides(n) {
+//   let i;
+//   const slides = document.getElementsByClassName("about-slide");
+//   const dots = document.getElementsByClassName("dot");
+//   if (n > slides.length) { slideIndex = 1 }
+//   if (n < 1) { slideIndex = slides.length }
+//   for (i = 0; i < slides.length; i++) {
+//     slides[i].style.display = "none";
+//   }
+//   for (i = 0; i < dots.length; i++) {
+//     dots[i].className = dots[i].className.replace(" active", "");
+//   }
+//   slides[slideIndex - 1].style.display = "block";
+//   dots[slideIndex - 1].className += " active";
+// }

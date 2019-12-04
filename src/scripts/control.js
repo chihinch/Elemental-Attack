@@ -1,19 +1,28 @@
 export default class Control {
   constructor(game) {
     this.game = game;
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+
+    this.handleKeyDownOutsideGame = this.handleKeyDownOutsideGame.bind(this);
+    this.handleKeyDownInGame = this.handleKeyDownInGame.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this); 
   }
 
-  addKeyDownListener() {
-    document.addEventListener('keydown', this.handleKeyDown);
+  addKeyDownOutsideGameListener() {
+    document.addEventListener('keydown', this.handleKeyDownOutsideGame);
   }
 
-  removeKeyDownListener() {
-    document.removeEventListener('keydown', this.handleKeyDown);
+  addKeyDownInGameListener() {
+    document.addEventListener('keydown', this.handleKeyDownInGame);
   }
 
-  
+  removeKeyDownOutsideGameListener() {
+    document.removeEventListener('keydown', this.handleKeyDownOutsideGame);
+  }
+
+  removeKeyDownInGameListener() {
+    document.removeEventListener('keydown', this.handleKeyDownInGame);
+  }
+
   addKeyUpListener() {
     document.addEventListener('keyup', this.handleKeyUp);
   }
@@ -22,11 +31,20 @@ export default class Control {
     document.removeEventListener('keyup', this.handleKeyUp);
   }
 
-  handleKeyDown(event) {
-    switch (event.key) {
+  handleKeyDownOutsideGame(event) {
+    switch(event.key) {
       case ' ':
-        this.game.newGame();
+        if (this.game.slideshow.allowGameStart) {
+          this.game.newGame();
+        }
         break;
+      default:
+        return;
+    }
+  }
+
+  handleKeyDownInGame(event) {
+    switch (event.key) {
       case 'p':
         this.game.togglePause();
         break;
@@ -71,4 +89,4 @@ export default class Control {
         return;
     }
   }
-}
+};

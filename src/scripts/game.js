@@ -17,8 +17,7 @@ export default class Game {
     this.gameOverHandler = new GameOverHandler(canvas, ctx);
 
     this.control = new Control(this);
-    this.control.addKeyDownListener();
-    this.control.addKeyUpListener();
+    this.control.addKeyDownOutsideGameListener();
 
     this.atomArmy = {};
     this.atomCount = 0;
@@ -43,22 +42,22 @@ export default class Game {
   togglePause() {
     this.paused = !this.paused;
 
-    const about = document.getElementById("about");
-    const canvasContainer = document.getElementById("canvas-container");
+    // const about = document.getElementById("about");
+    // const canvasContainer = document.getElementById("canvas-container");
 
     
     if (this.paused) {
-      about.style.display = "block";
-      canvasContainer.style.display = "none";
+      // about.style.display = "block";
+      // canvasContainer.style.display = "none";
       window.clearInterval(this.buildAtomArmy);
       window.clearInterval(this.restoreAmmo);
     }
     else {
-      about.style.display = "none";
-      canvasContainer.style.display = "block";
+      // about.style.display = "none";
+      // canvasContainer.style.display = "block";
       window.setInterval(this.buildAtomArmy, 2000);
       window.setInterval(this.restoreAmmo, 5000);
-      this.renderGame();
+      // this.renderGame();
     }
   }
 
