@@ -1,6 +1,7 @@
 import Player from './player';
 import Control from './control';
-import gameOverHandler from './gameOver';
+import Slideshow from './slideshow';
+import GameOverHandler from './gameOver';
 import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle, collisionCircleCircle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
@@ -8,18 +9,22 @@ export default class Game {
   constructor(canvas, ctx) {
     this.canvas = canvas;
     this.ctx = ctx;
+
     this.paused = true;
 
     this.player = new Player(canvas, ctx);
+    this.slideshow = new Slideshow(canvas, ctx);
+    this.gameOverHandler = new GameOverHandler(canvas, ctx);
 
     this.control = new Control(this);
     this.control.addKeyDownListener();
     this.control.addKeyUpListener();
-    
-    this.gameOverHandler = new gameOverHandler(canvas, ctx);
 
     this.atomArmy = {};
     this.atomCount = 0;
+
+    this.animationRequest = undefined;
+    this.gameOverAnimationRequest = undefined;
 
     this.togglePause = this.togglePause.bind(this);
     this.newGame = this.newGame.bind(this);
@@ -63,6 +68,7 @@ export default class Game {
   }
 
   gameOver() {
+    window.cancelAnimationFrame(this.animationRequest);
     this.control.removeKeyDownListener();
     this.control.removeKeyUpListener();
     this.renderGameOver();
@@ -71,14 +77,13 @@ export default class Game {
   renderGameOver() {
     this.clearCanvas();
     this.gameOverHandler.drawGameOver();
-    window.requestAnimationFrame(this.renderGameOver);
+    let gameOverAnimationRequest = window.requestAnimationFrame(this.renderGameOver);
   }
 
   renderGame() {
-    let animationRequest = window.requestAnimationFrame(this.renderGame);
+    this.animationRequest = window.requestAnimationFrame(this.renderGame);
 
     if (this.paused) {
-      window.cancelAnimationFrame(animationRequest);
       return;
     }
 
@@ -93,7 +98,6 @@ export default class Game {
       this.player.drawScore();
     // }
     if (!this.player.isAlive()) {
-      window.cancelAnimationFrame(animationRequest);
       this.gameOver();
     }
   }
