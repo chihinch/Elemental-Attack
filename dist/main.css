@@ -58,7 +58,7 @@ body {
 
 #navbar {
   width: calc(100% - 20px);
-  height: 20px;
+  height: 50px;
   box-sizing: content-box;
   display: flex;
   justify-content: space-between;
@@ -101,84 +101,7 @@ body {
   align-items: center;
 }
 
-/* #game-container-contents {
-  width: 1200px;
-  height: 600px;
-} */
-
-/* .slideshow-container {
-  width: inherit;
-  margin: auto;
-}
-
-.about-slide {
-  display: none;
-}
-
-.about-slide img {
-  width: 1200px;
-  height: 575px;
-}
-
-.slideshow-navigation {
-  margin-top: -5px;
-  height: 30px;
-  text-align:center;
-  vertical-align: middle;
-  background: black;
-  border: none;
-}
-
-.prev, .next {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  color: beige;
-  font-weight: bold;
-  font-size: 30px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-.next {
-  right: 50%;
-  border-radius: 3px 0 0 3px;
-}
-
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: white;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: red;
-}
-
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-} */
-
 #canvas-container {
   width: 1200px;
-  height: 600px;
+  height: 550px;
 }

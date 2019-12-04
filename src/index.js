@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const ctx = canvas.getContext('2d');
 
   canvas.width = '1200';
-  canvas.height = '600';
+  canvas.height = '550';
   
   // Instantiate a new game
   const game = new Game(canvas, ctx);

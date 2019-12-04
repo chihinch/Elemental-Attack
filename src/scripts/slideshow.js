@@ -43,8 +43,10 @@ export default class Slideshow {
 
   drawInstructions() {
     this.ctx.drawImage(this.instructions, 0, 0);
-    this.allowGameStart = true;
-    console.log(`Game can be started: ${this.allowGameStart}`);
+    if (this.allowGameStart === false) {
+      this.allowGameStart = true;
+      console.log(`Game can be started: ${this.allowGameStart}`);
+    }
   }
 
   drawSlide() {
@@ -67,7 +69,7 @@ export default class Slideshow {
 
   drawNavbar() {
     this.ctx.beginPath();
-      this.ctx.rect(0, 570, 1200, 30);
+      this.ctx.rect(0, 520, 1200, 30);
       this.ctx.fillStyle = "black";
     this.ctx.fill();
 
@@ -91,35 +93,37 @@ export default class Slideshow {
 
   drawNavBarOne() {
     this.ctx.beginPath();
-      this.ctx.rect(0, 570, 400, 30);
-      this.ctx.moveTo(400, 570);
-      this.ctx.lineTo(425, 585);
-      this.ctx.lineTo(400, 600);
+      this.ctx.moveTo(0, 520);
+      this.ctx.lineTo(400, 520);
+      this.ctx.lineTo(425, 535);
+      this.ctx.lineTo(400, 550);
+      this.ctx.lineTo(0, 550);
+      this.ctx.lineTo(0, 520);
       this.ctx.fillStyle = "#e60909";
     this.ctx.fill();
   }
 
   drawNavBarTwo() {
     this.ctx.beginPath();
-      this.ctx.moveTo(400, 570);
-      this.ctx.lineTo(800, 570);
-      this.ctx.lineTo(825, 585);
-      this.ctx.lineTo(800, 600);
-      this.ctx.lineTo(400, 600);
-      this.ctx.lineTo(425, 585);
-      this.ctx.lineTo(400, 570);
+      this.ctx.moveTo(400, 520);
+      this.ctx.lineTo(800, 520);
+      this.ctx.lineTo(825, 535);
+      this.ctx.lineTo(800, 550);
+      this.ctx.lineTo(400, 550);
+      this.ctx.lineTo(425, 535);
+      this.ctx.lineTo(400, 520);
       this.ctx.fillStyle = "#e6e609";
     this.ctx.fill();
   }
 
   drawNavBarThree() {
     this.ctx.beginPath();
-      this.ctx.moveTo(800, 570);
-      this.ctx.lineTo(1200, 570);
-      this.ctx.lineTo(1200, 600);
-      this.ctx.lineTo(800, 600);
-      this.ctx.lineTo(825, 585);      
-      this.ctx.lineTo(800, 570);      
+      this.ctx.moveTo(800, 520);
+      this.ctx.lineTo(1200, 520);
+      this.ctx.lineTo(1200, 550);
+      this.ctx.lineTo(800, 550);
+      this.ctx.lineTo(825, 535);      
+      this.ctx.lineTo(800, 520);      
       this.ctx.fillStyle = "#26e609";
     this.ctx.fill();
   }

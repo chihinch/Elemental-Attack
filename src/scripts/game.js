@@ -59,7 +59,6 @@ export default class Game {
     this.control.addKeyDownInGameListener();
     this.control.addKeyUpInGameListener();
     this.togglePause();
-    this.renderGame();
   }
 
   gameOver() {
