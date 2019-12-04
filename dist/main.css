@@ -101,12 +101,12 @@ body {
   align-items: center;
 }
 
-#game-container-contents {
+/* #game-container-contents {
   width: 1200px;
   height: 600px;
-}
+} */
 
-.slideshow-container {
+/* .slideshow-container {
   width: inherit;
   margin: auto;
 }
@@ -176,7 +176,7 @@ body {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
-}
+} */
 
 #canvas-container {
   width: 1200px;

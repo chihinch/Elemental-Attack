@@ -142,4 +142,4 @@ export default class Player {
   isAlive() {
     return this.health > 0;
   }
-}
+};

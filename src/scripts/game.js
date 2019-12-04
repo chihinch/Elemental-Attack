@@ -12,9 +12,12 @@ export default class Game {
 
     this.paused = true;
 
-    this.player = new Player(canvas, ctx);
-    this.slideshow = new Slideshow(canvas, ctx);
-    this.gameOverHandler = new GameOverHandler(canvas, ctx);
+    this.player = new Player(this.canvas, this.ctx);
+
+    this.slideshow = new Slideshow(this.canvas, this.ctx);
+    this.slideshow.drawSlide();
+
+    this.gameOverHandler = new GameOverHandler(this.canvas, this.ctx);
 
     this.control = new Control(this);
     this.control.addKeyDownOutsideGameListener();
@@ -219,4 +222,4 @@ export default class Game {
       }
     }
   }
-}
+};
