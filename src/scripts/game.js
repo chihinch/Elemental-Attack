@@ -136,6 +136,12 @@ export default class Game {
 
   drawBackground() {
     this.ctx.drawImage(this.background, 0, 0);
+
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.font = 'bold 20px Nunito';
+    this.ctx.textAlign = "left";
+    this.ctx.textBaseline = "middle";
+    this.ctx.fillText("Press P for pause / help", 50, 500);
   }
 
   drawEntities() {
