@@ -24,7 +24,10 @@ export default class Player {
     this.directionalKey = undefined; 
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
     this.dX = 5;
-    
+
+    this.drawHealth = this.drawHealth.bind(this);
+    this.drawElectrons = this.drawElectrons.bind(this);
+    this.drawScore = this.drawScore.bind(this);
     this.changePlayerStats = this.changePlayerStats.bind(this);
     this.reset = this.reset.bind(this);
     this.isAlive = this.isAlive.bind(this);
@@ -33,16 +36,35 @@ export default class Player {
   draw() {
     // Image has dimensions 32px x 62px
     this.ctx.drawImage(this.image, this.positionX - 16, this.positionY - 62);
+
+    this.drawHealth();
+    this.drawElectrons();
+    this.drawScore();
   }
 
   drawHealth() {
     this.ctx.beginPath();
+      this.ctx.moveTo(65, 35);
+      this.ctx.lineTo(65, 45);
+      this.ctx.lineTo(75, 45);
+      this.ctx.lineTo(75, 55);
+      this.ctx.lineTo(65, 55);
+      this.ctx.lineTo(65, 65);
+      this.ctx.lineTo(55, 65);
+      this.ctx.lineTo(55, 55);
+      this.ctx.lineTo(45, 55);
+      this.ctx.lineTo(45, 45);
+      this.ctx.lineTo(55, 45);
+      this.ctx.lineTo(55, 35);
+      this.ctx.lineTo(65, 35);
+      this.ctx.fillStyle = "#a85732";
+    this.ctx.fill();
+
+    this.ctx.beginPath();
       this.ctx.fillStyle = "#ffffff";
-      this.ctx.font = "bold 24px Arial";
+      this.ctx.font = 'bold 18px "Nunito"';
       this.ctx.textAlign = "left";
-      this.ctx.fillText("Health: ", 100, 50)
-      this.ctx.fill();
-    this.ctx.closePath();
+    this.ctx.fillText("Health", 85, 50)
 
     this.ctx.beginPath();
       if (this.health > 25) {
@@ -51,21 +73,16 @@ export default class Player {
       else {
         this.ctx.fillStyle = "#a85732";
       }
-      this.ctx.font = "bold 32px Arial";
-      this.ctx.textAlign = "left";
-      this.ctx.fillText(this.health.toString(), 250, 50)
-      this.ctx.fill();
-    this.ctx.closePath();
+      this.ctx.font = 'bold 32px "Nunito"';
+    this.ctx.fillText(this.health.toString(), 145, 50)
   }
 
   drawElectrons() {
     this.ctx.beginPath();
       this.ctx.fillStyle = "#ffffff";
-      this.ctx.font = "bold 24px Arial";
+      this.ctx.font = 'bold 18px "Nunito"';
       this.ctx.textAlign = "left";
-      this.ctx.fillText("Electrons: ", 100, 100)
-      this.ctx.fill();
-    this.ctx.closePath();
+    this.ctx.fillText("Electrons", 175, 50)
 
     this.ctx.beginPath();
       if (this.electrons > 10) {
@@ -74,29 +91,24 @@ export default class Player {
       else {
         this.ctx.fillStyle = "#a85732";
       }
-      this.ctx.font = "bold 32px Arial";
-      this.ctx.textAlign = "left";
-      this.ctx.fillText(this.electrons.toString(), 250, 100)
-      this.ctx.fill();
-    this.ctx.closePath();
+      this.ctx.font = 'bold 32px "Nunito"';
+    this.ctx.fillText(this.electrons.toString(), 255, 50)
   }
 
   drawScore() {
       this.ctx.beginPath();
       this.ctx.fillStyle = "#ffffff";
-      this.ctx.font = "bold 24px Arial";
+      this.ctx.font = 'bold 18px Nunito';
       this.ctx.textAlign = "left";
-      this.ctx.fillText("Score: ", 100, 150);
-      this.ctx.fill();
-    this.ctx.closePath();
+      this.ctx.fillText("Score", 305, 50);
+    this.ctx.fill();
 
     this.ctx.beginPath();
       this.ctx.fillStyle = "#64a832";
-      this.ctx.font = "bold 32px Arial";
+      this.ctx.font = 'bold 32px "Nunito"';
       this.ctx.textAlign = "left";
-      this.ctx.fillText(this.points.toString(), 250, 150)
-      this.ctx.fill();
-    this.ctx.closePath();
+      this.ctx.fillText(this.points.toString(), 385, 50)
+    this.ctx.fill();
   }
 
   changePlayerStats(stat, amount) {

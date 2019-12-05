@@ -117,14 +117,17 @@ export default class Game {
     
     if (this.player.isAlive()) {
       this.clearCanvas();
+
       this.drawBackground();
+
+      // this.player.drawHealth();
+
       this.drawEntities();
       this.checkCollisions();
       this.moveEntities();
 
-      this.player.drawHealth();
-      this.player.drawElectrons();
-      this.player.drawScore();
+      // this.player.drawElectrons();
+      // this.player.drawScore();
 
       this.animationRequest = window.requestAnimationFrame(this.renderGame);
     }
