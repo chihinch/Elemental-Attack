@@ -9,6 +9,9 @@ export default class Player {
     this.electrons = 25;
     this.points = 0;
 
+    this.electronsFired = 0;
+    this.ioniserFired = 0;
+
     this.projectiles = {};
 
     this.image = new Image();
@@ -122,6 +125,7 @@ export default class Player {
       case 'ioniser':
         const newIoniser = new Projectile(this.canvas, this.ctx, 'ioniser', '#ff0000', 3, this.positionX, this.positionY - 75);
         this.projectiles[newIoniser.ref] = newIoniser;
+        this.ioniserFired++;
         break;
       case 'electron':
         if (this.electrons <= 0) {
@@ -131,6 +135,7 @@ export default class Player {
           const newElectron = new Projectile(this.canvas, this.ctx, 'electron', '#ffff00', 3, this.positionX, this.positionY - 75);
           this.projectiles[newElectron.ref] = newElectron;
           this.electrons--;
+          this.electronsFired++;
         }
         break;
       default:

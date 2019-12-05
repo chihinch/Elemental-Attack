@@ -15,11 +15,11 @@ export default class Game {
     this.player = new Player(this.canvas, this.ctx);
 
     this.slideshow = new Slideshow(this.canvas, this.ctx);
-    this.gameOverHandler = new GameOverHandler(this.canvas, this.ctx);
     this.control = new Control(this);
 
     this.atomArmy = {};
     this.atomCount = 0;
+    this.atomsDefeated = 0;
 
     this.animationRequest = undefined;
     this.gameOverAnimationRequest = undefined;
@@ -68,7 +68,8 @@ export default class Game {
   }
 
   gameOver() {
-    console.log(this.animationRequest);
+    this.gameOverHandler = new GameOverHandler(this.canvas, this.ctx);
+    
     console.log('Game over');
     this.control.removeKeyDownInGameListener();
     this.control.removeKeyUpInGameListener();
@@ -167,6 +168,7 @@ export default class Game {
 
           if (atom.isAtomDefeated()) {
             delete this.atomArmy[atom.ref];
+            this.atomsDefeated++;
             this.player.changePlayerStats('points', atom.atomicNumber);
           }
         }
