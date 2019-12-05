@@ -61,39 +61,49 @@ export default class Player {
     this.ctx.fillStyle = "#a85732";
     this.ctx.fill(healthIcon);
 
-    // this.ctx.beginPath();
     this.ctx.fillStyle = "#ffffff";
-    this.ctx.font = 'bold 18px "Nunito"';
+    this.ctx.font = 'bold 20px "Nunito"';
     this.ctx.textAlign = "left";
+    this.ctx.textBaseline = "middle";
     this.ctx.fillText("Health", 85, 50)
 
-    // this.ctx.beginPath();
-      if (this.health > 25) {
-        this.ctx.fillStyle = "#64a832";
-      }
-      else {
-        this.ctx.fillStyle = "#a85732";
-      }
-      this.ctx.font = 'bold 32px "Nunito"';
-    this.ctx.fillText(this.health.toString(), 145, 50)
+    if (this.health > 25) {
+      this.ctx.fillStyle = "#64a832";
+    }
+    else if (this.health >= 10 && this.health <= 25) {
+      this.ctx.fillStyle = "#ffff00";
+    }
+    else {
+      this.ctx.fillStyle = "#a85732";
+    }
+    this.ctx.font = 'bold 30px "Nunito"';
+    this.ctx.fillText(this.health.toString(), 200, 50)
   }
 
   drawElectrons() {
-    // this.ctx.beginPath();
-      this.ctx.fillStyle = "#ffffff";
-      this.ctx.font = 'bold 18px "Nunito"';
-      this.ctx.textAlign = "left";
-    this.ctx.fillText("Electrons", 175, 50)
+    let electronIcon = new Path2D();
+    electronIcon.arc(60, 100, 10, 0, 2 * Math.PI, true);
+    electronIcon.closePath();
+    this.ctx.fillStyle = "#ffff00";
+    this.ctx.fill(electronIcon);
 
-    // this.ctx.beginPath();
-      if (this.electrons > 10) {
-        this.ctx.fillStyle = "#64a832";
-      }
-      else {
-        this.ctx.fillStyle = "#a85732";
-      }
-      this.ctx.font = 'bold 32px "Nunito"';
-    this.ctx.fillText(this.electrons.toString(), 255, 50)
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.font = 'bold 20px "Nunito"';
+    this.ctx.textAlign = "left";
+    this.ctx.textBaseline = "middle";
+    this.ctx.fillText("Electrons", 85, 100)
+
+    if (this.electrons > 10) {
+      this.ctx.fillStyle = "#64a832";
+    }
+    else if (this.electrons > 0 && this.electrons <= 10) {
+      this.ctx.fillStyle = "#ffff00";
+    }
+    else {
+      this.ctx.fillStyle = "#a85732";
+    }
+    this.ctx.font = 'bold 30px "Nunito"';
+    this.ctx.fillText(this.electrons.toString(), 200, 100)
   }
 
   drawScore() {
@@ -101,6 +111,7 @@ export default class Player {
       this.ctx.fillStyle = "#ffffff";
       this.ctx.font = 'bold 18px Nunito';
       this.ctx.textAlign = "left";
+      this.ctx.textBaseline = "middle";
       this.ctx.fillText("Score", 305, 50);
     // this.ctx.fill();
 
