@@ -27,6 +27,14 @@ export default class Game {
     this.background = new Image();
     this.background.src = "src/assets/images/chalkboard.png";
 
+    this.gameOverHandler = new GameOverHandler(
+      this.canvas, this.ctx,
+      this.atomsDefeated,
+      this.player.points, this.player.ioniserFired, this.player.electronsFired
+    );
+
+    this.restartMessageInterval = undefined;
+
     this.togglePause = this.togglePause.bind(this);
     this.newGame = this.newGame.bind(this);
     this.gameOver = this.gameOver.bind(this);
@@ -70,17 +78,14 @@ export default class Game {
   gameOver() {
     window.cancelAnimationFrame(this.animationRequest);
 
-    this.gameOverHandler = new GameOverHandler(
-      this.canvas, this.ctx, 
-      this.atomsDefeated,
-      this.player.points, this.player.ioniserFired, this.player.electronsFired 
-    );
-
     console.log('Game over');
     this.control.removeKeyDownInGameListener();
     this.control.removeKeyUpInGameListener();
     this.slideshow.gameStarted = false;
+    this.gameOverHandler.recordTimeStart();
     this.renderGameOver();
+    window.setTimeout(() => window.cancelAnimationFrame(this.gameOverAnimationRequest), 7000);
+    this.restartMessageInterval = window.setInterval(this.gameOverHandler.drawRestartMessage, 1000);
   }
   
   renderGameOver() {

@@ -14,12 +14,17 @@ export default class GameOverHandler {
     this.ioniserFired = ioniserFired;
     this.electronsFired = electronsFired;
 
-    this.timeStart = Date.now();
+    this.restartMessageActive = false;
 
     this.drawBackground = this.drawBackground.bind(this);
     this.drawGameOverTitle = this.drawGameOverTitle.bind(this);
     this.drawStatHeader = this.drawStatHeader.bind(this);
     this.drawStats = this.drawStats.bind(this);
+    this.drawRestartMessage = this.drawRestartMessage.bind(this);
+  }
+
+  recordTimeStart() {
+    this.timeStart = Date.now();
   }
 
   drawGameOver() {
@@ -43,7 +48,7 @@ export default class GameOverHandler {
       this.ctx.font = 'bold 72px "Nunito"';
       this.ctx.textAlign = "center";
       this.ctx.fillText("Game Over", (this.canvas.width / 2), this.gameOverTextY);
-      this.ctx.fill();
+      
     this.ctx.closePath();
   }
 
@@ -58,7 +63,7 @@ export default class GameOverHandler {
       this.ctx.font = 'bold 48px "Nunito"';
       this.ctx.textAlign = "center";
       this.ctx.fillText("Game Stats", (this.canvas.width / 2), this.statHeaderY);
-      this.ctx.fill();
+      
       this.ctx.closePath();
     }
   }
@@ -72,7 +77,7 @@ export default class GameOverHandler {
         this.ctx.fillText("Points", 350, 275);
         this.ctx.textAlign = "right";
         this.ctx.fillText(`${this.points}`, 850, 275);
-        this.ctx.fill();
+        
       this.ctx.closePath();
     }
     if (Math.floor((Date.now() - this.timeStart) / 1000) > 3) {
@@ -83,7 +88,7 @@ export default class GameOverHandler {
         this.ctx.fillText("Number of atoms defeated", 350, 305);
         this.ctx.textAlign = "right";
         this.ctx.fillText(`${this.atomsDefeated}`, 850, 305);
-        this.ctx.fill();
+        
       this.ctx.closePath();
     }
     if (Math.floor((Date.now() - this.timeStart) / 1000) > 4) {
@@ -94,7 +99,7 @@ export default class GameOverHandler {
         this.ctx.fillText("Times ioniser fired", 350, 335);
         this.ctx.textAlign = "right";
         this.ctx.fillText(`${this.ioniserFired}`, 850, 335);
-        this.ctx.fill();
+        
       this.ctx.closePath();
     }
     if (Math.floor((Date.now() - this.timeStart) / 1000) > 5) {
@@ -105,8 +110,30 @@ export default class GameOverHandler {
         this.ctx.fillText("Times electron gun fired", 350, 365);
         this.ctx.textAlign = "right";
         this.ctx.fillText(`${this.electronsFired}`, 850, 365);
-        this.ctx.fill();
+        
       this.ctx.closePath();
+    }
+  }
+
+  drawRestartMessage() {
+    this.ctx.clearRect(400, 400, 400, 70);
+
+    this.ctx.beginPath();
+    this.ctx.rect(400, 400, 400, 70);
+    this.ctx.fillStyle = "black";
+    this.ctx.fill();
+
+    if (this.restartMessageActive) {
+      this.ctx.beginPath();
+        this.ctx.font = 'bold 30px "Nunito"';
+        this.ctx.fillStyle = "#e3bc52";
+        this.ctx.textAlign = "center";
+      this.ctx.fillText('Press SPACE to restart', (this.canvas.width / 2), 435);
+
+      this.restartMessageActive = false;
+    }
+    else {
+      this.restartMessageActive = true;
     }
   }
 
