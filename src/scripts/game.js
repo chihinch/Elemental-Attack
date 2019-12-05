@@ -2,7 +2,7 @@ import Player from './player';
 import Control from './control';
 import Slideshow from './slideshow';
 import GameOverHandler from './gameOver';
-import { collisionCircleWall, collisionRectangleWall, collisionCircleRectangle, collisionCircleCircle } from './collisionDetection';
+import { collisionCircleWall, collisionPlayerWall, collisionCircleRectangle, collisionCircleCircle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
 export default class Game {
@@ -157,7 +157,7 @@ export default class Game {
   }
 
   checkCollisions() {
-    collisionRectangleWall(this.canvas, this.player);
+    collisionPlayerWall(this.canvas, this.player);
 
     let atomArmy = Object.values(this.atomArmy);
     let projectiles = Object.values(this.player.projectiles);

@@ -17,11 +17,8 @@ export default class Player {
     this.image = new Image();
     this.image.src = "/src/assets/images/smallChemist.png";
 
-    this.width = 10;
-    this.height = 30;
-    this.positionX = (canvas.width - this.width) / 2; // Player starts at the canvas' centre
-    this.positionY = canvas.height - this.height; // This should never change since the player is "grounded"
-    this.directionalKey = undefined; 
+    this.positionX = canvas.width / 2; // Player starts at the canvas' centre
+    this.positionY = canvas.height; // This should never change since the player is "grounded" 
     this.direction = 0; // -1 = move left, +1 = move right (x-axis)
     this.dX = 5;
 
