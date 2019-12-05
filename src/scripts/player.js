@@ -5,7 +5,7 @@ export default class Player {
     this.canvas = canvas;
     this.ctx = ctx;
 
-    this.health = 5;
+    this.health = 100;
     this.electrons = 25;
     this.points = 0;
 
@@ -107,20 +107,15 @@ export default class Player {
   }
 
   drawScore() {
-      // this.ctx.beginPath();
-      this.ctx.fillStyle = "#ffffff";
-      this.ctx.font = 'bold 18px Nunito';
-      this.ctx.textAlign = "left";
-      this.ctx.textBaseline = "middle";
-      this.ctx.fillText("Score", 305, 50);
-    // this.ctx.fill();
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.font = 'bold 20px Nunito';
+    this.ctx.textAlign = "right";
+    this.ctx.textBaseline = "middle";
+    this.ctx.fillText("Score", 1000, 50);
 
-    // this.ctx.beginPath();
-      this.ctx.fillStyle = "#64a832";
-      this.ctx.font = 'bold 32px "Nunito"';
-      this.ctx.textAlign = "left";
-      this.ctx.fillText(this.points.toString(), 385, 50)
-    // this.ctx.fill();
+    this.ctx.fillStyle = "#64aded";
+    this.ctx.font = 'bold 30px "Nunito"';
+    this.ctx.fillText(this.points.toString(), 1150, 50)
   }
 
   changePlayerStats(stat, amount) {
@@ -146,7 +141,7 @@ export default class Player {
   }
 
   reset() {
-    this.health = 5;
+    this.health = 100;
     this.electrons = 25;
     this.points = 0;
     this.ioniserFired = 0;
