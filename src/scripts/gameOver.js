@@ -1,5 +1,5 @@
 export default class GameOverHandler {
-  constructor(canvas, ctx, points, atomsDefeated, ioniserFired, electronsFired) {
+  constructor(canvas, ctx) {
     this.canvas = canvas;
     this.ctx = ctx;
 
@@ -8,11 +8,6 @@ export default class GameOverHandler {
 
     this.gameOverTextY = 0;
     this.statHeaderY = 0;
-
-    this.points = points;
-    this.atomsDefeated = atomsDefeated;
-    this.ioniserFired = ioniserFired;
-    this.electronsFired = electronsFired;
 
     this.restartMessageActive = false;
 
@@ -27,11 +22,11 @@ export default class GameOverHandler {
     this.timeStart = Date.now();
   }
 
-  drawGameOver() {
+  drawGameOver(points, atomsDefeated, ioniserFired, electronsFired) {
     this.drawBackground();
     this.drawGameOverTitle();
     this.drawStatHeader();
-    this.drawStats();
+    this.drawStats(points, atomsDefeated, ioniserFired, electronsFired);
   }
 
   drawBackground() {
@@ -68,7 +63,7 @@ export default class GameOverHandler {
     }
   }
 
-  drawStats() {
+  drawStats(points, atomsDefeated, ioniserFired, electronsFired) {
     if (Math.floor((Date.now() - this.timeStart) / 1000) > 2) {
       this.ctx.beginPath();
         this.ctx.fillStyle = "white";
@@ -76,8 +71,7 @@ export default class GameOverHandler {
         this.ctx.textAlign = "left";
         this.ctx.fillText("Points", 350, 275);
         this.ctx.textAlign = "right";
-        this.ctx.fillText(`${this.points}`, 850, 275);
-        
+        this.ctx.fillText(`${points}`, 850, 275);
       this.ctx.closePath();
     }
     if (Math.floor((Date.now() - this.timeStart) / 1000) > 3) {
@@ -87,8 +81,7 @@ export default class GameOverHandler {
         this.ctx.textAlign = "left";
         this.ctx.fillText("Number of atoms defeated", 350, 305);
         this.ctx.textAlign = "right";
-        this.ctx.fillText(`${this.atomsDefeated}`, 850, 305);
-        
+        this.ctx.fillText(`${atomsDefeated}`, 850, 305);
       this.ctx.closePath();
     }
     if (Math.floor((Date.now() - this.timeStart) / 1000) > 4) {
@@ -98,8 +91,7 @@ export default class GameOverHandler {
         this.ctx.textAlign = "left";
         this.ctx.fillText("Times ioniser fired", 350, 335);
         this.ctx.textAlign = "right";
-        this.ctx.fillText(`${this.ioniserFired}`, 850, 335);
-        
+        this.ctx.fillText(`${ioniserFired}`, 850, 335);
       this.ctx.closePath();
     }
     if (Math.floor((Date.now() - this.timeStart) / 1000) > 5) {
@@ -109,8 +101,7 @@ export default class GameOverHandler {
         this.ctx.textAlign = "left";
         this.ctx.fillText("Times electron gun fired", 350, 365);
         this.ctx.textAlign = "right";
-        this.ctx.fillText(`${this.electronsFired}`, 850, 365);
-        
+        this.ctx.fillText(`${electronsFired}`, 850, 365);
       this.ctx.closePath();
     }
   }

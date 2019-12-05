@@ -2,21 +2,22 @@ export default class Control {
   constructor(game) {
     this.game = game;
 
-    this.handleKeyDownOutsideGame = this.handleKeyDownOutsideGame.bind(this);
+    this.handleKeyDownPreGame = this.handleKeyDownPreGame.bind(this);
     this.handleKeyDownInGame = this.handleKeyDownInGame.bind(this);
     this.handleKeyUpInGame = this.handleKeyUpInGame.bind(this); 
+    this.handleKeyDownPostGame = this.handleKeyDownPostGame.bind(this);
   }
 
-  addKeyDownOutsideGameListener() {
-    document.addEventListener('keydown', this.handleKeyDownOutsideGame);
+  addKeyDownPreGameListener() {
+    document.addEventListener('keydown', this.handleKeyDownPreGame);
+  }
+
+  removeKeyDownPreGameListener() {
+    document.removeEventListener('keydown', this.handleKeyDownPreGame);
   }
 
   addKeyDownInGameListener() {
     document.addEventListener('keydown', this.handleKeyDownInGame);
-  }
-
-  removeKeyDownOutsideGameListener() {
-    document.removeEventListener('keydown', this.handleKeyDownOutsideGame);
   }
 
   removeKeyDownInGameListener() {
@@ -31,7 +32,15 @@ export default class Control {
     document.removeEventListener('keyup', this.handleKeyUpInGame);
   }
 
-  handleKeyDownOutsideGame(event) {
+  addKeyDownPostGameListener() {
+    document.addEventListener('keydown', this.handleKeyDownPostGame);
+  }
+
+  removeKeyDownPostGameListener() {
+    document.removeEventListener('keydown', this.handleKeyDownPostGame);
+  }
+
+  handleKeyDownPreGame(event) {
     switch(event.key) {
       case 'ArrowLeft':
         this.game.slideshow.backwardSlide();
@@ -96,6 +105,16 @@ export default class Control {
         break;
       case 'Right':
         this.game.player.direction = 0;
+        break;
+      default:
+        return;
+    }
+  }
+
+  handleKeyDownPostGame(event) {
+    switch(event.key) {
+      case ' ':
+        this.game.newGame();
         break;
       default:
         return;

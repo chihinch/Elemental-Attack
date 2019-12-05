@@ -27,15 +27,12 @@ export default class Game {
     this.background = new Image();
     this.background.src = "src/assets/images/chalkboard.png";
 
-    this.gameOverHandler = new GameOverHandler(
-      this.canvas, this.ctx,
-      this.atomsDefeated,
-      this.player.points, this.player.ioniserFired, this.player.electronsFired
-    );
+    this.gameOverHandler = new GameOverHandler(this.canvas, this.ctx);
 
     this.restartMessageInterval = undefined;
 
     this.togglePause = this.togglePause.bind(this);
+    this.reset = this.reset.bind(this);
     this.newGame = this.newGame.bind(this);
     this.gameOver = this.gameOver.bind(this);
     this.renderGameOver = this.renderGameOver.bind(this);
@@ -48,13 +45,15 @@ export default class Game {
     this.buildAtomArmy = this.buildAtomArmy.bind(this);
     this.restoreAmmo = this.restoreAmmo.bind(this);
     this.getPairs = this.getPairs.bind(this);
+
+    this.slideshow.setSlide(1);
+    this.control.addKeyDownPreGameListener();
   }
 
   togglePause() {
     this.paused = !this.paused;
     
     if (this.paused) {
-      console.log(this.animationRequest);
       window.clearInterval(this.buildAtomArmy);
       window.clearInterval(this.restoreAmmo);
       this.slideshow.setSlide(3);
@@ -67,8 +66,20 @@ export default class Game {
     }
   }
 
+  reset() {
+    this.atomArmy = {};
+    this.atomCount = 0;
+    this.atomsDefeated = 0;
+    this.player.reset();
+  }
+
   newGame() {
-    this.control.removeKeyDownOutsideGameListener();
+    window.clearInterval(this.restartMessageInterval);
+    this.control.removeKeyDownPreGameListener();
+    this.control.removeKeyDownPostGameListener();
+
+    this.reset();
+
     this.control.addKeyDownInGameListener();
     this.control.addKeyUpInGameListener();
     this.slideshow.gameStarted = true;
@@ -78,19 +89,24 @@ export default class Game {
   gameOver() {
     window.cancelAnimationFrame(this.animationRequest);
 
-    console.log('Game over');
     this.control.removeKeyDownInGameListener();
     this.control.removeKeyUpInGameListener();
+
     this.slideshow.gameStarted = false;
+    this.paused = true;
+
     this.gameOverHandler.recordTimeStart();
     this.renderGameOver();
-    window.setTimeout(() => window.cancelAnimationFrame(this.gameOverAnimationRequest), 7000);
-    this.restartMessageInterval = window.setInterval(this.gameOverHandler.drawRestartMessage, 1000);
+    window.setTimeout(() => {
+      window.cancelAnimationFrame(this.gameOverAnimationRequest);
+      this.control.addKeyDownPostGameListener();
+      this.restartMessageInterval = window.setInterval(this.gameOverHandler.drawRestartMessage, 1000);
+      }, 6500);
   }
   
   renderGameOver() {
     this.clearCanvas();
-    this.gameOverHandler.drawGameOver();
+    this.gameOverHandler.drawGameOver(this.player.points, this.atomsDefeated, this.player.ioniserFired, this.player.electronsFired);
     this.gameOverAnimationRequest = window.requestAnimationFrame(this.renderGameOver);
   }
 

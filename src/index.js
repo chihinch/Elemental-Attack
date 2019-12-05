@@ -9,6 +9,4 @@ window.addEventListener('DOMContentLoaded', () => {
   
   // Instantiate a new game
   const game = new Game(canvas, ctx);
-  game.slideshow.setSlide(1);
-  game.control.addKeyDownOutsideGameListener();
 });

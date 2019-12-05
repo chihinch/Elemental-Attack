@@ -26,6 +26,7 @@ export default class Player {
     this.dX = 5;
     
     this.changePlayerStats = this.changePlayerStats.bind(this);
+    this.reset = this.reset.bind(this);
     this.isAlive = this.isAlive.bind(this);
   }
 
@@ -118,6 +119,15 @@ export default class Player {
       default:
         return;
     }
+  }
+
+  reset() {
+    this.health = 5;
+    this.electrons = 25;
+    this.points = 0;
+    this.ioniserFired = 0;
+    this.electronsFired = 0;
+    this.projectiles = {};
   }
 
   fireWeapon(type) {

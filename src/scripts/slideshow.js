@@ -51,7 +51,6 @@ export default class Slideshow {
     this.ctx.drawImage(this.instructions, 0, 0);
     if (this.controlSeen === false) {
       this.controlSeen = true;
-      console.log(`Game can be started: ${this.controlSeen}`);
     }
     this.gameMessageInterval = window.setInterval(this.drawGameMessage, 1000);
   }
@@ -168,7 +167,6 @@ export default class Slideshow {
   advanceSlide() {
     if (this.slideNumber >= 1 && this.slideNumber < 3) {
       this.slideNumber++;
-      console.log(`Advance slide to ${this.slideNumber}`);
     }
     else {
       return;
@@ -179,7 +177,6 @@ export default class Slideshow {
   backwardSlide() {
     if (this.slideNumber >= 2  && this.slideNumber <= 3) {
       this.slideNumber--;
-      console.log(`Return slide to ${this.slideNumber}`);
     }
     else {
       return;
