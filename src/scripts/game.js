@@ -68,8 +68,14 @@ export default class Game {
   }
 
   gameOver() {
-    this.gameOverHandler = new GameOverHandler(this.canvas, this.ctx);
-    
+    window.cancelAnimationFrame(this.animationRequest);
+
+    this.gameOverHandler = new GameOverHandler(
+      this.canvas, this.ctx, 
+      this.atomsDefeated,
+      this.player.points, this.player.ioniserFired, this.player.electronsFired 
+    );
+
     console.log('Game over');
     this.control.removeKeyDownInGameListener();
     this.control.removeKeyUpInGameListener();
@@ -78,6 +84,7 @@ export default class Game {
   }
   
   renderGameOver() {
+    this.clearCanvas();
     this.gameOverHandler.drawGameOver();
     this.gameOverAnimationRequest = window.requestAnimationFrame(this.renderGameOver);
   }
@@ -86,24 +93,21 @@ export default class Game {
     if (this.paused) {
       return;
     }
-
-    console.log(this.animationRequest);
-
-    this.clearCanvas();
-    this.drawBackground();
-    this.drawEntities();
-    this.checkCollisions();
-    this.moveEntities();
-    
-    this.player.drawHealth();
-    this.player.drawElectrons();
-    this.player.drawScore();
     
     if (this.player.isAlive()) {
+      this.clearCanvas();
+      this.drawBackground();
+      this.drawEntities();
+      this.checkCollisions();
+      this.moveEntities();
+
+      this.player.drawHealth();
+      this.player.drawElectrons();
+      this.player.drawScore();
+
       this.animationRequest = window.requestAnimationFrame(this.renderGame);
     }
     else {
-      window.cancelAnimationFrame(this.animationRequest);
       this.gameOver();
     }
 

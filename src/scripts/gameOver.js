@@ -1,5 +1,5 @@
 export default class GameOverHandler {
-  constructor(canvas, ctx) {
+  constructor(canvas, ctx, points, atomsDefeated, ioniserFired, electronsFired) {
     this.canvas = canvas;
     this.ctx = ctx;
 
@@ -9,25 +9,24 @@ export default class GameOverHandler {
     this.gameOverTextY = 0;
     this.statHeaderY = 0;
 
-    this.timeInstantiated = Date.now();
+    this.points = points;
+    this.atomsDefeated = atomsDefeated;
+    this.ioniserFired = ioniserFired;
+    this.electronsFired = electronsFired;
+
+    this.timeStart = Date.now();
 
     this.drawBackground = this.drawBackground.bind(this);
     this.drawGameOverTitle = this.drawGameOverTitle.bind(this);
     this.drawStatHeader = this.drawStatHeader.bind(this);
+    this.drawStats = this.drawStats.bind(this);
   }
 
   drawGameOver() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawBackground();
     this.drawGameOverTitle();
     this.drawStatHeader();
-
-    const timeNow = Date.now();
-    const timeDiff = Math.floor((timeNow - this.timeInstantiated) / 1000);
-
-    // if (timeDiff > 2) {
-    //   this.drawStatHeader();
-    // }
+    this.drawStats();
   }
 
   drawBackground() {
@@ -49,7 +48,7 @@ export default class GameOverHandler {
   }
 
   drawStatHeader() {
-    if (Math.floor((Date.now() - this.timeInstantiated) / 1000) > 2) {
+    if (Math.floor((Date.now() - this.timeStart) / 1000) > 1) {
       if (this.statHeaderY < 200) {
         this.statHeaderY += 4;
       }
@@ -63,4 +62,52 @@ export default class GameOverHandler {
       this.ctx.closePath();
     }
   }
+
+  drawStats() {
+    if (Math.floor((Date.now() - this.timeStart) / 1000) > 2) {
+      this.ctx.beginPath();
+        this.ctx.fillStyle = "white";
+        this.ctx.font = 'bold 24px "Nunito"';
+        this.ctx.textAlign = "left";
+        this.ctx.fillText("Points", 350, 275);
+        this.ctx.textAlign = "right";
+        this.ctx.fillText(`${this.points}`, 850, 275);
+        this.ctx.fill();
+      this.ctx.closePath();
+    }
+    if (Math.floor((Date.now() - this.timeStart) / 1000) > 3) {
+      this.ctx.beginPath();
+        this.ctx.fillStyle = "white";
+        this.ctx.font = 'bold 24px "Nunito"';
+        this.ctx.textAlign = "left";
+        this.ctx.fillText("Number of atoms defeated", 350, 305);
+        this.ctx.textAlign = "right";
+        this.ctx.fillText(`${this.atomsDefeated}`, 850, 305);
+        this.ctx.fill();
+      this.ctx.closePath();
+    }
+    if (Math.floor((Date.now() - this.timeStart) / 1000) > 4) {
+      this.ctx.beginPath();
+        this.ctx.fillStyle = "white";
+        this.ctx.font = 'bold 24px "Nunito"';
+        this.ctx.textAlign = "left";
+        this.ctx.fillText("Times ioniser fired", 350, 335);
+        this.ctx.textAlign = "right";
+        this.ctx.fillText(`${this.ioniserFired}`, 850, 335);
+        this.ctx.fill();
+      this.ctx.closePath();
+    }
+    if (Math.floor((Date.now() - this.timeStart) / 1000) > 5) {
+      this.ctx.beginPath();
+        this.ctx.fillStyle = "white";
+        this.ctx.font = 'bold 24px "Nunito"';
+        this.ctx.textAlign = "left";
+        this.ctx.fillText("Times electron gun fired", 350, 365);
+        this.ctx.textAlign = "right";
+        this.ctx.fillText(`${this.electronsFired}`, 850, 365);
+        this.ctx.fill();
+      this.ctx.closePath();
+    }
+  }
+
 };
