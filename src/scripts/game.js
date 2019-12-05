@@ -119,22 +119,15 @@ export default class Game {
       this.clearCanvas();
 
       this.drawBackground();
-
-      // this.player.drawHealth();
-
       this.drawEntities();
       this.checkCollisions();
       this.moveEntities();
-
-      // this.player.drawElectrons();
-      // this.player.drawScore();
 
       this.animationRequest = window.requestAnimationFrame(this.renderGame);
     }
     else {
       this.gameOver();
     }
-
   }
 
   clearCanvas() {
