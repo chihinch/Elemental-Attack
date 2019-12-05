@@ -38,10 +38,12 @@ export default class Slideshow {
   }
 
   drawIntro() {
+    window.clearInterval(this.gameMessageInterval);
     this.ctx.drawImage(this.intro, 0, 0);
   }
 
   drawStory() {
+    window.clearInterval(this.gameMessageInterval);
     this.ctx.drawImage(this.story, 0, 0);
   }
 

@@ -24,12 +24,16 @@ export default class Game {
     this.animationRequest = undefined;
     this.gameOverAnimationRequest = undefined;
 
+    this.background = new Image();
+    this.background.src = "src/assets/images/chalkboard.png";
+
     this.togglePause = this.togglePause.bind(this);
     this.newGame = this.newGame.bind(this);
     this.gameOver = this.gameOver.bind(this);
     this.renderGameOver = this.renderGameOver.bind(this);
     this.renderGame = this.renderGame.bind(this);
     this.clearCanvas = this.clearCanvas.bind(this);
+    this.drawBackground = this.drawBackground.bind(this);
     this.drawEntities = this.drawEntities.bind(this);
     this.checkCollisions = this.checkCollisions.bind(this);
     this.moveEntities = this.moveEntities.bind(this);
@@ -85,6 +89,7 @@ export default class Game {
     console.log(this.animationRequest);
 
     this.clearCanvas();
+    this.drawBackground();
     this.drawEntities();
     this.checkCollisions();
     this.moveEntities();
@@ -105,6 +110,10 @@ export default class Game {
 
   clearCanvas() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  drawBackground() {
+    this.ctx.drawImage(this.background, 0, 0);
   }
 
   drawEntities() {
