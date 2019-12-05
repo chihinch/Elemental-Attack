@@ -43,30 +43,31 @@ export default class Player {
   }
 
   drawHealth() {
-    this.ctx.beginPath();
-      this.ctx.moveTo(65, 35);
-      this.ctx.lineTo(65, 45);
-      this.ctx.lineTo(75, 45);
-      this.ctx.lineTo(75, 55);
-      this.ctx.lineTo(65, 55);
-      this.ctx.lineTo(65, 65);
-      this.ctx.lineTo(55, 65);
-      this.ctx.lineTo(55, 55);
-      this.ctx.lineTo(45, 55);
-      this.ctx.lineTo(45, 45);
-      this.ctx.lineTo(55, 45);
-      this.ctx.lineTo(55, 35);
-      this.ctx.lineTo(65, 35);
-      this.ctx.fillStyle = "#a85732";
-    this.ctx.fill();
+    let healthIcon = new Path2D();
+      healthIcon.moveTo(65, 35);
+      healthIcon.lineTo(65, 45);
+      healthIcon.lineTo(75, 45);
+      healthIcon.lineTo(75, 55);
+      healthIcon.lineTo(65, 55);
+      healthIcon.lineTo(65, 65);
+      healthIcon.lineTo(55, 65);
+      healthIcon.lineTo(55, 55);
+      healthIcon.lineTo(45, 55);
+      healthIcon.lineTo(45, 45);
+      healthIcon.lineTo(55, 45);
+      healthIcon.lineTo(55, 35);
+      healthIcon.lineTo(65, 35);
+    healthIcon.closePath();
+    this.ctx.fillStyle = "#a85732";
+    this.ctx.fill(healthIcon);
 
-    this.ctx.beginPath();
-      this.ctx.fillStyle = "#ffffff";
-      this.ctx.font = 'bold 18px "Nunito"';
-      this.ctx.textAlign = "left";
+    // this.ctx.beginPath();
+    this.ctx.fillStyle = "#ffffff";
+    this.ctx.font = 'bold 18px "Nunito"';
+    this.ctx.textAlign = "left";
     this.ctx.fillText("Health", 85, 50)
 
-    this.ctx.beginPath();
+    // this.ctx.beginPath();
       if (this.health > 25) {
         this.ctx.fillStyle = "#64a832";
       }
@@ -78,13 +79,13 @@ export default class Player {
   }
 
   drawElectrons() {
-    this.ctx.beginPath();
+    // this.ctx.beginPath();
       this.ctx.fillStyle = "#ffffff";
       this.ctx.font = 'bold 18px "Nunito"';
       this.ctx.textAlign = "left";
     this.ctx.fillText("Electrons", 175, 50)
 
-    this.ctx.beginPath();
+    // this.ctx.beginPath();
       if (this.electrons > 10) {
         this.ctx.fillStyle = "#64a832";
       }
@@ -96,19 +97,19 @@ export default class Player {
   }
 
   drawScore() {
-      this.ctx.beginPath();
+      // this.ctx.beginPath();
       this.ctx.fillStyle = "#ffffff";
       this.ctx.font = 'bold 18px Nunito';
       this.ctx.textAlign = "left";
       this.ctx.fillText("Score", 305, 50);
-    this.ctx.fill();
+    // this.ctx.fill();
 
-    this.ctx.beginPath();
+    // this.ctx.beginPath();
       this.ctx.fillStyle = "#64a832";
       this.ctx.font = 'bold 32px "Nunito"';
       this.ctx.textAlign = "left";
       this.ctx.fillText(this.points.toString(), 385, 50)
-    this.ctx.fill();
+    // this.ctx.fill();
   }
 
   changePlayerStats(stat, amount) {
