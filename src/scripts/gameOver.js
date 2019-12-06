@@ -11,11 +11,18 @@ export default class GameOverHandler {
 
     this.restartMessageActive = false;
 
+    this.reset = this.reset.bind(this);
     this.drawBackground = this.drawBackground.bind(this);
     this.drawGameOverTitle = this.drawGameOverTitle.bind(this);
     this.drawStatHeader = this.drawStatHeader.bind(this);
     this.drawStats = this.drawStats.bind(this);
     this.drawRestartMessage = this.drawRestartMessage.bind(this);
+  }
+
+  reset() {
+    this.gameOverTextY = 0;
+    this.statHeaderY = 0;
+    this.restartMessageActive = false;
   }
 
   recordTimeStart() {

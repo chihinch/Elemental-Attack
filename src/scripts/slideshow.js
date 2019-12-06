@@ -52,7 +52,7 @@ export default class Slideshow {
     if (this.controlSeen === false) {
       this.controlSeen = true;
     }
-    this.gameMessageInterval = window.setInterval(this.drawGameMessage, 1000);
+    this.gameMessageInterval = window.setInterval(this.drawGameMessage, 750);
   }
 
   drawSlide() {

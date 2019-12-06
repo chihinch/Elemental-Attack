@@ -2,7 +2,7 @@ import Player from './player';
 import Control from './control';
 import Slideshow from './slideshow';
 import GameOverHandler from './gameOver';
-import { collisionAtomWall, collisionPlayerWall, collisionCircleRectangle, collisionCircleCircle } from './collisionDetection';
+import { collisionAtomWall, collisionPlayerWall, collisionAtomPlayer, collisionCircleCircle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
 export default class Game {
@@ -71,6 +71,7 @@ export default class Game {
     this.atomCount = 0;
     this.atomsDefeated = 0;
     this.player.reset();
+    this.gameOverHandler.reset();
   }
 
   newGame() {
@@ -100,7 +101,7 @@ export default class Game {
     window.setTimeout(() => {
       window.cancelAnimationFrame(this.gameOverAnimationRequest);
       this.control.addKeyDownPostGameListener();
-      this.restartMessageInterval = window.setInterval(this.gameOverHandler.drawRestartMessage, 1000);
+      this.restartMessageInterval = window.setInterval(this.gameOverHandler.drawRestartMessage, 750);
       }, 6500);
   }
   
@@ -164,7 +165,7 @@ export default class Game {
 
     atomArmy.forEach((atom) => {
       collisionAtomWall(this.canvas, atom);
-      if (collisionCircleRectangle(atom, this.player)) {
+      if (collisionAtomPlayer(atom, this.player)) {
         if (atom.nobleGas) {
           this.player.changePlayerStats('health', 5);
           delete this.atomArmy[atom.ref];
