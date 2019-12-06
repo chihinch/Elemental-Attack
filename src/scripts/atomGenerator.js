@@ -11,19 +11,15 @@ export const generateAtom = (canvas, ctx) => {
 }
 
 function chooseOxidationState(element) {
-  let oxidationStateNums;
-
   if (typeof element.oxidationStates === "number") {
-    oxidationStateNums = [element.oxidationStates];
+    return element.oxidationStates;
   }
   else {
-    oxidationStateNums = element.oxidationStates.split(', ');
+    const oxidationStateNums = element.oxidationStates.split(', ');
+    let oxidationState = parseInt(oxidationStateNums[Math.floor(Math.random() * oxidationStateNums.length)], 10);
+    while (oxidationState === 0 && !['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(element.symbol)) {
+      oxidationState = parseInt(oxidationStateNums[Math.floor(Math.random() * oxidationStateNums.length)], 10);
+    }
+    return oxidationState;
   }
-
-  let oxidationState = oxidationStateNums[Math.floor(Math.random() * oxidationStateNums.length)];
-  while (oxidationState === 0 && !['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(element.symbol)) {
-    oxidationState = oxidationStateNums[Math.floor(Math.random() * oxidationStateNums.length)];
-  }
-
-  return oxidationState;
 }
