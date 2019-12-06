@@ -4,12 +4,12 @@ function distance(x1, y1, x2, y2) {
   return Math.sqrt(dx * dx + dy * dy);
 };
 
-export const collisionCircleWall = (canvas, circle) => {
-  if (circle.positionX + circle.dX > canvas.width - circle.radius || circle.positionX + circle.dX < circle.radius) {
-    circle.dX = -(circle.dX);
+export const collisionAtomWall = (canvas, atom) => {
+  if (atom.positionX + atom.dX > canvas.width - atom.radius || atom.positionX + atom.dX < atom.radius) {
+    atom.dX = -(atom.dX);
   }
-  if (circle.positionY + circle.dY > canvas.height - circle.radius || circle.positionY + circle.dY < circle.radius) {
-    circle.dY = -(circle.dY);
+  if (atom.positionY + atom.dY > canvas.height - atom.radius || atom.positionY + atom.dY < atom.radius) {
+    atom.dY = -(atom.dY);
   }
 };
 

@@ -2,13 +2,15 @@ import Player from './player';
 import Control from './control';
 import Slideshow from './slideshow';
 import GameOverHandler from './gameOver';
-import { collisionCircleWall, collisionPlayerWall, collisionCircleRectangle, collisionCircleCircle } from './collisionDetection';
+import { collisionAtomWall, collisionPlayerWall, collisionCircleRectangle, collisionCircleCircle } from './collisionDetection';
 import { generateAtom } from './atomGenerator';
 
 export default class Game {
   constructor(canvas, ctx) {
     this.canvas = canvas;
     this.ctx = ctx;
+    this.background = new Image();
+    this.background.src = "src/assets/images/chalkboard.png";
 
     this.paused = true;
 
@@ -21,15 +23,13 @@ export default class Game {
     this.atomCount = 0;
     this.atomsDefeated = 0;
 
+    this.buildAtomArmyInterval = undefined;
+    this.restoreAmmoInterval = undefined;
     this.animationRequest = undefined;
     this.gameOverAnimationRequest = undefined;
-
-    this.background = new Image();
-    this.background.src = "src/assets/images/chalkboard.png";
+    this.restartMessageInterval = undefined;
 
     this.gameOverHandler = new GameOverHandler(this.canvas, this.ctx);
-
-    this.restartMessageInterval = undefined;
 
     this.togglePause = this.togglePause.bind(this);
     this.reset = this.reset.bind(this);
@@ -54,13 +54,13 @@ export default class Game {
     this.paused = !this.paused;
     
     if (this.paused) {
-      window.clearInterval(this.buildAtomArmy);
-      window.clearInterval(this.restoreAmmo);
+      window.clearInterval(this.buildAtomArmyInterval);
+      window.clearInterval(this.restoreAmmoInterval);
       this.slideshow.setSlide(3);
     }
     else {
-      window.setInterval(this.buildAtomArmy, 2000);
-      window.setInterval(this.restoreAmmo, 5000);
+      this.buildAtomArmyInterval = window.setInterval(this.buildAtomArmy, 2000);
+      this.restoreAmmoInterval = window.setInterval(this.restoreAmmo, 5000);
       window.clearInterval(this.slideshow.gameMessageInterval);
       this.renderGame();
     }
@@ -163,7 +163,7 @@ export default class Game {
     let projectiles = Object.values(this.player.projectiles);
 
     atomArmy.forEach((atom) => {
-      collisionCircleWall(this.canvas, atom);
+      collisionAtomWall(this.canvas, atom);
       if (collisionCircleRectangle(atom, this.player)) {
         if (atom.nobleGas) {
           this.player.changePlayerStats('health', 5);
