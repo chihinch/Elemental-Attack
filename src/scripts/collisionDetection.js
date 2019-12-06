@@ -36,18 +36,9 @@ export const collisionCircleCircle = (circleA, circleB) => {
 export const collisionAtomPlayer = (atom, player) => {
   const closestX = Math.max(player.positionX - 16, Math.min(atom.positionX, player.positionX + 16));
   const closestY = Math.max(player.positionY - 62, Math.min(atom.positionY, player.positionY));
-  // const closestX = Math.max(player.positionX, Math.min(atom.positionX + atom.radius, player.positionX + player.width));
-  // const closestY = Math.max(player.positionY, Math.min(atom.positionY, player.positionY + player.height));
   const d = distance(closestX, closestY, atom.positionX, atom.positionY);
 
-  // dX = atom.positionX - closestX;
-  // dY = atom.positionY - closestY;
-  // dX = atom.positionX - Math.max(player.positionX - 16, Math.min(atom.positionX, player.positionX + 16));
-  // dY = atom.positionY - Math.max(player.positionY - 62, Math.min(atom.positionY, player.positionY));
-
-  if (d <= atom.radius) {
-    // Prevent atom from overlapping the player
-    // atom.positionY = closestY - atom.radius;
+  if (d < atom.radius) {
     atom.dX = -(atom.dX);
     atom.dY = -(atom.dY);
     return true

@@ -19,9 +19,6 @@ export default class Slideshow {
     this.gameMessageInterval = undefined;
 
     this.clearCanvas = this.clearCanvas.bind(this);
-    this.drawIntro = this.drawIntro.bind(this);
-    this.drawStory = this.drawStory.bind(this);
-    this.drawInstructions = this.drawInstructions.bind(this);
     this.drawNavbar = this.drawNavbar.bind(this);
     this.drawNavBarOne = this.drawNavBarOne.bind(this);
     this.drawNavBarTwo = this.drawNavBarTwo.bind(this);
@@ -31,46 +28,36 @@ export default class Slideshow {
     this.advanceSlide = this.advanceSlide.bind(this);
     this.backwardSlide = this.backwardSlide.bind(this);
     this.setSlide = this.setSlide.bind(this);
+
+    this.drawSlide();
   }
 
   clearCanvas() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 
-  drawIntro() {
-    window.clearInterval(this.gameMessageInterval);
-    this.ctx.drawImage(this.intro, 0, 0);
-  }
-
-  drawStory() {
-    window.clearInterval(this.gameMessageInterval);
-    this.ctx.drawImage(this.story, 0, 0);
-  }
-
-  drawInstructions() {
-    this.ctx.drawImage(this.instructions, 0, 0);
-    if (this.controlSeen === false) {
-      this.controlSeen = true;
-    }
-    this.gameMessageInterval = window.setInterval(this.drawGameMessage, 750);
-  }
-
   drawSlide() {
     this.clearCanvas();
-    this.drawNavbar();
     switch (this.slideNumber) {
       case 1:
-        this.drawIntro();
+        window.clearInterval(this.gameMessageInterval);
+        this.ctx.drawImage(this.intro, 0, 0);
         break;
       case 2:
-        this.drawStory();
+        window.clearInterval(this.gameMessageInterval);
+        this.ctx.drawImage(this.story, 0, 0);
         break;
       case 3:
-        this.drawInstructions();
+        this.ctx.drawImage(this.instructions, 0, 0);
+        if (this.controlSeen === false) {
+          this.controlSeen = true;
+        }
+        this.gameMessageInterval = window.setInterval(this.drawGameMessage, 750);
         break;
       default:
         return;
     }
+    this.drawNavbar();
   }
 
   drawNavbar() {

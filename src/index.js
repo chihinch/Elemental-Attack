@@ -8,5 +8,5 @@ window.addEventListener('DOMContentLoaded', () => {
   canvas.height = '550';
   
   // Instantiate a new game
-  const game = new Game(canvas, ctx);
+  let game = new Game(canvas, ctx);
 });
