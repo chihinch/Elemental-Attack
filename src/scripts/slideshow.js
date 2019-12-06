@@ -28,8 +28,6 @@ export default class Slideshow {
     this.advanceSlide = this.advanceSlide.bind(this);
     this.backwardSlide = this.backwardSlide.bind(this);
     this.setSlide = this.setSlide.bind(this);
-
-    this.drawSlide();
   }
 
   clearCanvas() {
@@ -122,9 +120,9 @@ export default class Slideshow {
   }
 
   drawGameMessage() {
-    this.ctx.clearRect(50, 475, 300, 35);
+    this.ctx.clearRect(50, 475, 325, 35);
     this.ctx.beginPath();
-      this.ctx.rect(50, 475, 300, 35);
+      this.ctx.rect(50, 475, 325, 35);
       this.ctx.fillStyle = "black";
     this.ctx.fill();
 

@@ -46,6 +46,9 @@ export default class Game {
     this.restoreAmmo = this.restoreAmmo.bind(this);
     this.getPairs = this.getPairs.bind(this);
 
+    this.slideshow.intro.onload = () => {
+      this.slideshow.drawSlide();
+    }
     this.control.addKeyDownPreGameListener();
   }
 

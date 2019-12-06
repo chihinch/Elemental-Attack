@@ -1,6 +1,6 @@
 import Game from './scripts/game';
 
-window.addEventListener('DOMContentLoaded', () => {
+window.onload = () => {
   const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
 
@@ -9,4 +9,4 @@ window.addEventListener('DOMContentLoaded', () => {
   
   // Instantiate a new game
   let game = new Game(canvas, ctx);
-});
+};
