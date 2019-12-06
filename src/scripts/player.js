@@ -144,6 +144,9 @@ export default class Player {
     this.ioniserFired = 0;
     this.electronsFired = 0;
     this.projectiles = {};
+    this.positionX = canvas.width / 2; 
+    this.positionY = canvas.height; 
+    this.direction = 0; 
   }
 
   fireWeapon(type) {

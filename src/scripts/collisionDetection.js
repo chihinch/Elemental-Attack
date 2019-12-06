@@ -47,7 +47,7 @@ export const collisionAtomPlayer = (atom, player) => {
 
   if (d <= atom.radius) {
     // Prevent atom from overlapping the player
-    atom.positionY = closestY - atom.radius;
+    // atom.positionY = closestY - atom.radius;
     atom.dX = -(atom.dX);
     atom.dY = -(atom.dY);
     return true
