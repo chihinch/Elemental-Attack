@@ -4,13 +4,13 @@ export default class Slideshow {
     this.ctx = ctx;
 
     this.intro = new Image();
-    this.intro.src = "/src/assets/images/aboutSlideshow/elementalAttackIntro.png";
+    this.intro.src = "src/assets/images/aboutSlideshow/elementalAttackIntro.png";
 
     this.story = new Image();
-    this.story.src = "/src/assets/images/aboutSlideshow/elementalAttackStory.png";
+    this.story.src = "src/assets/images/aboutSlideshow/elementalAttackStory.png";
 
     this.instructions = new Image();
-    this.instructions.src = "/src/assets/images/aboutSlideshow/elementalAttackDiagram.png";
+    this.instructions.src = "src/assets/images/aboutSlideshow/elementalAttackDiagram.png";
 
     this.slideNumber = 1;
     this.controlSeen = false;
