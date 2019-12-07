@@ -123,8 +123,8 @@ export default class Game {
 
       this.drawBackground();
       this.drawEntities();
-      this.checkCollisions();
       this.moveEntities();
+      this.checkCollisions();
 
       this.animationRequest = window.requestAnimationFrame(this.renderGame);
     }
@@ -157,6 +157,22 @@ export default class Game {
     Object.values(this.player.projectiles).forEach((projectile) => {
       projectile.draw();
     });
+  }
+
+  moveEntities() {
+    this.player.positionX += this.player.direction * this.player.dX;
+
+    Object.values(this.atomArmy).forEach((atom) => {
+      atom.positionX += atom.dX;
+      atom.positionY += atom.dY;
+    })
+
+    Object.values(this.player.projectiles).forEach((projectile) => {
+      projectile.positionY += projectile.direction * projectile.dY;
+      if (projectile.outOfBounds()) {
+        delete (this.player.projectiles[projectile.ref]);
+      }
+    })
   }
 
   checkCollisions() {
@@ -204,7 +220,7 @@ export default class Game {
             this.player.changePlayerStats('points', atom.atomicNumber);
           }
         }
-      })
+      });
     }
 
     let atomPairs = [];
@@ -212,29 +228,29 @@ export default class Game {
       atomPairs = this.getPairs(atomArmy, 0, [], atomPairs);
 
       atomPairs.forEach((pair) => {
-        if (collisionCircleCircle(pair[0], pair[1])) {
-          pair[0].reverseDirection();
-          pair[1].reverseDirection();
+        const atomA = pair[0];
+        const atomB = pair[1];
+        if (collisionCircleCircle(atomA, atomB)) {
+          // Assume perfectly elastic collision?
+          // const newAdX = -(atomA.dX);
+          // const newAdY = -(atomA.dY);
+          // const newBdX = -(atomB.dX);
+          // const newBdY = -(atomB.dY);
+
+          // atomA.dX = newAdX;
+          // atomA.dY = newAdY;
+          // atomB.dX = newBdX;
+          // atomB.dY = newBdY;
+          atomA.reverseDirection();
+          atomB.reverseDirection();
+
+          atomA.positionX += atomA.dX;
+          atomA.positionY += atomA.dY;
+          atomB.positionX += atomB.dX;
+          atomB.positionY += atomB.dY;
         }
       });
     }
-
-  }
-
-  moveEntities() {
-    this.player.positionX += this.player.direction * this.player.dX;
-
-    Object.values(this.atomArmy).forEach((atom) => {
-      atom.positionX += atom.dX;
-      atom.positionY += atom.dY;
-    })
-
-    Object.values(this.player.projectiles).forEach((projectile) => {
-      projectile.positionY += projectile.direction * projectile.dY;
-      if (projectile.outOfBounds()) {
-        delete(this.player.projectiles[projectile.ref]);
-      }
-    })
   }
 
   buildAtomArmy() {

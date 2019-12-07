@@ -38,12 +38,5 @@ export const collisionAtomPlayer = (atom, player) => {
   const closestY = Math.max(player.positionY - 62, Math.min(atom.positionY, player.positionY));
   const d = distance(closestX, closestY, atom.positionX, atom.positionY);
 
-  if (d < atom.radius) {
-    atom.dX = -(atom.dX);
-    atom.dY = -(atom.dY);
-    return true
-  }
-  else {
-    return false;
-  }
+  return d <= atom.radius;
 };

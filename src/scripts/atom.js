@@ -9,6 +9,7 @@ export default class Atom {
     this.textColor = CMYKColor[3] < 0.3 ? "#42464d" : "#ffffff";
     this.atomicNumber = atomicNumber;
     this.symbol = symbol;
+    this.atomicMass = atomicMass;
     this.currentOxidationState = oxidationState;
 
     this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol);
