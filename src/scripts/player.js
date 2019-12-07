@@ -15,7 +15,7 @@ export default class Player {
     this.projectiles = {};
 
     this.image = new Image();
-    this.image.src = "src/assets/images/smallChemist.png";
+    this.image.src = "/src/assets/images/smallChemist.png";
 
     this.positionX = canvas.width / 2; // Player starts at the canvas' centre
     this.positionY = canvas.height; // This should never change since the player is "grounded" 
