@@ -4,7 +4,8 @@ export default class Slideshow {
     this.ctx = ctx;
 
     this.intro = new Image();
-    this.intro.src = "src/assets/images/aboutSlideshow/elementalAttackIntro.png";
+    this.intro.src = "../images/aboutSlideshow/elementalAttackIntro.png";
+    // this.intro.src = "src/assets/images/aboutSlideshow/elementalAttackIntro.png";
 
     this.story = new Image();
     this.story.src = "src/assets/images/aboutSlideshow/elementalAttackStory.png";
