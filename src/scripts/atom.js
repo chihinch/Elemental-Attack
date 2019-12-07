@@ -8,19 +8,17 @@ export default class Atom {
     this.cpkHexColor = cpkHexColor;
     this.atomicNumber = atomicNumber;
     this.symbol = symbol;
-    this.mass = atomicMass;
-    this.atomicRadius = atomicRadius;
     this.currentOxidationState = oxidationState;
 
     this.nobleGas = ['He', 'Ne', 'Ar', 'Kr', 'Xe', 'Rn'].includes(symbol);
-    this.radius = Math.ceil(Math.sqrt(this.atomicRadius) * 3);
+    this.radius = Math.ceil(atomicRadius / 5);
 
-    // Atom's initial position is a random position on the canvas with a 100px boundary from all edges
-    this.positionX = Math.floor(Math.random() * ((this.canvas.width - 100) - 100 + 1) + 100);
-    this.positionY = Math.floor(Math.random() * ((this.canvas.height - 100) - 100 + 1) + 100);
+    // Atom's initial position is a random position on the canvas with a 200 px boundary from all edges
+    this.positionX = Math.floor(Math.random() * ((this.canvas.width - 200) - 200 + 1) + 200);
+    this.positionY = Math.floor(Math.random() * ((this.canvas.height - 200) - 200 + 1) + 200);
 
     // Atom's speed based on root mean square speed of a gaseous atom at room temperature (298 K)
-    const RMS = Math.sqrt(3 * 8.314 * 298 / (this.mass / 1000));
+    const RMS = Math.sqrt(3 * 8.314 * 298 / (atomicMass / 1000));
     const scaledRMS = Math.ceil((RMS / 1000) + 1);
     this.dX = scaledRMS;
     this.dY = -scaledRMS;
@@ -55,11 +53,11 @@ export default class Atom {
       this.ctx.fillStyle = '#42464d';
       this.ctx.textAlign = 'center';
       this.ctx.textBaseline = 'middle';
-      this.ctx.font = `${fontSize}px Verdana`;
+      this.ctx.font = `${fontSize}px 'Nunito'`;
     this.ctx.fillText(this.symbol, this.positionX - (fontSize * 0.25), this.positionY, this.radius);
 
     this.ctx.beginPath();
-      this.ctx.font = `${fontSize * 0.6}px Verdana`
+      this.ctx.font = `${fontSize * 0.6}px 'Nunito'`
       this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
     this.ctx.closePath();
   }
