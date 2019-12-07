@@ -18,11 +18,10 @@ export default class Atom {
     this.positionX = Math.floor(Math.random() * ((this.canvas.width - 200) - 200 + 1) + 200);
     this.positionY = Math.floor(Math.random() * ((this.canvas.height - 200) - 200 + 1) + 200);
 
-    // Atom's speed based on root mean square speed of a gaseous atom at room temperature (298 K)
-    const RMS = Math.sqrt(3 * 8.314 * 298 / (atomicMass / 1000));
-    const scaledRMS = Math.ceil((RMS / 1000) + 1);
-    this.dX = scaledRMS;
-    this.dY = -scaledRMS;
+    // Atom's speed based on root mean square speed of a gaseous atom at room temperature (298 K), scaled to be reasonably drawn on canvas
+    const RMS = Math.log(Math.sqrt((3 * 8.314 * 298) / (atomicMass / 1000))) - 3;
+    this.dX = RMS;
+    this.dY = -RMS;
 
     this.draw = this.draw.bind(this);
     this.damage = this.damage.bind(this);
@@ -52,7 +51,6 @@ export default class Atom {
     if (this.nobleGas) {
       this.ctx.beginPath();
       this.ctx.fillStyle = this.textColor;
-      // this.ctx.fillStyle = '#42464d';
       this.ctx.textAlign = 'center';
       this.ctx.textBaseline = 'middle';
       this.ctx.font = `${fontSize}px 'Nunito'`;
@@ -61,7 +59,6 @@ export default class Atom {
     else {
     this.ctx.beginPath();
       this.ctx.fillStyle = this.textColor;
-      // this.ctx.fillStyle = '#42464d';
       this.ctx.textAlign = 'end';
       this.ctx.textBaseline = 'middle';
       this.ctx.font = `${fontSize}px 'Nunito'`;
