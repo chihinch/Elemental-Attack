@@ -1,11 +1,12 @@
 export default class Atom {
-  constructor(canvas, ctx, cpkHexColor, atomicNumber, symbol, atomicMass, atomicRadius, oxidationState) {
+  constructor(canvas, ctx, cpkHexColor, CMYKColor, atomicNumber, symbol, atomicMass, atomicRadius, oxidationState) {
     this.canvas = canvas;
     this.ctx = ctx;
 
     this.ref = `atom-${Math.random()}`;
 
     this.cpkHexColor = cpkHexColor;
+    this.textColor = CMYKColor[3] < 0.3 ? "#42464d" : "#ffffff";
     this.atomicNumber = atomicNumber;
     this.symbol = symbol;
     this.currentOxidationState = oxidationState;
@@ -24,7 +25,6 @@ export default class Atom {
     this.dY = -scaledRMS;
 
     this.draw = this.draw.bind(this);
-    this.reverseDirection = this.reverseDirection.bind(this);
     this.damage = this.damage.bind(this);
   }
 
@@ -49,22 +49,30 @@ export default class Atom {
       this.ctx.fill();
     this.ctx.stroke();
 
-    this.ctx.beginPath();
-      this.ctx.fillStyle = '#42464d';
+    if (this.nobleGas) {
+      this.ctx.beginPath();
+      this.ctx.fillStyle = this.textColor;
+      // this.ctx.fillStyle = '#42464d';
       this.ctx.textAlign = 'center';
       this.ctx.textBaseline = 'middle';
       this.ctx.font = `${fontSize}px 'Nunito'`;
-    this.ctx.fillText(this.symbol, this.positionX - (fontSize * 0.25), this.positionY, this.radius);
+      this.ctx.fillText(this.symbol, this.positionX, this.positionY, this.radius);
+    }
+    else {
+    this.ctx.beginPath();
+      this.ctx.fillStyle = this.textColor;
+      // this.ctx.fillStyle = '#42464d';
+      this.ctx.textAlign = 'end';
+      this.ctx.textBaseline = 'middle';
+      this.ctx.font = `${fontSize}px 'Nunito'`;
+    this.ctx.fillText(this.symbol, this.positionX, this.positionY, this.radius);
 
     this.ctx.beginPath();
+      this.ctx.textAlign = 'start';
+      this.ctx.textBaseline = 'middle';
       this.ctx.font = `${fontSize * 0.6}px 'Nunito'`
-      this.ctx.fillText(oxidationStateDisplay, this.positionX + (fontSize * 0.6), this.positionY - (fontSize * 0.6));
-    this.ctx.closePath();
-  }
-
-  reverseDirection() {
-    this.dX = -(this.dX);
-    this.dY = -(this.dY);
+    this.ctx.fillText(oxidationStateDisplay, this.positionX, this.positionY - (fontSize * 0.5));
+    }
   }
 
   damage(projectile) {

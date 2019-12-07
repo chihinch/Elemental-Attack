@@ -138,7 +138,7 @@ export default class Player {
   }
 
   reset() {
-    this.health = 10;
+    this.health = 100;
     this.electrons = 25;
     this.points = 0;
     this.ioniserFired = 0;

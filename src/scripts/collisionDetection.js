@@ -30,7 +30,7 @@ export const collisionPlayerWall = (canvas, player) => {
 export const collisionCircleCircle = (circleA, circleB) => {
   const d = distance(circleA.positionX, circleA.positionY, circleB.positionX, circleB.positionY);
 
-  return circleA.radius + circleB.radius > d;
+  return d < circleA.radius + circleB.radius;
 };
 
 export const collisionAtomPlayer = (atom, player) => {

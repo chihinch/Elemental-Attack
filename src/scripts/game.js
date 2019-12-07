@@ -205,17 +205,17 @@ export default class Game {
       })
     }
 
-    let atomPairs = [];
-    if (atomArmy.length > 1) {
-      this.getPairs(atomArmy, 0, [], atomPairs);
+    // let atomPairs = [];
+    // if (atomArmy.length > 1) {
+    //   this.getPairs(atomArmy, 0, [], atomPairs);
 
-      atomPairs.forEach((pair) => {
-        if (collisionCircleCircle(pair[0], pair[1])) {
-          pair[0].reverseDirection();
-          pair[1].reverseDirection();
-        }
-      });
-    }
+    //   atomPairs.forEach((pair) => {
+    //     if (collisionCircleCircle(pair[0], pair[1])) {
+    //       pair[0].reverseDirection();
+    //       pair[1].reverseDirection();
+    //     }
+    //   });
+    // }
 
   }
 
