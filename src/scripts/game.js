@@ -169,12 +169,13 @@ export default class Game {
       collisionAtomWall(this.canvas, atom);
       if (collisionAtomPlayer(atom, this.player)) {
         if (atom.nobleGas) {
-          this.player.changePlayerStats('health', 5);
-          delete this.atomArmy[atom.ref];
+          this.player.changePlayerStats('health', atom.atomicNumber);
         }
         else {
-          this.player.changePlayerStats('health', -5);
+          this.player.changePlayerStats('health', -atom.atomicNumber);
         }
+        delete this.atomArmy[atom.ref];
+        this.atomCount--;
       }
     });
 
@@ -198,6 +199,7 @@ export default class Game {
 
           if (atom.isAtomDefeated()) {
             delete this.atomArmy[atom.ref];
+            this.atomCount--;
             this.atomsDefeated++;
             this.player.changePlayerStats('points', atom.atomicNumber);
           }
