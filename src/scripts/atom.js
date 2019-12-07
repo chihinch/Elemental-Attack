@@ -25,6 +25,7 @@ export default class Atom {
 
     this.draw = this.draw.bind(this);
     this.damage = this.damage.bind(this);
+    this.reverseDirection = this.reverseDirection.bind(this);
   }
 
   draw() {
@@ -87,6 +88,11 @@ export default class Atom {
 
   isAtomDefeated() {
     return this.currentOxidationState === 0;
+  }
+
+  reverseDirection() {
+    this.dX = -this.dX;
+    this.dY = -this.dY;
   }
 
 }

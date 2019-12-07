@@ -205,17 +205,17 @@ export default class Game {
       })
     }
 
-    // let atomPairs = [];
-    // if (atomArmy.length > 1) {
-    //   this.getPairs(atomArmy, 0, [], atomPairs);
+    let atomPairs = [];
+    if (atomArmy.length > 1) {
+      atomPairs = this.getPairs(atomArmy, 0, [], atomPairs);
 
-    //   atomPairs.forEach((pair) => {
-    //     if (collisionCircleCircle(pair[0], pair[1])) {
-    //       pair[0].reverseDirection();
-    //       pair[1].reverseDirection();
-    //     }
-    //   });
-    // }
+      atomPairs.forEach((pair) => {
+        if (collisionCircleCircle(pair[0], pair[1])) {
+          pair[0].reverseDirection();
+          pair[1].reverseDirection();
+        }
+      });
+    }
 
   }
 
@@ -252,7 +252,7 @@ export default class Game {
   }
 
   getPairs(array, startIdx, currCombo, output) {
-    if (currCombo.length >= 2) {
+    if (currCombo.length === 2) {
       output.push(currCombo);
     }
     else {
@@ -260,5 +260,6 @@ export default class Game {
         this.getPairs(array, i + 1, currCombo.concat(array[i]), output);
       }
     }
+    return output;
   }
 };
