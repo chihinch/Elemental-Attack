@@ -181,6 +181,53 @@ export default class Game {
     let atomArmy = Object.values(this.atomArmy);
     let projectiles = Object.values(this.player.projectiles);
 
+    let projectileAtomPairs = [];
+    if (projectiles.length > 0 && atomArmy.length > 0) {
+      for (let i = 0; i < projectiles.length; i++) {
+        for (let j = 0; j < atomArmy.length; j++) {
+          projectileAtomPairs.push([projectiles[i], atomArmy[j]]);
+        }
+      }
+    }
+
+    projectileAtomPairs.forEach((pair) => {
+      const projectile = pair[0];
+      const atom = pair[1];
+
+      if (collisionCircleCircle(projectile, atom)) {
+        if (!atom.nobleGas) {
+          delete this.player.projectiles[projectile.ref];
+          atom.damage(projectile.type);
+        }
+
+        if (atom.isAtomDefeated()) {
+          delete this.atomArmy[atom.ref];
+          this.atomCount--;
+          this.atomsDefeated++;
+          this.player.changePlayerStats('points', atom.atomicNumber);
+        }
+      };
+    });
+
+    let atomPairs = [];
+    if (atomArmy.length > 1) {
+      atomPairs = this.getPairs(atomArmy, 0, [], atomPairs);
+
+      atomPairs.forEach((pair) => {
+        const atomA = pair[0];
+        const atomB = pair[1];
+        if (collisionCircleCircle(atomA, atomB)) {
+          atomA.reverseDirection();
+          atomB.reverseDirection();
+
+          atomA.positionX += atomA.dX;
+          atomA.positionY += atomA.dY;
+          atomB.positionX += atomB.dX;
+          atomB.positionY += atomB.dY;
+        }
+      });
+    }
+
     atomArmy.forEach((atom) => {
       collisionAtomWall(this.canvas, atom);
       if (collisionAtomPlayer(atom, this.player)) {
@@ -194,63 +241,6 @@ export default class Game {
         this.atomCount--;
       }
     });
-
-    let projectileAtomPairs = [];
-    if (projectiles.length > 0 && atomArmy.length > 0) {
-        for (let i = 0; i < projectiles.length; i++) {
-          for (let j = 0; j < atomArmy.length; j++) {
-            projectileAtomPairs.push([projectiles[i], atomArmy[j]]);
-          }
-      }
-
-      projectileAtomPairs.forEach((pair) => {
-        const projectile = pair[0];
-        const atom = pair[1];
-
-        if (collisionCircleCircle(projectile, atom)) {
-          if (!atom.nobleGas) {
-            delete this.player.projectiles[projectile.ref];
-            atom.damage(projectile.type);
-          }
-
-          if (atom.isAtomDefeated()) {
-            delete this.atomArmy[atom.ref];
-            this.atomCount--;
-            this.atomsDefeated++;
-            this.player.changePlayerStats('points', atom.atomicNumber);
-          }
-        }
-      });
-    }
-
-    let atomPairs = [];
-    if (atomArmy.length > 1) {
-      atomPairs = this.getPairs(atomArmy, 0, [], atomPairs);
-
-      atomPairs.forEach((pair) => {
-        const atomA = pair[0];
-        const atomB = pair[1];
-        if (collisionCircleCircle(atomA, atomB)) {
-          // Assume perfectly elastic collision?
-          // const newAdX = -(atomA.dX);
-          // const newAdY = -(atomA.dY);
-          // const newBdX = -(atomB.dX);
-          // const newBdY = -(atomB.dY);
-
-          // atomA.dX = newAdX;
-          // atomA.dY = newAdY;
-          // atomB.dX = newBdX;
-          // atomB.dY = newBdY;
-          atomA.reverseDirection();
-          atomB.reverseDirection();
-
-          atomA.positionX += atomA.dX;
-          atomA.positionY += atomA.dY;
-          atomB.positionX += atomB.dX;
-          atomB.positionY += atomB.dY;
-        }
-      });
-    }
   }
 
   buildAtomArmy() {

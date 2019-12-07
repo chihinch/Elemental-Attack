@@ -6,7 +6,7 @@ export default class Atom {
     this.ref = `atom-${Math.random()}`;
 
     this.cpkHexColor = cpkHexColor;
-    this.textColor = CMYKColor[3] < 0.3 ? "#42464d" : "#ffffff";
+    this.textColor = CMYKColor[3] < 0.25 ? "#42464d" : "#ffffff";
     this.atomicNumber = atomicNumber;
     this.symbol = symbol;
     this.atomicMass = atomicMass;
