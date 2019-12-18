@@ -217,6 +217,7 @@ export default class Game {
         const atomA = pair[0];
         const atomB = pair[1];
         if (collisionCircleCircle(atomA, atomB)) {
+          debugger
           atomA.reverseDirection();
           atomB.reverseDirection();
 
@@ -249,7 +250,14 @@ export default class Game {
         return;
       }
 
-      const newAtom = generateAtom(this.canvas, this.ctx);
+      // Checks to make sure an atom hasn't spawned inside an existing one
+      let newAtom = generateAtom(this.canvas, this.ctx);
+      if (Object.values(this.atomArmy).some((atom) => {
+        return collisionCircleCircle(atom, newAtom);
+      })) {
+        newAtom = generateAtom(this.canvas, this.ctx);
+      }
+
       this.atomArmy[newAtom.ref] = newAtom;
       this.atomCount += 1;
     }
