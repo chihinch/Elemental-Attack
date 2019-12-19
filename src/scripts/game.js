@@ -209,26 +209,6 @@ export default class Game {
       };
     });
 
-    let atomPairs = [];
-    if (atomArmy.length > 1) {
-      atomPairs = this.getPairs(atomArmy, 0, [], atomPairs);
-
-      atomPairs.forEach((pair) => {
-        const atomA = pair[0];
-        const atomB = pair[1];
-        if (collisionCircleCircle(atomA, atomB)) {
-          debugger
-          atomA.reverseDirection();
-          atomB.reverseDirection();
-
-          atomA.positionX += atomA.dX;
-          atomA.positionY += atomA.dY;
-          atomB.positionX += atomB.dX;
-          atomB.positionY += atomB.dY;
-        }
-      });
-    }
-
     atomArmy.forEach((atom) => {
       collisionAtomWall(this.canvas, atom);
       if (collisionAtomPlayer(atom, this.player)) {
@@ -242,6 +222,28 @@ export default class Game {
         this.atomCount--;
       }
     });
+
+    let atomPairs = [];
+    if (atomArmy.length > 1) {
+      atomPairs = this.getPairs(atomArmy, 0, [], atomPairs);
+
+      atomPairs.forEach((pair) => {
+        const atomA = pair[0];
+        const atomB = pair[1];
+        if (collisionCircleCircle(atomA, atomB)) {
+          // debugger
+          atomA.reverseDirection();
+          atomB.reverseDirection();
+
+          // atomA.positionX += atomA.dX;
+          // atomA.positionY += atomA.dY;
+          // atomB.positionX += atomB.dX;
+          // atomB.positionY += atomB.dY;
+
+        }
+        // collisionCircleCircle(atomA, atomB);
+      });
+    }
   }
 
   buildAtomArmy() {
