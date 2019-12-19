@@ -44,24 +44,37 @@ export const collisionCircleCircle = (circleA, circleB) => {
 
   // Otherwise stop the atoms from overlapping each other leading to sticking
   if (isCollision) {
-    const nx = dx / d;
-    const ny = dy / d;
+    // const nx = dx / d;
+    // const ny = dy / d;
 
-    const circleAToCollision = d * (circleA.radius / (circleA.radius + circleB.radius));
-    const collisionX = circleA.positionX + nx * circleAToCollision;
-    const collisionY = circleA.positionY + ny * circleAToCollision;
+    // const circleAToCollision = d * (circleA.radius / (circleA.radius + circleB.radius));
+    // const collisionX = circleA.positionX + nx * circleAToCollision;
+    // const collisionY = circleA.positionY + ny * circleAToCollision;
 
-    circleA.positionX = collisionX - nx * circleA.radius;
-    circleA.positionY = collisionX - ny * circleA.radius;
-    circleB.positionX = collisionY + nx * circleB.radius;
-    circleB.positionY = collisionY + ny * circleB.radius;
-
-    return true;
+    // circleA.positionX = collisionX - nx * circleA.radius;
+    // circleA.positionY = collisionX - ny * circleA.radius;
+    
+    // circleB.positionX = collisionY + nx * circleB.radius;
+    // circleB.positionY = collisionY + ny * circleB.radius;
+    
+    unstickAtoms(circleA, circleB, d);
+    
+    circleA.reverseDirection();
+    circleB.reverseDirection();
   }
   else {
     return false;
   }
 };
+
+function unstickAtoms(atomA, atomB, distance) {
+  const collisionAngle = Math.atan2(atomB.positionY - atomA.positionY, atomB.positionX - atomA.positionX);
+
+  // atomA.positionX += (Math.cos(collisionAngle) * distance);
+  // atomA.positionY += (Math.cos(collisionAngle) * distance);
+  atomB.positionX += (Math.cos(collisionAngle) * distance);
+  atomB.positionY += (Math.cos(collisionAngle) * distance);
+}
 
 export const collisionAtomPlayer = (atom, player) => {
   const closestX = Math.max(player.positionX - 16, Math.min(atom.positionX, player.positionX + 16));

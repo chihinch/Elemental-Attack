@@ -230,18 +230,18 @@ export default class Game {
       atomPairs.forEach((pair) => {
         const atomA = pair[0];
         const atomB = pair[1];
-        if (collisionCircleCircle(atomA, atomB)) {
-          // debugger
-          atomA.reverseDirection();
-          atomB.reverseDirection();
+        // if (collisionCircleCircle(atomA, atomB)) {
+        //   // debugger
+        //   atomA.reverseDirection();
+        //   atomB.reverseDirection();
 
-          // atomA.positionX += atomA.dX;
-          // atomA.positionY += atomA.dY;
-          // atomB.positionX += atomB.dX;
-          // atomB.positionY += atomB.dY;
+        //   // atomA.positionX += atomA.dX;
+        //   // atomA.positionY += atomA.dY;
+        //   // atomB.positionX += atomB.dX;
+        //   // atomB.positionY += atomB.dY;
 
-        }
-        // collisionCircleCircle(atomA, atomB);
+        // }
+        collisionCircleCircle(atomA, atomB);
       });
     }
   }
