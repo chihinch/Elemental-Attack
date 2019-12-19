@@ -62,7 +62,7 @@ export default class Game {
     }
     else {
       this.buildAtomArmyInterval = window.setInterval(this.buildAtomArmy, 2000);
-      this.restoreAmmoInterval = window.setInterval(this.restoreAmmo, 5000);
+      this.restoreAmmoInterval = window.setInterval(this.restoreAmmo, 2000);
       window.clearInterval(this.slideshow.gameMessageInterval);
       this.renderGame();
     }

@@ -58,6 +58,8 @@ function unstickAtoms(atomA, atomB, distance) {
   const collisionAngle = Math.atan2(atomB.positionY - atomA.positionY, atomB.positionX - atomA.positionX);
   const distToMove = atomA.radius + atomB.radius - distance;
 
+  atomA.positionX -= (Math.cos(collisionAngle) * distToMove);
+  atomA.positionY -= (Math.sin(collisionAngle) * distToMove);
   atomB.positionX += (Math.cos(collisionAngle) * distToMove);
   atomB.positionY += (Math.sin(collisionAngle) * distToMove);
 }
