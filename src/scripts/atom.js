@@ -1,5 +1,5 @@
 export default class Atom {
-  constructor(canvas, ctx, cpkHexColor, CMYKColor, atomicNumber, symbol, atomicMass, atomicRadius, oxidationState) {
+  constructor(canvas, ctx, cpkHexColor, CMYKColor, atomicNumber, symbol, period, atomicMass, atomicRadius, oxidationState) {
     this.canvas = canvas;
     this.ctx = ctx;
 
@@ -9,6 +9,7 @@ export default class Atom {
     this.textColor = CMYKColor[3] < 0.25 ? "#42464d" : "#ffffff";
     this.atomicNumber = atomicNumber;
     this.symbol = symbol;
+    this.period = period;
     this.atomicMass = atomicMass;
     this.currentOxidationState = oxidationState;
 

@@ -216,7 +216,7 @@ export default class Game {
           this.player.changePlayerStats('health', atom.atomicNumber);
         }
         else {
-          this.player.changePlayerStats('health', -atom.atomicNumber);
+          this.player.changePlayerStats('health', -(2 * atom.period));
         }
         delete this.atomArmy[atom.ref];
         this.atomCount--;

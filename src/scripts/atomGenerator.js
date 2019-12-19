@@ -8,7 +8,7 @@ export const generateAtom = (canvas, ctx) => {
   const oxidationState = chooseOxidationState(element);
   const CMYKColour = hexToCMYK(element.cpkHexColor);
 
-  return new Atom(canvas, ctx, element.cpkHexColor, CMYKColour, element.atomicNumber, element.symbol, element.atomicMass, element.atomicRadius, oxidationState);
+  return new Atom(canvas, ctx, element.cpkHexColor, CMYKColour, element.atomicNumber, element.symbol, element.period, element.atomicMass, element.atomicRadius, oxidationState);
 }
 
 function chooseOxidationState(element) {
