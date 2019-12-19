@@ -69,11 +69,12 @@ export const collisionCircleCircle = (circleA, circleB) => {
 
 function unstickAtoms(atomA, atomB, distance) {
   const collisionAngle = Math.atan2(atomB.positionY - atomA.positionY, atomB.positionX - atomA.positionX);
+  const distToMove = atomA.radius + atomB.radius - distance;
 
   // atomA.positionX += (Math.cos(collisionAngle) * distance);
   // atomA.positionY += (Math.cos(collisionAngle) * distance);
-  atomB.positionX += (Math.cos(collisionAngle) * distance);
-  atomB.positionY += (Math.cos(collisionAngle) * distance);
+  atomB.positionX += (Math.cos(collisionAngle) * distToMove);
+  atomB.positionY += (Math.cos(collisionAngle) * distToMove);
 }
 
 export const collisionAtomPlayer = (atom, player) => {
