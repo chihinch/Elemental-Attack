@@ -1,3 +1,5 @@
+import Projectile from "./projectile";
+
 function distance(x1, y1, x2, y2) {
   const dx = x1 - x2;
   const dy = y1 - y2;
@@ -27,11 +29,40 @@ export const collisionPlayerWall = (canvas, player) => {
   }
 };
 
+// Checks both atom-atom collision and atom-projectile collision
 export const collisionCircleCircle = (circleA, circleB) => {
+  const dx = circleB.positionX - circleA.positionX;
+  const dy = circleB.positionY - circleA.positionY;
   const d = distance(circleA.positionX, circleA.positionY, circleB.positionX, circleB.positionY);
 
-  return d < circleA.radius + circleB.radius;
+  const isCollision = (d <= circleA.radius + circleB.radius);
+
+  // If an atom and projectile collide then stop here and let the game handle the consequences
+  if (circleA instanceof Projectile || circleB instanceof Projectile) {
+    return isCollision;
+  }
+
+  // Otherwise stop the atoms from overlapping each other leading to sticking
+  if (isCollision) {
+    unstickAtoms(circleA, circleB, d);
+    
+    circleA.reverseDirection();
+    circleB.reverseDirection();
+  }
+  else {
+    return false;
+  }
 };
+
+function unstickAtoms(atomA, atomB, distance) {
+  const collisionAngle = Math.atan2(atomB.positionY - atomA.positionY, atomB.positionX - atomA.positionX);
+  const distToMove = atomA.radius + atomB.radius - distance;
+
+  atomA.positionX -= (Math.cos(collisionAngle) * distToMove);
+  atomA.positionY -= (Math.sin(collisionAngle) * distToMove);
+  atomB.positionX += (Math.cos(collisionAngle) * distToMove);
+  atomB.positionY += (Math.sin(collisionAngle) * distToMove);
+}
 
 export const collisionAtomPlayer = (atom, player) => {
   const closestX = Math.max(player.positionX - 16, Math.min(atom.positionX, player.positionX + 16));

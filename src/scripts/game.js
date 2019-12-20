@@ -62,7 +62,7 @@ export default class Game {
     }
     else {
       this.buildAtomArmyInterval = window.setInterval(this.buildAtomArmy, 2000);
-      this.restoreAmmoInterval = window.setInterval(this.restoreAmmo, 5000);
+      this.restoreAmmoInterval = window.setInterval(this.restoreAmmo, 2000);
       window.clearInterval(this.slideshow.gameMessageInterval);
       this.renderGame();
     }
@@ -91,6 +91,8 @@ export default class Game {
 
   gameOver() {
     window.cancelAnimationFrame(this.animationRequest);
+    window.clearInterval(this.buildAtomArmyInterval);
+    window.clearInterval(this.restoreAmmoInterval);
 
     this.control.removeKeyDownInGameListener();
     this.control.removeKeyUpInGameListener();
@@ -209,25 +211,6 @@ export default class Game {
       };
     });
 
-    let atomPairs = [];
-    if (atomArmy.length > 1) {
-      atomPairs = this.getPairs(atomArmy, 0, [], atomPairs);
-
-      atomPairs.forEach((pair) => {
-        const atomA = pair[0];
-        const atomB = pair[1];
-        if (collisionCircleCircle(atomA, atomB)) {
-          atomA.reverseDirection();
-          atomB.reverseDirection();
-
-          atomA.positionX += atomA.dX;
-          atomA.positionY += atomA.dY;
-          atomB.positionX += atomB.dX;
-          atomB.positionY += atomB.dY;
-        }
-      });
-    }
-
     atomArmy.forEach((atom) => {
       collisionAtomWall(this.canvas, atom);
       if (collisionAtomPlayer(atom, this.player)) {
@@ -235,12 +218,23 @@ export default class Game {
           this.player.changePlayerStats('health', atom.atomicNumber);
         }
         else {
-          this.player.changePlayerStats('health', -atom.atomicNumber);
+          this.player.changePlayerStats('health', -(2 * atom.period));
         }
         delete this.atomArmy[atom.ref];
         this.atomCount--;
       }
     });
+
+    let atomPairs = [];
+    if (atomArmy.length > 1) {
+      atomPairs = this.getPairs(atomArmy, 0, [], atomPairs);
+
+      atomPairs.forEach((pair) => {
+        const atomA = pair[0];
+        const atomB = pair[1];
+        collisionCircleCircle(atomA, atomB);
+      });
+    }
   }
 
   buildAtomArmy() {
@@ -249,7 +243,14 @@ export default class Game {
         return;
       }
 
-      const newAtom = generateAtom(this.canvas, this.ctx);
+      // Checks to make sure an atom hasn't spawned inside an existing one
+      let newAtom = generateAtom(this.canvas, this.ctx);
+      if (Object.values(this.atomArmy).some((atom) => {
+        return collisionCircleCircle(atom, newAtom);
+      })) {
+        newAtom = generateAtom(this.canvas, this.ctx);
+      }
+
       this.atomArmy[newAtom.ref] = newAtom;
       this.atomCount += 1;
     }
